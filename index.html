@@ -26,49 +26,50 @@
 
 <body>
 <!-- -->
-<div class="mainPageContainer" style="display: block; padding: 5px; width: 100%; font-weight: bolder; 
-    border: 3px solid purple;">
+<div class="mainPageContainer" style="display: block; padding: 5px; width: auto; font-weight: bolder;">
 
-    <header style="color: white; background-color: blue; width: cal(100%-10px); padding-left: 30px; 
-        padding-right: 30px; padding-top: 5px; padding-bottom: 5px; text-align: right;">
-        <h1 style="font-size: 40px; text-align: right; padding: 0px; line-height: 1em;">
+    <header style="color: white; background-color: rgb(50, 50, 150); width: auto; height: 100px; 
+        padding-left: 30px; padding-right: 30px; padding-top: 20px; padding-bottom: 20px; text-align: right;">
+        <h1 style="font-size: 50px; text-align: right; padding: 0px; margin: 0px; line-height: 56px;">
             Weather Dashboard
         </h1>
-        <p style="font-size: 20px; font-weight: bold; padding: 0px; line-height: 1em;">
+        <p style="font-size: 20px; font-weight: normal; padding: 0px; margin: 0px; margin-top: 5px; line-height: 23px; 
+            color: lightgray;">
             -- A Current-Day Weather And 5-Day Forecast Weather Tracker<br/>
             For A Searched-For City Or For Some Pre-Set Highlighted Cities --
         </p>
     </header>
 
     <div class="sectionContainer" style="width: 100%;">
-        <div class="sectionBody" style="display: block; width: cal(100%-10px);">
-            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: cal(100%-10px);">
+        <div class="sectionBody" style="display: block; width: auto;">
+            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: auto;">
                 <div id="theLeftColumnSection" style="display: flex; flex-direction: column; width: 25%;">
                     <div class="theLeftColumnNavigationSection" style="
-                        width: cal(100%=10px); padding: 5px; border: 3px double gray;">
+                        width: auto; padding: 5px;">
                         <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="
-                            padding-right: 5px; border: 1px solid gray;">
+                            padding-right: 5px;">
                             <h3 style="text-align: left; margin: 10px; font-weight: bold">
                                 Search for a City:
                             </h3>
-                            <p style="padding: 5px; font-size: 15px; font-weight: normal;">
-                                <input id="theCitySearchField" style="width: 98%; height: 45px; 
-                                    border: 2px solid gray; border-radius: 5px">
+                            <p style="padding: 5px; font-size: 15px; font-weight: normal; color: rgb(100, 100, 100)">
+                                <input id="theCitySearchField" style="width: 93%; height: 45px; padding-left: 10px; 
+                                    padding-right: 10px; border: 2px solid darkgray; border-radius: 5px">
                                 </input><br/>
-                                <button id="theCitySearchButton" style="border-radius: 5px; color: white; 
-                                    background-color: blue; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                                <button id="theCitySearchButton" style="width: 100%; height: 30px; margin-top: 10px; 
+                                    color: white; font-weight: bold; background-color: lightskyblue; 
+                                    margin-bottom: 10px; border: none; border-radius: 5px;">
                                     Search
                                 </button><br/>
                                 (Note: Spelling must be correct in order for the search process to be successful. A
                                 ",&nbspState" search element can be entered at the end of a city name...such as "Denver"...
                                 that exists in different states...but a record will be retrieved only if the specified 
-                                city has a record in the API "City" search database that is being used by this function. 
+                                city has a record in the API "City" search database that is being used by this program. 
                                 The retrieved city might be a default (closest-match) city that is different than the one 
                                 that was intended for the search.
                             </p>
                         </div>
-                        <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: cal(100%-10px); 
-                            padding: 5px; border: 1px solid gray;">
+                        <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: auto; 
+                            padding: 5px;">
                             <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold; 
                                 width: 100%;">
                                 The Primary/Capital Denver...in Colorado
@@ -153,148 +154,195 @@
                     </div>
                 </div>
                 <div class="theRightColumnSection" style="display: flex; flex-direction: column; 
-                    justify-items: center; width: 75%; border: 1px solid gray; 
-                    border: 3px double gray;">
-                    <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: 100%; 
-                        height: 250px; padding-bottom: 5px; background-color: white; border: 5px solid green">
-                        <div class="theWeatherCurrentDayInformationSummaryDisplayArea" style="width: 45%; 
-                            height: 250px">
+                    justify-items: center; width: 75%;">
+                    <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: auto; 
+                        height: 250px; padding-bottom: 5px; padding-right: 15px; margin-top: 20px; 
+                        background-color: white; border: 2px solid rgb(100, 100, 100);">
+                        <div class="theWeatherCurrentDayInformationSummaryDisplayArea" style="width: 47%; 
+                            height: 250px;">
                             <div id="theWeatherCurrentDaySummary" 
-                                style="display: flexbox; justify-content: center; align-items: center; 
-                                width: 100%; height: 250px; border: 3px solid purple;">
+                                style="display: flexbox; justify-content: center; align-items: center; width: 98%; 
+                                    height: 240px; padding: 5px; margin-right: 20px; color: black; 
+                                    font-weight: bold;">
                             </div>
                         </div>
-                        <div id="theWeatherCurrentDayIconArea" style="display: flex; width: 5%;">
+                        <div id="theWeatherCurrentDayIconArea" style="display: flex; width: 3%;">
+                            <!-- an initial idea for displaying the weather icons
                             <div id="theWeatherCurrentDayIcon" style="display: flexbox; justify-content: center; 
-                                align-items: top; width: 100%; height: 250px; border: 3px solid gray;">
+                                align-items: top; width: 95%; height: 50px; background-color: rgb(215, 225, 230); 
+                                margin: 3px; margin-left: -5px; margin-top: 10px;">
                             </div>
+                            <<<< a possible place for a "More Information" show/hide button
+                            -->
                         </div>
                         <div class="theWeatherCurrentDayInformationDisplayArea" style="width: 50%; height: 250px" 
                             id="theWeatherCurrentDayInformationDisplayArea" style="display: flexbox; 
-                            width: 40%; height: 250px; margin-left: 10px; border: 3px solid brown;">
+                            width: 40%; height: 250px; margin-left: 20px;">
+                            <p style="text-align: center; font-size: 15px; line-height: 30px; padding: 0px; 
+                                margin: 0px; font-weight: normal;">
+                                More Information
+                            </p>
                             <textarea 
                                 readonly 
                                 id="theWeatherCurrentDayInformationDisplayTextArea" 
-                                style="width: 99%; height: 100%; resize: none; overflow: auto;"
+                                style="width: 98%; height: 200px; resize: none; overflow: auto; padding: 5px; 
+                                    border: 2px solid lightgray;"
                                 aria-label="area for retrieved weather information">
                             </textarea>
                         </div>
                     </div>
                     <div class="theWeatherForecastSection" style="display: flexbox;">
-                        <h3 style="margin-left: 15px; margin-bottom: 0px;">5-Day Forecast</h3>
+                        <h3 style="margin-left: 15px; margin-bottom: 0px;">
+                            5-Day Forecast
+                        </h3>
                         <div class="theWeatherForecastInformationDisplayArea" style="display: flex; flex-direction: row;
                             width: 100%; height: 400px; padding-bottom: 5px; background-color: white;">
                             <div id="theWeatherForecastDay1Area" style="display: flexbox; width: 20%; margin: 10px; 
-                                height: 400px; background-color: darkblue; border: 5px solid orange;">
-                                <div class="theWeatherForecastDay1InformationSummaryDisplayArea" style="display: flex;">
+                                height: 400px; background-color: rgb(35, 35, 70);">
+                                <div class="theWeatherForecastDay1InformationSummaryDisplayArea" style="display: flex; 
+                                    color: white">
                                     <div id="theWeatherForecastDay1Summary" style="display: flexbox; 
-                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
-                                        border: 3px solid gray;">
+                                        justify-content: center; align-items: center; width: 100%; height: 250px; 
+                                        color: white; padding: 5px;">
                                     </div>
                                 </div>
+                                <!-- an initial idea for displaying the weather icons
                                 <div id="theWeatherForcastDay1IconArea" style="display: flex; width: 100%;">
                                     <div id="theWeatherForecastDay1Icon" style="display:flexbox; justify-content: center; 
-                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                        align-items: center; width: 97%; height: 50px; color: white;">
                                     </div>
                                 </div>
+                                -->
+                                <p style="text-align: center; margin: 0px; padding: 0px; color: white; 
+                                    font-weight: normal">
+                                    More Information
+                                </p>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay1InformationDisplayTextArea" 
-                                    style="width: 97%; height: 125px; resize: none; color: white; 
-                                    background-color: darkblue;"                 
+                                    style="width: 97%; height: 100px; resize: none; color: white; 
+                                        background-color: rgb(35, 35, 70);"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                             <div id="theWeatherForecastDay2Area" style="display: flexbox; width: 20%; margin: 10px; 
-                                height: 400px; background-color: darkblue; border: 5px solid orange;">
-                                <div class="theWeatherForecastDay2InformationSummaryDisplayArea" style="display: flex;">
+                                height: 400px; background-color: rgb(35, 35, 70);">
+                                <div class="theWeatherForecastDay2InformationSummaryDisplayArea" style="display: flex; 
+                                    color: white">
                                     <div id="theWeatherForecastDay2Summary" style="display: flexbox; 
-                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
-                                        border: 3px solid gray;">
+                                        justify-content: center; align-items: center; width: 100%; height: 250px; 
+                                        color: white; padding: 5px;">
                                     </div>
                                 </div>
+                                <!-- an initial idea for displaying the weather icons
                                 <div id="theWeatherForcastDay2IconArea" style="display: flex; width: 100%;">
                                     <div id="theWeatherForecastDay2Icon" style="display:flexbox; justify-content: center; 
-                                    align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    align-items: center; width: 97%; height: 50px; color: white;">
                                     </div>
                                 </div>
+                                -->
+                                <p style="text-align: center; margin: 0px; padding: 0px; color: white; 
+                                    font-weight: normal">
+                                    More Information
+                                </p>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay2InformationDisplayTextArea" 
-                                    style="width: 97%; height: 125px; resize: none; color: white; 
-                                    background-color: darkblue;"
+                                    style="width: 97%; height: 100px; resize: none; color: white; 
+                                        background-color: rgb(35, 35, 70);"
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                             <div id="theWeatherForecastDay3Area" style="display: flexbox; width: 20%; margin: 10px; 
-                                height: 400px; background-color: darkblue; border: 5px solid orange;">
-                                <div class="theWeatherForecastDay3InformationSummaryDisplayArea" style="display: flex;">
+                                height: 400px; background-color: rgb(35, 35, 70);">
+                                <div class="theWeatherForecastDay3InformationSummaryDisplayArea" style="display: flex; 
+                                    color: white">
                                     <div id="theWeatherForecastDay3Summary" style="display: flexbox; 
-                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
-                                        border: 3px solid gray;">
+                                        justify-content: center; align-items: center; width: 100%; height: 250px; 
+                                        color: white; padding: 5px;">
                                     </div>
                                 </div>
+                                <!-- an initial idea for displaying the weather icons
                                 <div id="theWeatherForcastDay3IconArea" style="display: flex; width: 100%;">
                                     <div id="theWeatherForecastDay3Icon" style="display:flexbox; justify-content: center; 
-                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                        align-items: center; width: 97%; height: 50px; color: white;">
                                     </div>
                                 </div>
+                                -->
+                                <p style="text-align: center; margin: 0px; padding: 0px; color: white; 
+                                    font-weight: normal">
+                                    More Information
+                                </p>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay3InformationDisplayTextArea" 
-                                    style="width: 97%; height: 125px; resize: none; color: white; 
-                                    background-color: darkblue;"                 
+                                    style="width: 97%; height: 100px; resize: none; color: white; 
+                                        background-color: rgb(35, 35, 70);"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                             <div id="theWeatherForecastDay4Area" style="display: flexbox; width: 20%; margin: 10px; 
-                                height: 400px; background-color: darkblue; border: 5px solid orange;">
-                                <div class="theWeatherForecastDay4InformationSummaryDisplayArea" style="display: flex;">
+                                height: 400px; background-color: rgb(35, 35, 70);">
+                                <div class="theWeatherForecastDay4InformationSummaryDisplayArea" style="display: flex; 
+                                    color: white">
                                     <div id="theWeatherForecastDay4Summary" style="display: flexbox; 
-                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
-                                        border: 3px solid gray;">
+                                        justify-content: center; align-items: center; width: 100%; height: 250px; 
+                                        color: white; padding: 5px;">
                                     </div>
                                 </div>
+                                <!-- an initial idea for displaying the weather icons
                                 <div id="theWeatherForcastDay4IconArea" style="display: flex; width: 100%;">
                                     <div id="theWeatherForecastDay4Icon" style="display:flexbox; justify-content: center; 
-                                            align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                            align-items: center; width: 97%; height: 50px; color: white;">
                                     </div>
                                 </div>
+                                -->
+                                <p style="text-align: center; margin: 0px; padding: 0px; color: white; 
+                                    font-weight: normal">
+                                    More Information
+                                </p>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay4InformationDisplayTextArea" 
-                                    style="width: 97%; height: 125px; resize: none; color: white; 
-                                    background-color: darkblue;"                 
+                                    style="width: 97%; height: 100px; resize: none; color: white; 
+                                        background-color: rgb(35, 35, 70);"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                             <div id="theWeatherForecastDay5Area" style="display: flexbox; width: 20%; margin: 10px; 
-                                height: 400px; background-color: darkblue; border: 5px solid orange;">
-                                <div class="theWeatherForecastDay5InformationSummaryDisplayArea" style="display: flex;">
+                                height: 400px; background-color: rgb(35, 35, 70);">
+                                <div class="theWeatherForecastDay5InformationSummaryDisplayArea" style="display: flex; 
+                                    color: white">
                                     <div id="theWeatherForecastDay5Summary" style="display: flexbox; 
-                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
-                                        border: 3px solid gray;">
+                                        justify-content: center; align-items: center; width: 100%; height: 250px; 
+                                        color: white; padding: 5px;">
                                     </div>
                                 </div>
+                                <!-- an initial idea for displaying the weather icons
                                 <div id="theWeatherForcastDay5IconArea" style="display: flex; width: 100%;">
                                     <div id="theWeatherForecastDay5Icon" style="display:flexbox; justify-content: center; 
-                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                        align-items: center; width: 97%; height: 50px; color: white;">
                                     </div>
                                 </div>
+                                -->
+                                <p style="text-align: center; margin: 0px; padding: 0px; color: white; 
+                                    font-weight: normal">
+                                    More Information
+                                </p>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay5InformationDisplayTextArea" 
-                                    style="width: 97%; height: 125px; resize: none; color: white; 
-                                    background-color: darkblue;"                 
+                                    style="width: 97%; height: 100px; resize: none; color: white; 
+                                        background-color: rgb(35, 35, 70);"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                         </div>
                     </div>
                     <div class="sectionRightColumnNavigationArea" style="display: flex; flex-direction: column; 
-                        width: 100%; border: 1px solid gray;">
+                        width: 100%;">
                         <div class="class=SectionRightColumnButtonArea" style="display: flexbox; width: 98%; 
-                            padding: 10px; ; border: 1px solid gray;">
+                            padding: 10px;">
                             <h3 style="text-align: center;">
                                 -- Possible Weekend Power-Trip Locations...Depending On Weather --
                             </h3>
@@ -341,8 +389,10 @@
                             width: 100%; height: 25px">
                             <div style="display: flexbox">
                                 <div class="theApplicationStatusDisplayArea" style="display: flexbox; width: 100%; 
-                                    height: 125px; padding: 0px; margin-top: 0px; border: 1px solid gray;">
-                                    <h4 style="text-align: center; padding: 0px; margin: 0px">Application Status:</h4>
+                                    height: 125px; padding: 0px; margin-top: 0px;">
+                                    <h4 style="text-align: center; padding: 0px; margin: 0px">
+                                        Application Status:
+                                    </h4>
                                     <textarea id="theApplicationStatusDisplayTextArea"
                                         readonly
                                         style="width: 99%; height: 98px; resize: none; overflow: auto; color: red;">
