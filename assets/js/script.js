@@ -195,12 +195,12 @@ if (aValidationErrorExists != true) {
   }
 }
 else {
-  window.alert(
-    "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
-    "additionally (if applicable) a '.' character and a ' ' (space) character (and 1 ',' character for a state " + 
-    "specification) ... and the submitted Search field specification cannot be blank. Correct the input and submit " + 
-    "a new search." + "\n"
-    );
+  // window.alert(
+  //   "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
+  //   "additionally (if applicable) a '.' character and a ' ' (space) character (and 1 ',' character for a state " + 
+  //   "specification) ... and the submitted Search field specification cannot be blank. Correct the input and submit " + 
+  //   "a new search." + "\n"
+  //   );
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
     "\n" + 
     "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
@@ -299,8 +299,8 @@ if ((passedCity == "Denver") && (passedState == "NO_STATE_INPUT")) {
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
     "Because the city name \"Denver\" was specified without a state specification ... then a default weather search of " + 
-    "the primary Denver Colorado record will be provided (which might be a city that is different than the one that " + 
-    "was intended for the search)." + "\n" + 
+    "the primary Denver Colorado record is provided (which might be a city that is different than the one that was " + 
+    "intended for the search)." + "\n" + 
     "\n";
   selectedCity = selectedCity + "Denver";
   selectedState = selectedState + ", Colorado";
@@ -311,7 +311,7 @@ else if (passedState == "NO_STATE_INPUT") {
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
     "Because the city name \"" + passedCity + "\" was specified without a state specification ... then a default " + 
-    "weather search of the primary city record that has that name in the \"City\" database of the API service will be " + 
+    "weather search of the primary city record that has that name in the \"City\" database of the API service is " + 
     "provided (which might be a city that is different than the one that was intended for the search)." + "\n" + 
     "\n";
   selectedCity = selectedCity + passedCity;
@@ -358,6 +358,12 @@ if (passedSearchByType == "COORDINATES") {
   // that is necessary for cities that are not on-record in the OpenWeather city database ("city.list.json.gz").
   // NOTE: Currently this feature/code is used for only Denver city locations that are searched for by the pre-set 
   // buttons of the application; not by way of the "Search" field.
+  //
+  // Cities can be searched for in the OpenWeather database system by using the city name search parameter *IF* the 
+  // involved city record *IS* on-record in the City database of the OpenWeather database; Otherwise the involved 
+  // city has to be searched for by using the latitude and longitude coordinates search parameters...and in that case 
+  // a exact-same-name city record is returned *ONLY IF* that city is on-record for the involved coordinates or 
+  // otherwise a different-name city/town/county record will be returned.
   //
   // selectedCity = "&lat=<latitude_coordinate>&lon=<longitude_coordinate>" 
   //
