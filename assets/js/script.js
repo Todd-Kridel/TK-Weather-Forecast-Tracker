@@ -2,7 +2,7 @@
 
 //////////////////////////////////////////////////////
 //
-// Weather process code
+// Weather Tracker process code
 //
 //
 
@@ -16,8 +16,8 @@ theWeatherCurrentDaySummary.textContent = "Selected city weather current-day inf
 var theWeatherCurrentDayInformationDisplayTextArea = 
   document.getElementById("theWeatherCurrentDayInformationDisplayTextArea");
 theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "\n" + 
-  "Search for a USA city by field entry...or select a pre-set city by button click at below..." + 
-  "to display current weather information and 5-day forecast weather information that is for that city." + 
+  "Search for a USA city by field entry ... or select a pre-set city by button click at below ..." + 
+  "to display current weather information and 5-day forecast weather information that is for that city." + "\n" + 
   "\n" + 
   "Selected city weather current-day information will be displayed at here." + "\n" + 
   "\n";
@@ -26,41 +26,46 @@ theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "\n" +
 //
 var theWeatherForecastDay1InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay1InformationDisplayTextArea");
-theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
+theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>" + "\n";
 var theWeatherForecastDay1Summary = document.getElementById("theWeatherForecastDay1Summary");
-theWeatherForecastDay1Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+theWeatherForecastDay1Summary.textContent = "Selected city weather forecast information will be displayed at here." 
+  + "\n";
 //var theWeatherForecastDay1Icon = document.getElementById("theWeatherForecastDay1Icon");
 //theWeatherForecastDay1Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay2InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay2InformationDisplayTextArea");
-theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
+theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>" + "\n";
 var theWeatherForecastDay2Summary = document.getElementById("theWeatherForecastDay2Summary");
-theWeatherForecastDay2Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+theWeatherForecastDay2Summary.textContent = "Selected city weather forecast information will be displayed at here." 
+  + "\n";
 //var theWeatherForecastDay2Icon = document.getElementById("theWeatherForecastDay2Icon");
 //theWeatherForecastDay2Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay3InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay3InformationDisplayTextArea");
-theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
+theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>" + "\n";
 var theWeatherForecastDay3Summary = document.getElementById("theWeatherForecastDay3Summary");
-theWeatherForecastDay3Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+theWeatherForecastDay3Summary.textContent = "Selected city weather forecast information will be displayed at here." 
+  + "\n";
 //var theWeatherForecastDay3Icon = document.getElementById("theWeatherForecastDay3Icon");
 //theWeatherForecastDay3Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay4InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay4InformationDisplayTextArea");
-theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
+theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>" + "\n";
 var theWeatherForecastDay4Summary = document.getElementById("theWeatherForecastDay4Summary");
-theWeatherForecastDay4Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+theWeatherForecastDay4Summary.textContent = "Selected city weather forecast information will be displayed at here." 
+  + "\n";
 //var theWeatherForecastDay4Icon = document.getElementById("theWeatherForecastDay4Icon");
 //theWeatherForecastDay4Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay5InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay5InformationDisplayTextArea");
-theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
+theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>" + "\n";
 var theWeatherForecastDay5Summary = document.getElementById("theWeatherForecastDay5Summary");
-theWeatherForecastDay5Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+theWeatherForecastDay5Summary.textContent = "Selected city weather forecast information will be displayed at here." 
+  + "\n";
 //var theWeatherForecastDay5Icon = document.getElementById("theWeatherForecastDay5Icon");
 //theWeatherForecastDay5Icon.textContent = "<ICON>";
 //
@@ -71,14 +76,14 @@ var theSearchButtonNoteButton = document.getElementById("theSearchButtonNoteButt
 var theSearchButtonNote = document.getElementById("theSearchButtonNote");
 theSearchButtonNote.innerHTML = 
   "(Note: Spelling must be correct in order for the search process to be successful. A \",&nbspState\" search " + 
-  "element can be entered at the end of a city name...such as \"Denver\"...that exists in different states...but " + 
-  "a record will be retrieved only if the specified city has a record in the API \"City\" search database that is " + 
-  "being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
+  "element can be entered at the end of a city name ... such as \"Denver\" ... that exists in different states ... " + 
+  "but a record will be retrieved only if the specified city has a record in the API \"City\" search database that " + 
+  "is being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
   "the one that was intended for the search.";
 var theSearchButtonNoteMode = "hidden";
 //
 var theApplicationStatusDisplayTextArea = document.getElementById("theApplicationStatusDisplayTextArea");
-theApplicationStatusDisplayTextArea.innerHTML = "";
+theApplicationStatusDisplayTextArea.innerHTML = "** NEW SESSION **" + "\n";
 
 // Load from local storage the previously-saved array variable that holds the involved selected city weather forecasts
 // that were saved by the process of the "Show 5-Day Weather Forecast" button that was clicked by the user.
@@ -145,6 +150,9 @@ var theUserInput = (theCitySearchField.value).trim();
 var theUserInputCapitalized = theUserInput.toUpperCase();
 var theValidationCharacterString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ,. ";
 var theAmountOfCommas = 0;
+//
+// Initialize variable components and their associated display elements.
+theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
 // 
 if ((theUserInput == "") || (theUserInput == "Enter a weather-search USA city specification.")) {
   aValidationErrorExists = true;
@@ -175,28 +183,31 @@ if (theAmountOfCommas > 1) {
 if (aValidationErrorExists != true) {
   if (theAmountOfCommas == 0) {  // a valid "city (only)" search parameter pre-entry
     //window.alert("SEARCH SUBMISSION FOR : " + theUserInput + " NO_STATE_INPUT");
-    getWeatherInformationApiUrl(theUserInput, "NO_STATE_INPUT", "USA", "NAME");
+    theCitySearchField.value = "";
+    getWeatherInformationApiUrl(theUserInput, "NO_STATE_INPUT", "USA", "NAME", "FIELD");
   }
   else {  // a valid "city, state" search parameter pre-entry
     var theUserInputCity = theUserInput.substring(0, theUserInput.indexOf(","));
     var theUserInputState = theUserInput.substring((theUserInput.indexOf(",")), theUserInput.length);
     //window.alert("SEARCH SUBMISSION FOR: " + theUserInputCity + " " + theUserInputState);
-    getWeatherInformationApiUrl(theUserInputCity, theUserInputState, "USA", "NAME");
+    theCitySearchField.value = "";
+    getWeatherInformationApiUrl(theUserInputCity, theUserInputState, "USA", "NAME", "FIELD");
   }
 }
 else {
   window.alert(
     "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
-    "additionally (if applicable) a '.' character and a ' ' (space) character (and a ',' character for a state " + 
-    "specification)...and the submitted Search field specification cannot be blank. Correct the input and submit " + 
+    "additionally (if applicable) a '.' character and a ' ' (space) character (and 1 ',' character for a state " + 
+    "specification) ... and the submitted Search field specification cannot be blank. Correct the input and submit " + 
     "a new search." + "\n"
     );
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
     "\n" + 
     "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
-    "additionally (if applicable) a '.' character and a ' ' (space) character (and a ',' character for a state " + 
-    "specification)...and the submitted Search field specification cannot be blank. Correct the input and submit " + 
-    "a new search." + "\n";
+    "additionally (if applicable) a '.' character and a ' ' (space) character (and 1 ',' character for a state " + 
+    "specification) ... and the submitted Search field specification cannot be blank. Correct the input and submit " + 
+    "a new search." + "\n" + 
+    "\n";
   // Highlight the "More Information" field of the Current-Day Information display area.
   highlightTheMoreInformationTextAreaUponUpdate();
 }
@@ -230,7 +241,8 @@ setTimeout(function () {
 }
 
 
-function getWeatherInformationApiUrl(passedCity, passedState, passedLocationType, passedSearchByType) {
+function getWeatherInformationApiUrl(passedCity, passedState, passedLocationType, passedSearchByType, 
+  passedSearchByMode) {
 // Use the "OpenWeatherMap" API system to obtain a weather information for user-selected cities for current-day
 // weather conditions and for a 5-day time-span forecast from the current date. The city names are specified/clicked 
 // and queried for 1-at-a-time in a URL city query string parameter (q=<city name>,<state code>,<country code>); and 
@@ -260,21 +272,16 @@ function getWeatherInformationApiUrl(passedCity, passedState, passedLocationType
 // Build the URL--including the necessary query parameters--that is required for obtaining the desired data
 // from the API system, based on the city (and possibly state) search information that was submitted.
 // * and check about a state specification and process accordingly
+//
 //window.alert("WEATHER API VALIDATED REQUEST FOR " + passedCity + " " + passedState);
-// theApplicationStatusDisplayTextArea.innerHTML = "";
-// theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay1Summary.innerHTML = "";
-// theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay2Summary.innerHTML = "";
-// theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay3Summary.innerHTML = "";
-// theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay4Summary.innerHTML = "";
-// theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
-// theWeatherForecastDay5Summary.innerHTML = "";
 //window.alert(passedCity + " " + passedState + " " + passedLocationType + " " + passedSearchByType);
 var selectedCity = "";
+//
+if (passedSearchByMode == "BUTTON") {
+  theCitySearchField.value = "";
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
+  window.scrollTo(0, 0);
+}
 if (passedSearchByType != "COORDINATES") {
   selectedCity = "q=";
 }
@@ -291,9 +298,9 @@ else {
 if ((passedCity == "Denver") && (passedState == "NO_STATE_INPUT")) {
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
-    "Because the city name Denver was specified without a state specification...then a default weather search of the " + 
-    "primary Denver Colorado record will be provided (which might be a city that is different than the one that was " + 
-    "intended for the search)." + "\n" + 
+    "Because the city name \"Denver\" was specified without a state specification ... then a default weather search of " + 
+    "the primary Denver Colorado record will be provided (which might be a city that is different than the one that " + 
+    "was intended for the search)." + "\n" + 
     "\n";
   selectedCity = selectedCity + "Denver";
   selectedState = selectedState + ", Colorado";
@@ -303,8 +310,8 @@ if ((passedCity == "Denver") && (passedState == "NO_STATE_INPUT")) {
 else if (passedState == "NO_STATE_INPUT") {
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
-    "Because the city name " + passedCity + " was specified without a state specification...then a default weather " + 
-    "search of the primary city record that has that name in the \"City\" database of the API service will be " + 
+    "Because the city name \"" + passedCity + "\" was specified without a state specification ... then a default " + 
+    "weather search of the primary city record that has that name in the \"City\" database of the API service will be " + 
     "provided (which might be a city that is different than the one that was intended for the search)." + "\n" + 
     "\n";
   selectedCity = selectedCity + passedCity;
@@ -355,22 +362,22 @@ if (passedSearchByType == "COORDINATES") {
   // selectedCity = "&lat=<latitude_coordinate>&lon=<longitude_coordinate>" 
   //
   // *DENVER CITIES THAT ARE IN THE OPENWEATHER CITY DATABASE (FOR WHICH THE CITY NAME SEARCH CAN FUNCTION);
-  // OTHER DENVER CITIES HAVE TO BE SEARCHED FOR BY LATITUDE AND LONGITUDE COORDINATES:
+  // OTHER DENVER CITIES (IN THE NEXT SECTION) HAVE TO BE SEARCHED FOR BY LATITUDE AND LONGITUDE COORDINATES:
   // *Denver, Colorado
-  // Denver, Iowa
-  // Denver, North Carolina
-  // Denver, Pennsylvania
-  // Denver City, Texas
+  // *Denver, Iowa
+  // *Denver, North Carolina
+  // *Denver, Pennsylvania
+  // *Denver City, Texas
   // *Denver, Australia (AU)
   // *New Denver, Canada (CA)
   //
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
-  "The weather information of the selected city is actually having to be searched for in the API data service " + 
+  "The weather information of the selected city was actually searched for in the external third-party API data service " + 
   "based on latitude and longitude location coordinates instead of by city name because currently the \"City\" " + 
   "database of the service does not yet contain a name record that is for that city. The coordinates-based search " + 
   "~might~ result with weather information that is for a city/town that is at nearby to the location coordinates " + 
-  "that are being used for the search...if the coordinates cannot be exactly matched to a database record that is " + 
+  "that are being used for the search ... if the coordinates cannot be exactly matched to a database record that is " + 
   "for or related to the specified city." + "\n" + 
   "\n";
   // Highlight the "More Information" field of the Current-Day Information display area.
@@ -487,20 +494,6 @@ var requestWeatherCurrentDayUrlBase = "https://api.openweathermap.org/data/2.5/w
 var requestWeatherCurrentDayUrl = requestWeatherCurrentDayUrlBase + "?" + selectedCity + selectedState + 
   "&units=imperial" + "&appid=" + weatherApiKey;
 //
-// Initialized some of the primary processing variables.
-theApplicationStatusDisplayTextArea.innerHTML = "";
-theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
-//theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "";
-theWeatherForecastDay1Summary.innerHTML = "";
-//theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "";
-theWeatherForecastDay2Summary.innerHTML = "";
-//theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "";
-theWeatherForecastDay3Summary.innerHTML = "";
-//theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "";
-theWeatherForecastDay4Summary.innerHTML = "";
-//theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
-theWeatherForecastDay5Summary.innerHTML = "";
-//
 // Get the weather data from the API service.
 theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
   "** PROCESSING IN-PROGRESS **";
@@ -566,7 +559,7 @@ if (anErrorConditionExistsApi == false) {
   // read: JSON.parse(localStorage.getItem("theWeatherInformationFetchResponseDataRawObject"));
   //
   // pseudo-function getWeatherForecastText() {  
-  //for processing the display text at ONLY AFTER when the data is available
+  // for processing the display text at ONLY AFTER when the data is available
   // Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system. Load from
   // local storage or variable storage for processing the array variable that holds the entire list of city weather
   // data records that were retrieved during the current weather search. Then return/send that array variable to the
@@ -595,7 +588,7 @@ if (anErrorConditionExistsApi == false) {
     }
     */
     // Initialize variable components and their associated display elements.
-    //
+    theWeatherCurrentDaySummary.innerHTML = "";
     var theWeatherCurrentDaySummaryTextDetails = "";
     var theWeatherCurrentDaySummaryTextCityDate = "";
     var theCurrentDayTemperature = "";
@@ -640,10 +633,10 @@ if (anErrorConditionExistsApi == false) {
     // Read and include/compose all of the other applicable interesting weather data elements/details.
     theWeatherCurrent = 
       location + "\n" + 
-      "===========================" + "\n" + 
+      "=============" + "\n" + 
       "CURRENT WEATHER INFORMATION:" + "\n" + 
       "for Date/Time: " + theCurrentDateTimeStamp + "\n" + 
-      "---------------------------" + "\n" + 
+      "-------------" + "\n" + 
       "Temperature: " + data.main.temp + "F" + "\n" + 
       "Temperature-Minimum: " + data.main.temp_min + "F" + "\n" + 
       "Temperature-Maximum: " + data.main.temp_max + "F" + "\n" + 
@@ -657,12 +650,11 @@ if (anErrorConditionExistsApi == false) {
       "Graphics Icon File: " + data.weather[0].icon + "\n" + 
       "Latitude: " + data.coord.lat + "\n" + 
       "Longitude: " + data.coord.lon + "\n" + 
-      "===========================" + "\n" + 
-      "\n" + 
+      "=============" + "\n" + 
       "\n";
     //
     // Display the weather summary information.
-    theWeatherCurrentDaySummary.textContent = "** PROCESSING SUMMARY INFORMATION **";
+    theWeatherCurrentDaySummary.innerHTML = "** PROCESSING SUMMARY INFORMATION **";
     // Isolate and display the weather graphics icon of the day weather information.
     //theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
     //  data.weather[0].icon + ".png' />";
@@ -692,13 +684,15 @@ if (anErrorConditionExistsApi == false) {
     theWeatherCurrentDaySummaryTextCityDate = "<p style='padding: 0; margin: 0; line-height: 50px'>" + 
       "<span style='font-size: 40px; font-weight: bolder'>" + location + " (" + 
       theCurrentMonth + "/" + theCurrentDay + "/" + theCurrentYear + ")</span>" + theCurrentDayGraphicsIcon + 
-      "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(&nbspCurrent&nbspTime&nbsp)</span>" + "<br/>" + "</p>";
-    theWeatherCurrentDaySummaryTextDetails = "<br/>" + "<p>" + 
+      "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(&nbspCurrent&nbspTime&nbsp)</span>" + "<br/>" + 
+      "</p>";
+    theWeatherCurrentDaySummaryTextDetails = "<br/>" + "<p>" + "<span style='font-size: 20px; font-weight: bolder; " + 
+      "line-height: 22px; padding: 0px; margin: 0px'>" + 
       "Temp: " + theCurrentDayTemperature + " °F" + "<br/>" + 
       "<br/>" + 
       "Wind: " + theCurrentDayWind + " MPH" + "<br/>" + 
       "<br/>" + 
-      "Humidity: " + theCurrentDayHumidity + " %" + "<br/>" + "</p>";
+      "Humidity: " + theCurrentDayHumidity + " %" + "<br/>" + "</span>" + "</p>";
     //
     theWeatherCurrentDaySummary.innerHTML = theWeatherCurrentDaySummaryTextCityDate +
       theWeatherCurrentDaySummaryTextDetails;
@@ -739,21 +733,17 @@ if (anErrorConditionExistsApi == false) {
     }
     */
     // Initialize variable components and their associated display elements.
-    // Note: This initialization location causes an overage of field clearings and useful information is erased 
-    // because of repeated function calls.
-    //theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "";
-    //theWeatherForecastDay1Summary.innerHTML = "";
-    //theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "";
-    //theWeatherForecastDay2Summary.innerHTML = "";
-    //theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "";
-    //theWeatherForecastDay3Summary.innerHTML = "";
-    //theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "";
-    //theWeatherForecastDay4Summary.innerHTML = "";
-    //theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
-    //theWeatherForecastDay5Summary.innerHTML = "";
-    //theApplicationStatusDisplayTextArea.innerHTML = "";
-    //
-    //var theForecastArrayThatIsBeingProcessed = "";
+    theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "";
+    theWeatherForecastDay1Summary.innerHTML = "";
+    theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "";
+    theWeatherForecastDay2Summary.innerHTML = "";
+    theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "";
+    theWeatherForecastDay3Summary.innerHTML = "";
+    theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "";
+    theWeatherForecastDay4Summary.innerHTML = "";
+    theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
+    theWeatherForecastDay5Summary.innerHTML = "";
+    var theForecastArrayThatIsBeingProcessed = "";
     //
     // Establish a date-time-stamp variable.
     var theCurrentDateTimeObject = (new Date());
@@ -806,8 +796,8 @@ if (anErrorConditionExistsApi == false) {
     // Loop through the 5 days and within each day of data loop through the 3-hour sets of data
     var recordCounterProcess = null;
     var recordCounterProcessRemaining = data.length;
-    var recordDayCounter = 0;
-    var recordCounterTimeGroup = 0;
+    var recordDayCounter = 1;
+    var recordCounterTimeGroup = 1;
     var theCurrentDayInformationHasBeenProcessed = false;
     var another12pmDataElementExists = false;
     var nextTimeRecordForForecastSummary = "12:00:00";
@@ -821,8 +811,10 @@ if (anErrorConditionExistsApi == false) {
     var theForecastDayGraphicsIcon = "";
     var theWeatherForecastDaySummaryTextDate = "";
     var theWeatherForecastDaySummaryTextDetails = ""; 
+    //
     // Read and include/compose all of the other applicable interesting weather data elements/details that are in the
     // entire data-set that was sent from the API database.
+    //
     for (recordCounterProcess = 0; recordCounterProcess < data.length; recordCounterProcess++) { 
       //
       theWeatherForecastProcessing = "";
@@ -832,10 +824,10 @@ if (anErrorConditionExistsApi == false) {
       //
       theWeatherForecastProcessing = theWeatherForecastProcessing + 
         location + "\n" + 
-        "=====================" + "\n" + 
+        "=============" + "\n" + 
         "WEATHER FORECAST INFORMATION:" + "\n" + 
         "for Date/Time: " + data[recordCounterProcess].dt_txt + "\n" + 
-        "---------------------" + "\n" + 
+        "-------------" + "\n" + 
         "Temperature: " + data[recordCounterProcess].main.temp + "F" + "\n" + 
         "Temperature-Minimum: " + data[recordCounterProcess].main.temp_min + "F" + "\n" + 
         "Temperature-Maximum: " + data[recordCounterProcess].main.temp_max + "F" + "\n" + 
@@ -849,12 +841,51 @@ if (anErrorConditionExistsApi == false) {
         "Graphics Icon File: " + data[recordCounterProcess].weather[0].icon + "\n" + 
         "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
         "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
-        "=====================" + "\n" + 
-        "\n" + 
+        "=============" + "\n" + 
         "\n";
       //window.alert("data[" + recordCounterProcess + "]" + "\n" + theWeatherForecastProcessing);
-      recordCounterTimeGroup = recordCounterTimeGroup + 1;
+      //
+      // Acknowledge the record processing that is occurring; done for other variables that are not 
+      // auto- incremented/decremented by the for-loop process.
       recordCounterProcessRemaining = recordCounterProcessRemaining - 1;
+      //
+      // Determine the starting time-group (1 through 8) of the starting record based on the time-group time-stamp of 
+      // the 1st record of the received API data.
+      if (recordCounterProcess == 0) {
+        switch ((data[recordCounterProcess].dt_txt).substring(11, 19)) {
+          case "00:00:00":
+            recordCounterTimeGroup = 1;
+            break;
+          case "03:00:00":
+            recordCounterTimeGroup = 2;
+            break;
+          case "06:00:00":
+            recordCounterTimeGroup = 3;
+            break;
+          case "09:00:00":
+            recordCounterTimeGroup = 4;
+            break;
+          case "12:00:00":
+            recordCounterTimeGroup = 5;
+            break;
+          case "15:00:00":
+            recordCounterTimeGroup = 6;
+            break;
+          case "18:00:00":
+            recordCounterTimeGroup = 7;
+            break;
+          case "21:00:00":
+            recordCounterTimeGroup = 8;
+            break;
+          default:
+            theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+              "ERROR: NON-EXPECTED WEATHER TIME RECORD THAT CANNOT BE PROCESSED: Not of the possible time data: " + 
+              "00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00." + "\n";
+            break;
+        }
+      }
+      //
+      // Check about if there are any residual current-day time-group records in the forecast data-set.
       if ((((data[recordCounterProcess].dt_txt).indexOf((theCurrentYear + "-" + theCurrentMonthWithLeading0IfNecessary + 
         "-" + theCurrentDayWithLeading0IfNecessary))) != -1) && (theCurrentDayInformationHasBeenProcessed == false)) {
         // Separate and store any time records that are for the current day; non-forecast information. Add the 
@@ -863,178 +894,226 @@ if (anErrorConditionExistsApi == false) {
         theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
           theWeatherCurrentDayInformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
         // Highlight the "More Information" field of the Current-Day Information display area.
+        recordDayCounter = 0;  // for non-forecast record display/process position; not 1 through 5
         highlightTheMoreInformationTextAreaUponUpdate();
         //
-        if (((data[recordCounterProcess].dt_txt).substring(11, 18)) == "21:00:00") {
+        if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "21:00:00") || 
+        (data[recordCounterProcess].dt_txt).indexOf("21:00:00") != -1) {  // the last record of the day
           theCurrentDayInformationHasBeenProcessed = true;
-          recordDayCounter = recordDayCounter + 1;
+          recordDayCounter = 1;
+          recordCounterTimeGroup = 1;
         }
       }
       else {
+        //
+        // for all other non-current-day records...i.e., forecast/future day records
+        //
         if (theCurrentDayInformationHasBeenProcessed == false) {
+          // There were not any residual current-day records at the beginning of the forecast data-set.
           theCurrentDayInformationHasBeenProcessed = true;
-          recordDayCounter = recordDayCounter + 1;
-        }                   
-      }  // for all other non-current-day records
-      //
-      theWeatherForecastProcessingMore = theWeatherForecastProcessingMore + theWeatherForecastProcessing;
-      switch (recordDayCounter) {
-        case 1:
-          theWeatherForecastDay1InformationDisplayTextArea.innerHTML = 
-            theWeatherForecastDay1InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
-          break;
-        case 2:
-          theWeatherForecastDay2InformationDisplayTextArea.innerHTML = 
-            theWeatherForecastDay2InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
-          break;
-        case 3:
-          theWeatherForecastDay3InformationDisplayTextArea.innerHTML = 
-            theWeatherForecastDay3InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
-          break;
-        case 4:
-          theWeatherForecastDay4InformationDisplayTextArea.innerHTML = 
-            theWeatherForecastDay4InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
-          break;
-        case 5:
-          theWeatherForecastDay5InformationDisplayTextArea.innerHTML = 
-            theWeatherForecastDay5InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
-          break;
-      }
-      //
-      if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
-        (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary)) {
-        // ( or if (((data[recordCounterProcess].dt_txt).indexOf("nextTimeRecordForForecastSummary")) >= 0) )
-        // Include for display only the 12:00pm time (if any) record of each forecast; or otherwise the record that is
-        // closest to 12:00pm if that record is not available. Possible time data: 00:00, 3:00, 6:00, 9:00, 12:00, 15:00,
-        // 18:00, 21:00.
-        theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 16)));
-        theForecastDayTemperature = data[recordCounterProcess].main.temp;
-        theForecastDayWind = data[recordCounterProcess].wind.speed;
-        theForecastDayHumidity = data[recordCounterProcess].main.humidity;
-        theForecastDayGraphicsIcon = "&nbsp&nbsp&nbsp&nbsp" + 
-          "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
-          "style='background-color: rgb(209, 240, 255); padding-left: 10px; padding-right: 10px; margin-bottom: -10px; " + 
-          "border-radius: 5px;' />";
-        // Format the API date (dt_txt) date in MM/DD/YYYY format.
-        theForecastDateProcessingYear = (data[recordCounterProcess].dt_txt).substring(0, 4);
-        theForecastDateProcessingMonth = (data[recordCounterProcess].dt_txt).substring(5, 7);
-        theForecastDateProcessingDay = (data[recordCounterProcess].dt_txt).substring(8, 10);
-        if (theForecastDateProcessingMonth.indexOf("0") == 0) {
-          theForecastDateProcessingMonth = theForecastDateProcessingMonth.substring(1, 2);
         }
-        if (theForecastDateProcessingDay.indexOf("0") == 0) {
-          theForecastDateProcessingDay = theForecastDateProcessingDay.substring(1, 2);
-        }
-        theForecastDateFormatted = theForecastDateProcessingMonth + "/" + theForecastDateProcessingDay + 
-          "/" + theForecastDateProcessingYear;
-        theWeatherForecastDaySummaryTextDate = "<p style='padding: 0; margin: 0; line-height: 35px'>" + 
-          "<span style='font-size: 30px; font-weight: bold'>" + theForecastDateFormatted + "</span>" + 
-          theForecastDayGraphicsIcon + "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(" + 
-          theForecastTime + ")</span>" + "<br/>" + "</p>";
-        theWeatherForecastDaySummaryTextDetails = "<br/>" + "<p>" + 
-          "Temp: " + theForecastDayTemperature + " °F" + "<br/>" + 
-          "<br/>" + 
-          "Wind: " + theForecastDayWind + " MPH" + "<br/>" + 
-          "<br/>" + 
-          "Humidity: " + theForecastDayHumidity + " %" + "<br/>" + "</p>";
+        //
+        // Compile for future display (at the end of the parse process loop) a listing of all of the forecast 
+        // information that is being processed.
+        //
+        theWeatherForecastProcessingMore = theWeatherForecastProcessingMore + theWeatherForecastProcessing;
+        //
+        // Compile-Display the on-going being-processed weather forecast information in the appropriate forecast day
+        // (1 through 5) display area...depending on the record day sequence number that is being processed.
         //
         switch (recordDayCounter) {
           case 1:
-            theWeatherForecastDay1Summary.innerHTML = theWeatherForecastDay1Summary.innerHTML + 
-              theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+            theWeatherForecastDay1InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay1InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
             break;
           case 2:
-            theWeatherForecastDay2Summary.innerHTML = theWeatherForecastDay2Summary.innerHTML + 
-              theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+            theWeatherForecastDay2InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay2InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
             break;
           case 3:
-            theWeatherForecastDay3Summary.innerHTML = theWeatherForecastDay3Summary.innerHTML + 
-              theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+            theWeatherForecastDay3InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay3InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
             break;
           case 4:
-            theWeatherForecastDay4Summary.innerHTML = theWeatherForecastDay4Summary.innerHTML + 
-              theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+            theWeatherForecastDay4InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay4InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
             break;
           case 5:
-            theWeatherForecastDay5Summary.innerHTML = theWeatherForecastDay5Summary.innerHTML + 
-              theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+            theWeatherForecastDay5InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay5InformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
+            break;
+          default:
+            theWeatherForecastDay5InformationDisplayTextArea.innerHTML = 
+              theWeatherForecastDay5InformationDisplayTextArea.innerHTML + 
+              "--------" + "\n" + 
+              "EXTRA DAY DATA FROM THE API SOURCE:" + "\n" + 
+              "--------" + "\n" + 
+              "\n" + 
+              theWeatherForecastProcessing;
             break;
         }
-        //(theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML = 
-        //  (theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML + theWeatherForecastDaySummaryTextDate + 
-        //  theWeatherForecastDaySummaryTextDetails;
         //
-        if (recordCounterProcessRemaining > 7) {
-          another12pmDataElementExists = true;
-        }
-        else {
-          another12pmDataElementExists = false;
-        }
-        if ((recordDayCounter == 4) && (theLastGroupForecastSummaryTimeIsDetermined == false)) {
-          switch (recordCounterProcessRemaining) {
-            case 8:
-              nextTimeRecordForForecastSummary = "12:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
-              break;
-            case 7:
-              nextTimeRecordForForecastSummary = "9:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
-              break;
-            case 6:
-              nextTimeRecordForForecastSummary = "06:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
-              break;
-            case 5:
-              nextTimeRecordForForecastSummary = "03:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
-              break;
-            case 4:
-              nextTimeRecordForForecastSummary = "00:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
-              break;
-            case 3:
-              nextTimeRecordForForecastSummary = "21:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
+        if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
+          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary)) {
+          // ( or if (((data[recordCounterProcess].dt_txt).indexOf("nextTimeRecordForForecastSummary")) >= 0) )
+          // Include for display only the 12:00pm time (if any) record of each forecast; or otherwise the record that is
+          // closest to 12:00pm if that record is not available. Possible time data: 00:00, 03:00, 06:00, 09:00, 12:00, 
+          // 15:00, 18:00, 21:00.
+          theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 16)));
+          theForecastDayTemperature = data[recordCounterProcess].main.temp;
+          theForecastDayWind = data[recordCounterProcess].wind.speed;
+          theForecastDayHumidity = data[recordCounterProcess].main.humidity;
+          theForecastDayGraphicsIcon = "&nbsp&nbsp&nbsp&nbsp" + 
+            "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
+            "style='background-color: rgb(209, 240, 255); padding-left: 10px; padding-right: 10px; margin-bottom: -10px; " + 
+            "border-radius: 5px;' />";
+          // Format the API date (dt_txt) date in MM/DD/YYYY format.
+          theForecastDateProcessingYear = (data[recordCounterProcess].dt_txt).substring(0, 4);
+          theForecastDateProcessingMonth = (data[recordCounterProcess].dt_txt).substring(5, 7);
+          theForecastDateProcessingDay = (data[recordCounterProcess].dt_txt).substring(8, 10);
+          if (theForecastDateProcessingMonth.indexOf("0") == 0) {
+            theForecastDateProcessingMonth = theForecastDateProcessingMonth.substring(1, 2);
+          }
+          if (theForecastDateProcessingDay.indexOf("0") == 0) {
+            theForecastDateProcessingDay = theForecastDateProcessingDay.substring(1, 2);
+          }
+          theForecastDateFormatted = theForecastDateProcessingMonth + "/" + theForecastDateProcessingDay + 
+            "/" + theForecastDateProcessingYear;
+          theWeatherForecastDaySummaryTextDate = "<p style='padding: 0; margin: 0; line-height: 35px'>" + 
+            "<span style='font-size: 30px; font-weight: bold'>" + theForecastDateFormatted + "</span>" + 
+            theForecastDayGraphicsIcon + "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(" + 
+            theForecastTime + ")</span>" + "<br/>" + "</p>";
+          theWeatherForecastDaySummaryTextDetails = "<br/>" + "<p>" + 
+            "Temp: " + theForecastDayTemperature + " °F" + "<br/>" + 
+            "<br/>" + 
+            "Wind: " + theForecastDayWind + " MPH" + "<br/>" + 
+            "<br/>" + 
+            "Humidity: " + theForecastDayHumidity + " %" + "<br/>" + "</p>";
+          //
+          // Display the involved being-processed forecast summary information in the appropriate day section...
+          // depending on the current record day sequence number that is being processed.
+          //
+          switch (recordDayCounter) {
+            case 1:
+              theWeatherForecastDay1Summary.innerHTML = theWeatherForecastDay1Summary.innerHTML + 
+                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
               break;
             case 2:
-              nextTimeRecordForForecastSummary = "18:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
+              theWeatherForecastDay2Summary.innerHTML = theWeatherForecastDay2Summary.innerHTML + 
+                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
               break;
-            case 1:
-              nextTimeRecordForForecastSummary = "15:00:00";
-              theLastGroupForecastSummaryTimeIsDetermined = true;
+            case 3:
+              theWeatherForecastDay3Summary.innerHTML = theWeatherForecastDay3Summary.innerHTML + 
+                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              break;
+            case 4:
+              theWeatherForecastDay4Summary.innerHTML = theWeatherForecastDay4Summary.innerHTML + 
+                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              break;
+            case 5:
+              theWeatherForecastDay5Summary.innerHTML = theWeatherForecastDay5Summary.innerHTML + 
+                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
               break;
           }
-        }
-      }
-      ////////
-      // a possible future storage feature for re-usage of the data at elsewhere
-      // Scan forecast time data elements and enter each into the appropriate day array; and during that processing...
-      //theForecastArrayThatIsBeingProcessed = "theWeatherForecastDay" + recordDayCounter + "SummaryData";
-      //  // theWeatherForecastDay#SummaryData[]
-      //  // recordDayCounter = 0, 1, 2, 3, 4, 5
-      // Scan forecast time data elements and enter each into the appropriate day array; and during that processing
-      //theForecastArrayThatIsBeingProcessed.push({theCurrentDateTimeStamp, theWeatherForecast, location, theWeatherForecast});
-      ////////  
-      if (recordCounterTimeGroup > 7) {
-        recordCounterTimeGroup = 0;
-        recordDayCounter = recordDayCounter + 1;
-        theCurrentGroupForecastSummaryIsDone = false;
-      }
-    }  // to the next record in the set of all of the records that were downloaded from the API service
-      // Add the current forecast compilation information to the appropriate forecast text area.
-      // Display the processing status of the resulting weather data.
-      //theWeatherForecastDay1InformationDisplayTextArea.innerHTML = theWeatherForecastProcessingMore;
-      //theWeatherForecastDay2InformationDisplayTextArea.innerHTML = theWeatherForecastProcessing.More;
-      //theWeatherForecastDay3InformationDisplayTextArea.innerHTML = theWeatherForecastProcessing.More;
-      //theWeatherForecastDay4InformationDisplayTextArea.innerHTML = theWeatherForecastProcessing.More;
-      //theWeatherForecastDay5InformationDisplayTextArea.innerHTML = theWeatherForecastProcessing.More;
-      //window.alert(theWeatherForecastProcessingMore);
+          // for an alternative dynamic data-access idea
+          //(theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML =   // or perhaps use '.valueOf()'
+          //  (theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML + theWeatherForecastDaySummaryTextDate + 
+          //  theWeatherForecastDaySummaryTextDetails;
+          //
+          if (recordCounterProcessRemaining > 7) {
+            another12pmDataElementExists = true;
+          }
+          else {
+            another12pmDataElementExists = false;
+          }
+          //
+          // Determine the possible desired ending record that is best (among the available options) for the summary of 
+          // the Day 5 which will probably have a partial data-set of forecast information (because the current day 
+          // usually has at least 1 residual record of forecast/future weather information in the forecast data-set). This 
+          // determination of ending Day 5 record is completed depending on the current data-set record sequence number 
+          // that is being processed and the "12:00:00" weather time of the forecast record that currently is being 
+          // processed. This determination comes into concern when there are only 8 records (a full day of records) 
+          // remaining to be processed.
+          //
+          if ((recordDayCounter == 4) && (theLastGroupForecastSummaryTimeIsDetermined == false)) {
+            switch (recordCounterProcessRemaining) {
+              case 8:
+                nextTimeRecordForForecastSummary = "12:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 7:
+                nextTimeRecordForForecastSummary = "9:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 6:
+                nextTimeRecordForForecastSummary = "06:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 5:
+                nextTimeRecordForForecastSummary = "03:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 4:
+                nextTimeRecordForForecastSummary = "00:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 3:
+                nextTimeRecordForForecastSummary = "21:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 2:
+                nextTimeRecordForForecastSummary = "18:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+              case 1:
+                nextTimeRecordForForecastSummary = "15:00:00";
+                theLastGroupForecastSummaryTimeIsDetermined = true;
+                break;
+            }
+          } 
+        } //
+        // Acknowledge the record processing that occurred; done for other variables that are not 
+        // auto- incremented/decremented by the for-loop process.
+        recordCounterTimeGroup = recordCounterTimeGroup + 1;
+        //
+        // Determine about if the processing of a full day of records has been completed.
+        if (recordCounterTimeGroup > 8) {  // at the end of the 8 weather-time records per day
+          recordCounterTimeGroup = 1;
+          recordDayCounter = recordDayCounter + 1;
+          theCurrentGroupForecastSummaryIsDone = false;
+        }             
+      }  // END: else statement that is for the check about residual current-date records that are in the forecast 
+         // data-set
+    }  // END: "recordCounterProcess" for-loop for record parsing; to move to the next record in the set of all of 
+    //  the records that were downloaded from the API service
+    //
+    // Add to the current-day "more" information section the forecast compilation information for possible future
+    // review and copying.
+    theWeatherForecastProcessingMore = 
+    "+++++++++++++" + "\n" + 
+    "ALL 5-DAY FORECAST INFORMATION (COMBINED)" + "\n" + 
+    "+++++++++++++" + "\n" + 
+    "\n" + 
+    theWeatherForecastProcessingMore;
+    //
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
+      theWeatherCurrentDayInformationDisplayTextArea.innerHTML + theWeatherForecastProcessingMore;
+    //
+    ////////
+    // a possible future storage feature for re-usage of the data at elsewhere
+    // Scan forecast time data elements and enter each into the appropriate day array; and during that processing...
+    //theForecastArrayThatIsBeingProcessed = "theWeatherForecastDay" + recordDayCounter + "SummaryData";
+    //  // theWeatherForecastDay#SummaryData[]
+    //  // recordDayCounter = 0, 1, 2, 3, 4, 5
+    // Scan forecast time data elements and enter each into the appropriate day array; and during that processing
+    //theForecastArrayThatIsBeingProcessed.push({theCurrentDateTimeStamp, theWeatherForecast, location, theWeatherForecast});
+    ////////
     //
     // POSSIBLE OPTION FOR A FUTURE ENHANCEMENT/EXPANSION:
     // Save the generated weather forecast information to local storage for possible later access/viewing.  
     // localStorage.setItem("TKWeatherTrackerSummaryInformation", JSON.stringify(the5DayForecast));
     // <variable>=JSON.parse(localStorage.getItem("TKWeatherTrackerSummaryInformation"));  // for possible re-loading
+    //
   }  // END: "passedInformationType == 'FORECAST'" if statement
 }  // END: "anErrorConditionExistsApi == false" if statement
 else  {
@@ -1048,7 +1127,7 @@ else  {
 
 //
 //
-// END: Weather process code
+// END: Weather Tracker process code
 //
 //////////////////////////////////////////////////////
 
