@@ -26,15 +26,17 @@
 
 <body>
 <!-- -->
-<div class="mainPageContainer" style="display: block; padding: 5px; width: cal(100%-10px); 
+<div class="mainPageContainer" style="display: block; padding: 5px; width: 100%; font-weight: bolder; 
     border: 3px solid purple;">
 
-    <header style="background-color: blue; width: cal(100%-10px); padding: 5px">
-        <h1 style="text-align: center; padding-top: 5px;">
-            A Current-Day Weather and 5-Day Forecast Weather Tracker
+    <header style="color: white; background-color: blue; width: cal(100%-10px); padding-left: 30px; 
+        padding-right: 30px; padding-top: 5px; padding-bottom: 5px; text-align: right;">
+        <h1 style="font-size: 40px; text-align: right; padding: 0px; line-height: 1em;">
+            Weather Dashboard
         </h1>
-        <p style="font-size: 20px; font-weight: bold; padding-bottom: 5px;">
-            -- For A Searched-For City Or For Some Pre-Set Highlighted Cities --
+        <p style="font-size: 20px; font-weight: bold; padding: 0px; line-height: 1em;">
+            -- A Current-Day Weather And 5-Day Forecast Weather Tracker<br/>
+            For A Searched-For City Or For Some Pre-Set Highlighted Cities --
         </p>
     </header>
 
@@ -43,22 +45,26 @@
             <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: cal(100%-10px);">
                 <div id="theLeftColumnSection" style="display: flex; flex-direction: column; width: 25%;">
                     <div class="theLeftColumnNavigationSection" style="
-                        width: cal(100%-10px); padding: 5px; border: 3px double gray;">
+                        width: cal(100%=10px); padding: 5px; border: 3px double gray;">
                         <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="
                             padding-right: 5px; border: 1px solid gray;">
                             <h3 style="text-align: left; margin: 10px; font-weight: bold">
                                 Search for a City:
                             </h3>
-                            <p style="padding: 5px;">
-                                <input id="theCitySearchField" style="width: 98%; height: 45px;"></input><br/>
+                            <p style="padding: 5px; font-size: 15px; font-weight: normal;">
+                                <input id="theCitySearchField" style="width: 98%; height: 45px; 
+                                    border: 2px solid gray; border-radius: 5px">
+                                </input><br/>
                                 <button id="theCitySearchButton" style="border-radius: 5px; color: white; 
                                     background-color: blue; width: 100%; margin-top: 10px; margin-bottom: 10px;">
                                     Search
                                 </button><br/>
                                 (Note: Spelling must be correct in order for the search process to be successful. A
-                                ", State" search element can be entered at the end of a city name...such as "Denver"...
+                                ",&nbspState" search element can be entered at the end of a city name...such as "Denver"...
                                 that exists in different states...but a record will be retrieved only if the specified 
-                                city has a record in the API "City" search database that is being used by this function.
+                                city has a record in the API "City" search database that is being used by this function. 
+                                The retrieved city might be a default (closest-match) city that is different than the one 
+                                that was intended for the search.
                             </p>
                         </div>
                         <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: cal(100%-10px); 
@@ -147,155 +153,205 @@
                     </div>
                 </div>
                 <div class="theRightColumnSection" style="display: flex; flex-direction: column; 
-                    justify-items: center; width: cal(75%-10px); border: 1px solid gray; 
+                    justify-items: center; width: 75%; border: 1px solid gray; 
                     border: 3px double gray;">
                     <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: 100%; 
-                        height: 350px; padding-bottom: 5px; border: 5px solid green">
-                        <div id="theWeatherCurrentDayIconArea" style="display: flexbox; width: 100px;">
-                            <div id="theWeatherCurrentDayIcon" 
+                        height: 250px; padding-bottom: 5px; background-color: white; border: 5px solid green">
+                        <div class="theWeatherCurrentDayInformationSummaryDisplayArea" style="width: 45%; 
+                            height: 250px">
+                            <div id="theWeatherCurrentDaySummary" 
                                 style="display: flexbox; justify-content: center; align-items: center; 
-                                width: 100px; height: 100px; justify-items: center; align-items: center; 
-                                border: 3px solid gray;">
+                                width: 100%; height: 250px; border: 3px solid purple;">
                             </div>
                         </div>
-                        <div class="theWeatherCurrentDayInformationDisplayArea" 
+                        <div id="theWeatherCurrentDayIconArea" style="display: flex; width: 5%;">
+                            <div id="theWeatherCurrentDayIcon" style="display: flexbox; justify-content: center; 
+                                align-items: top; width: 100%; height: 250px; border: 3px solid gray;">
+                            </div>
+                        </div>
+                        <div class="theWeatherCurrentDayInformationDisplayArea" style="width: 50%; height: 250px" 
                             id="theWeatherCurrentDayInformationDisplayArea" style="display: flexbox; 
-                            width: 90%; height: 350px; margin-left: 10px; border: 3px solid gray;">
+                            width: 40%; height: 250px; margin-left: 10px; border: 3px solid brown;">
                             <textarea 
                                 readonly 
                                 id="theWeatherCurrentDayInformationDisplayTextArea" 
-                                style="width: 99%; height: 98%; resize: none;"
+                                style="width: 99%; height: 100%; resize: none; overflow: auto;"
                                 aria-label="area for retrieved weather information">
                             </textarea>
                         </div>
                     </div>
                     <div class="theWeatherForecastSection" style="display: flexbox;">
-                        <h3>5-Day Forecast</h3>
+                        <h3 style="margin-left: 15px; margin-bottom: 0px;">5-Day Forecast</h3>
                         <div class="theWeatherForecastInformationDisplayArea" style="display: flex; flex-direction: row;
-                            width: 100%; height: 450px; padding-bottom: 5px;">
-                            <div id="theWeatherForecastDay1Area" style="display: flexbox; width: 20%; 
-                                height: 450px; border: 5px solid orange;">
-                                <div id="theWeatherForecastDay1Icon" style="display:flexbox; 
-                                    justify-content: center; align-items: center; width: 100px; height: 100px; 
-                                    justify-items: center; align-items: center; border: 3px solid gray;">
+                            width: 100%; height: 400px; padding-bottom: 5px; background-color: white;">
+                            <div id="theWeatherForecastDay1Area" style="display: flexbox; width: 20%; margin: 10px; 
+                                height: 400px; background-color: darkblue; border: 5px solid orange;">
+                                <div class="theWeatherForecastDay1InformationSummaryDisplayArea" style="display: flex;">
+                                    <div id="theWeatherForecastDay1Summary" style="display: flexbox; 
+                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
+                                        border: 3px solid gray;">
+                                    </div>
+                                </div>
+                                <div id="theWeatherForcastDay1IconArea" style="display: flex; width: 100%;">
+                                    <div id="theWeatherForecastDay1Icon" style="display:flexbox; justify-content: center; 
+                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    </div>
                                 </div>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay1InformationDisplayTextArea" 
-                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    style="width: 97%; height: 125px; resize: none; color: white; 
+                                    background-color: darkblue;"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
-                            <div id="theWeatherForecastDay2Area" style="display: flexbox; width: 20%; 
-                                height: 450px; border: 5px solid orange;">
-                                <div id="theWeatherForecastDay2Icon" 
-                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
-                                    height: 100px; justify-items: center; align-items: center; 
-                                    border: 3px solid gray;">
+                            <div id="theWeatherForecastDay2Area" style="display: flexbox; width: 20%; margin: 10px; 
+                                height: 400px; background-color: darkblue; border: 5px solid orange;">
+                                <div class="theWeatherForecastDay2InformationSummaryDisplayArea" style="display: flex;">
+                                    <div id="theWeatherForecastDay2Summary" style="display: flexbox; 
+                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
+                                        border: 3px solid gray;">
+                                    </div>
+                                </div>
+                                <div id="theWeatherForcastDay2IconArea" style="display: flex; width: 100%;">
+                                    <div id="theWeatherForecastDay2Icon" style="display:flexbox; justify-content: center; 
+                                    align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    </div>
                                 </div>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay2InformationDisplayTextArea" 
-                                    style="width: 100%; height: 340px; resize: none;"
+                                    style="width: 97%; height: 125px; resize: none; color: white; 
+                                    background-color: darkblue;"
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
-                            <div id="theWeatherForecastDay3Area" style="display: flexbox; width: 20%; 
-                                height: 450px; border: 5px solid orange;">
-                                <div id="theWeatherForecastDay3Icon" 
-                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
-                                    height: 100px; justify-items: center; align-items: center; 
-                                    border: 3px solid gray;">
+                            <div id="theWeatherForecastDay3Area" style="display: flexbox; width: 20%; margin: 10px; 
+                                height: 400px; background-color: darkblue; border: 5px solid orange;">
+                                <div class="theWeatherForecastDay3InformationSummaryDisplayArea" style="display: flex;">
+                                    <div id="theWeatherForecastDay3Summary" style="display: flexbox; 
+                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
+                                        border: 3px solid gray;">
+                                    </div>
+                                </div>
+                                <div id="theWeatherForcastDay3IconArea" style="display: flex; width: 100%;">
+                                    <div id="theWeatherForecastDay3Icon" style="display:flexbox; justify-content: center; 
+                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    </div>
                                 </div>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay3InformationDisplayTextArea" 
-                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    style="width: 97%; height: 125px; resize: none; color: white; 
+                                    background-color: darkblue;"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
-                            <div id="theWeatherForecastDay4Area" style="display: flexbox; width: 20%; 
-                                height: 450px; border: 5px solid orange;">
-                                <div id="theWeatherForecastDay4Icon" 
-                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
-                                        height: 100px; justify-items: center; align-items: center; 
+                            <div id="theWeatherForecastDay4Area" style="display: flexbox; width: 20%; margin: 10px; 
+                                height: 400px; background-color: darkblue; border: 5px solid orange;">
+                                <div class="theWeatherForecastDay4InformationSummaryDisplayArea" style="display: flex;">
+                                    <div id="theWeatherForecastDay4Summary" style="display: flexbox; 
+                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
                                         border: 3px solid gray;">
+                                    </div>
+                                </div>
+                                <div id="theWeatherForcastDay4IconArea" style="display: flex; width: 100%;">
+                                    <div id="theWeatherForecastDay4Icon" style="display:flexbox; justify-content: center; 
+                                            align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    </div>
                                 </div>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay4InformationDisplayTextArea" 
-                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    style="width: 97%; height: 125px; resize: none; color: white; 
+                                    background-color: darkblue;"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
-                            <div id="theWeatherForecastDay5Area" style="display: flexbox; width: 20%; 
-                                height: 450px; border: 5px solid orange;">
-                                <div id="theWeatherForecastDay5Icon" 
-                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
-                                    height: 100px; justify-items: center; align-items: center; 
-                                    border: 3px solid gray;">
+                            <div id="theWeatherForecastDay5Area" style="display: flexbox; width: 20%; margin: 10px; 
+                                height: 400px; background-color: darkblue; border: 5px solid orange;">
+                                <div class="theWeatherForecastDay5InformationSummaryDisplayArea" style="display: flex;">
+                                    <div id="theWeatherForecastDay5Summary" style="display: flexbox; 
+                                        justify-content: center; align-items: center; width: 100%; height: 200px; 
+                                        border: 3px solid gray;">
+                                    </div>
+                                </div>
+                                <div id="theWeatherForcastDay5IconArea" style="display: flex; width: 100%;">
+                                    <div id="theWeatherForecastDay5Icon" style="display:flexbox; justify-content: center; 
+                                        align-items: center; width: 97%; height: 50px; border: 3px solid gray;">
+                                    </div>
                                 </div>
                                 <textarea 
                                     readonly 
                                     id="theWeatherForecastDay5InformationDisplayTextArea" 
-                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    style="width: 97%; height: 125px; resize: none; color: white; 
+                                    background-color: darkblue;"                 
                                     aria-label="area for retrieved weather forecast information">
                                 </textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="sectionRightColumnNavigationArea" style="display: block; width: 100%; 
-                        border: 1px solid gray;">
-                        <div class="class=SectionRightColumnButtonArea" style="width: 98%; padding: 10px; 
-                            border: 1px solid gray;">
+                    <div class="sectionRightColumnNavigationArea" style="display: flex; flex-direction: column; 
+                        width: 100%; border: 1px solid gray;">
+                        <div class="class=SectionRightColumnButtonArea" style="display: flexbox; width: 98%; 
+                            padding: 10px; ; border: 1px solid gray;">
                             <h3 style="text-align: center;">
-                                -- Possible Weekend Power-Trips Locations...Depending On Weather --
+                                -- Possible Weekend Power-Trip Locations...Depending On Weather --
                             </h3>
-                            <button id="theCityButtonR1" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('New York', 'New York', 'USA', 'NAME')">
-                                New York City New York</button>
-                            <button id="theCityButtonR2" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Miami', 'Florida', 'USA', 'NAME')">
-                                Miami Florida</button>
-                            <button id="theCityButtonR3" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Chicago', 'Illinois', 'USA', 'NAME')">
-                                Chicago Illinois</button>
-                            <button id="theCityButtonR4" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Saint Louis', 'Missouri', 'USA', 'NAME')">
-                                Saint Louis Missouri</button>
-                            <button id="theCityButtonR5" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Las Vegas', 'Nevada', 'USA', 'NAME')">
-                                Las Vegas Nevada</button>
-                            <button id="theCityButtonR6" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('San Francisco', 'California', 'USA', 'NAME')">
-                                San Francisco California</button>
-                            <button id="theCityButtonR7" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('San Diego', 'California', 'USA', 'NAME')">
-                                San Diego California</button>
-                            <button id="theCityButtonR8" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Portland', 'Oregon', 'USA', 'NAME')">
-                                Portland Oregon</button>
-                            <button id="theCityButtonR9" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Seattle', 'Washington', 'USA', 'NAME')">
-                                Seattle Washington</button>
-                            <button id="theCityButtonR10" style="margin-bottom: 10px" 
-                                onclick="getWeatherInformationApiUrl('Austin', 'Texas', 'USA', 'NAME')">
-                                Austin Texas</button>
+                            <div style="display: flex; flex-direction: row; width: 98%;">
+                                <div style="width: 30%; height: 100%;">
+                                </div>
+                                <div style="width: 40%;">
+                                    <button id="theCityButtonR1" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('New York', 'NY', 'USA', 'NAME')">
+                                        New York City New York</button><br/>
+                                    <button id="theCityButtonR2" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Miami', 'FL', 'USA', 'NAME')">
+                                        Miami Florida</button><br/>
+                                    <button id="theCityButtonR3" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Chicago', 'IL', 'USA', 'NAME')">
+                                        Chicago Illinois</button><br/>
+                                    <button id="theCityButtonR4" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Saint Louis', 'MO', 'USA', 'NAME')">
+                                        Saint Louis Missouri</button><br/>
+                                    <button id="theCityButtonR5" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Las Vegas', 'NV', 'USA', 'NAME')">
+                                        Las Vegas Nevada</button><br/>
+                                    <button id="theCityButtonR6" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('San Francisco', 'CA', 'USA', 'NAME')">
+                                        San Francisco California</button><br/>
+                                    <button id="theCityButtonR7" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('San Diego', 'CA', 'USA', 'NAME')">
+                                        San Diego California</button><br/>
+                                    <button id="theCityButtonR8" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Portland', 'OR', 'USA', 'NAME')">
+                                        Portland Oregon</button><br/>
+                                    <button id="theCityButtonR9" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Seattle', 'WA', 'USA', 'NAME')">
+                                        Seattle Washington</button><br/>
+                                    <button id="theCityButtonR10" style="margin-bottom: 10px; width: 100%;" 
+                                        onclick="getWeatherInformationApiUrl('Austin', 'TX', 'USA', 'NAME')">
+                                        Austin Texas</button><br/>
+                                </div>
+                                <div style="width: 30%; height: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="theApplicationStatusSection" style="display: flex; flex-direction: column; 
+                            width: 100%; height: 25px">
+                            <div style="display: flexbox">
+                                <div class="theApplicationStatusDisplayArea" style="display: flexbox; width: 100%; 
+                                    height: 125px; padding: 0px; margin-top: 0px; border: 1px solid gray;">
+                                    <h4 style="text-align: center; padding: 0px; margin: 0px">Application Status:</h4>
+                                    <textarea id="theApplicationStatusDisplayTextArea"
+                                        readonly
+                                        style="width: 99%; height: 98px; resize: none; overflow: auto; color: red;">
+                                    </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: column; 
-                width: 100%;">
-                <h4 style="text-align: center;">Application Status:</h4>
-                <div class="theApplicationStatusDisplayArea" 
-                    style="width: 100%; height: 75px; padding: 0px; margin-top: -10px; border: 1px solid gray;">
-                    <textarea id="theApplicationStatusDisplayTextArea"
-                        readonly
-                        style="width: 99%; height: 70px; resize: none; overflow: auto; color: red;">
-                    </textarea>
-                </div>
-            </div>
             </div>
         </div>
     </div>
