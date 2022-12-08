@@ -1,10 +1,8 @@
 
 
-
-
 //////////////////////////////////////////////////////
 //
-// Todd's Weather process code
+// Weather process code
 //
 //
 
@@ -14,63 +12,57 @@
 // a section that is to be run for page/variable/data initialization upon page load
 var anErrorConditionExists = false;
 var theWeatherCurrentDaySummary = document.getElementById("theWeatherCurrentDaySummary");
-theWeatherCurrentDaySummary.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherCurrentDaySummary.textContent = "Selected city weather current-day information will be displayed at here.";
 var theWeatherCurrentDayInformationDisplayTextArea = 
   document.getElementById("theWeatherCurrentDayInformationDisplayTextArea");
-theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here." + "\n" + 
-  "\n" + 
+theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "\n" + 
   "Search for a USA city by field entry...or select a pre-set city by button click at below..." + 
   "to display current weather information and 5-day forecast weather information that is for that city." + 
+  "\n" + 
+  "Selected city weather current-day information will be displayed at here." + "\n" + 
   "\n";
-var theWeatherCurrentDayIcon = document.getElementById("theWeatherCurrentDayIcon");
-theWeatherCurrentDayIcon.innerHTML = "";
+//var theWeatherCurrentDayIcon = document.getElementById("theWeatherCurrentDayIcon");  // a removed other idea
+//theWeatherCurrentDayIcon.innerHTML = "<ICON>"; // an initial idea for displaying the weather icons
 //
 var theWeatherForecastDay1InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay1InformationDisplayTextArea");
-theWeatherForecastDay1InformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
 var theWeatherForecastDay1Summary = document.getElementById("theWeatherForecastDay1Summary");
-theWeatherForecastDay1Summary.innerHTML = "";
-var theWeatherForecastDay1Icon = document.getElementById("theWeatherForecastDay1Icon");
-theWeatherForecastDay1Icon.innerHTML = "";
+theWeatherForecastDay1Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+//var theWeatherForecastDay1Icon = document.getElementById("theWeatherForecastDay1Icon");
+//theWeatherForecastDay1Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay2InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay2InformationDisplayTextArea");
-theWeatherForecastDay2InformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
 var theWeatherForecastDay2Summary = document.getElementById("theWeatherForecastDay2Summary");
-theWeatherForecastDay2Summary.innerHTML = "";
-var theWeatherForecastDay2Icon = document.getElementById("theWeatherForecastDay2Icon");
-theWeatherForecastDay2Icon.innerHTML = "";
+theWeatherForecastDay2Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+//var theWeatherForecastDay2Icon = document.getElementById("theWeatherForecastDay2Icon");
+//theWeatherForecastDay2Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay3InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay3InformationDisplayTextArea");
-theWeatherForecastDay3InformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
 var theWeatherForecastDay3Summary = document.getElementById("theWeatherForecastDay3Summary");
-theWeatherForecastDay3Summary.innerHTML = "";
-var theWeatherForecastDay3Icon = document.getElementById("theWeatherForecastDay3Icon");
-theWeatherForecastDay3Icon.innerHTML = "";
+theWeatherForecastDay3Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+//var theWeatherForecastDay3Icon = document.getElementById("theWeatherForecastDay3Icon");
+//theWeatherForecastDay3Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay4InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay4InformationDisplayTextArea");
-theWeatherForecastDay4InformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
 var theWeatherForecastDay4Summary = document.getElementById("theWeatherForecastDay4Summary");
-theWeatherForecastDay4Summary.innerHTML = "";
-var theWeatherForecastDay4Icon = document.getElementById("theWeatherForecastDay4Icon");
-theWeatherForecastDay4Icon.innerHTML = "";
+theWeatherForecastDay4Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+//var theWeatherForecastDay4Icon = document.getElementById("theWeatherForecastDay4Icon");
+//theWeatherForecastDay4Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay5InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay5InformationDisplayTextArea");
-theWeatherForecastDay5InformationDisplayTextArea.innerHTML = 
-  "Selected city weather current-day information will be displayed at here.";
+theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>";
 var theWeatherForecastDay5Summary = document.getElementById("theWeatherForecastDay5Summary");
-theWeatherForecastDay5Summary.innerHTML = "";
-var theWeatherForecastDay5Icon = document.getElementById("theWeatherForecastDay5Icon");
-theWeatherForecastDay5Icon.innerHTML = "";
+theWeatherForecastDay5Summary.textContent = "Selected city weather forecast information will be displayed at here.";
+//var theWeatherForecastDay5Icon = document.getElementById("theWeatherForecastDay5Icon");
+//theWeatherForecastDay5Icon.textContent = "<ICON>";
 //
 var theCitySearchField = document.getElementById("theCitySearchField");
 theCitySearchField.value = "Enter a weather-search USA city specification."
@@ -100,6 +92,22 @@ theCitySearchField.addEventListener("click", function() {
 })
 
 
+theCitySearchField.addEventListener("keypress", function(event) {
+  if (event.key == "Enter") {
+    event.preventDefault();
+    document.getElementById("theCitySearchButton").click();
+  }
+})
+
+
+//document.addEventListener("keypress", function(event) {  // not really necessary/applicable but an option
+//  if (event.key == "Enter") {
+//    event.preventDefault();
+//    document.getElementById("theCitySearchButton").click();
+//  }
+//})
+
+    
 theCitySearchButton.addEventListener("click", function() {
 // Validate the user's search-parameter input before attempting to pass the input to the API fetch function.
 // * no blank submissions
@@ -114,7 +122,9 @@ var theAmountOfCommas = 0;
 // 
 if ((theUserInput == "") || (theUserInput == "Enter a weather-search USA city specification.")) {
   aValidationErrorExists = true;
-  window.alert("ERROR: NO ENTRY");
+  //window.alert("ERROR: NO ENTRY");
+  theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "ERROR: NO ENTRY" + 
+    "\n";
 }
 else {
   for (theInputValidationLoopCounter = 0; theInputValidationLoopCounter < theUserInput.length; 
@@ -211,7 +221,7 @@ theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "";
 theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "";
 theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "";
 theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
-window.alert(passedCity + " " + passedState + " " + passedLocationType + " " + passedSearchByType);
+//window.alert(passedCity + " " + passedState + " " + passedLocationType + " " + passedSearchByType);
 var selectedCity = "";
 if (passedSearchByType != "COORDINATES") {
   selectedCity = "q=";
@@ -251,7 +261,7 @@ else {
   selectedState = selectedState + passedState;
 }
 theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
-  "WEATHER API FORMATTED QUERY FOR -- " + selectedCity + " " + selectedState + " " + passedLocationType + " " + 
+  "WEATHER API FORMATTED QUERY FOR -- " + selectedCity + selectedState + " " + passedLocationType + " " + 
   passedSearchByType + "\n";
 //window.alert("WEATHER API SUBMITTED REQUEST FOR " + selectedCity + selectedState);
 //
@@ -489,7 +499,9 @@ if (anErrorConditionExistsApi == false) {
   // main part of the program for additional processing. Use an object variable to receive the raw data-set that is 
   // from the API system.
   //
-  if (passedInformationType == "CURRENT") {
+  /////////////////////////////////////////////////////////
+  //
+  if (passedInformationType == "CURRENT") {  // the current-day weather information gathering/fetching
     /*
     CURRENT-WEATHER DATA OBJECT: 
     {
@@ -508,14 +520,41 @@ if (anErrorConditionExistsApi == false) {
     "cod":200
     }
     */
+    // Initialize variable components and their associated display elements.
     //
-    theWeatherCurrentDayIcon.innerHTML = "";
-    theWeatherCurrentDaySummary.innerHTML = "";
+    var theWeatherCurrentDaySummaryData = [];
+    var theWeatherCurrentDaySummaryTextDetails = "";
+    var theWeatherCurrentDaySummaryTextCityDate = "";
+    var theCurrentDayTemperature = "";
+    var theCurrentDayWind = "";
+    var theCurrentDayHumidity = "";
+    //var theCurrentDayGraphicsIcon = "";
+    theWeatherCurrentDaySummaryTextCityDate = "\n" + 
+    "City name (MM/DD/YYYY Date)" + "\n";
+    theWeatherCurrentDaySummaryTextDetails = "\n" + 
+    "Temp: " + theCurrentDayTemperature + " °F" + "\n" + 
+    "\n" + 
+    "Wind: " + theCurrentDayWind + " MPH" + "\n" + 
+    "\n" + 
+    "Humidity: " + theCurrentDayHumidity + " %";
+    //theWeatherCurrentDayIcon.textContent = "<ICON>";
+    //
+    theWeatherCurrentDaySummary.textContent = "<SUMMARY INFORMATION>";
     var location = "";
     var theWeatherCurrent = "";
-    var theCurrentDateTimeStamp = (new Date()).toString();
-    //var theCurrentDay = theCurrentDateTimeStamp.getDate();
-    //var theCurrentHour = theCurrentDateTimeStamp.getHours();
+    //var colorCodeDaytimeLightBlue = "rgb(240, 245, 250)";
+    //var colorCodeEveningDarkBlue = "rgb(35, 35, 70)";
+    // other colors: button blue: 150, 190, 220; highlight yellow: 255, 255, 100; header blue: 50, 50, 150
+    //
+    // Establish a date-time-stamp variable.
+    var theCurrentDateTimeObject = (new Date());
+    var theCurrentDateTimeStamp = theCurrentDateTimeObject.toString();
+    var theCurrentMonth = (theCurrentDateTimeObject.getMonth() + 1);
+    var theCurrentDay = theCurrentDateTimeObject.getDate();
+    var theCurrentYear = theCurrentDateTimeObject.getFullYear();
+    var theCurrentHour = theCurrentDateTimeObject.getHours();
+    //window.alert("theCurrentDateTimeStamp: " + theCurrentDateTimeStamp + 
+    //  "; theCurrentDay: " + theCurrentDay + "; theCurrentHour: " + theCurrentHour);
     //
     // 2 primary data-set elements/collections of weather data are in the response weather object array: "name" for
     // city name and "main" for temperature details. For forecast information...those "name" and "main" items are 
@@ -549,17 +588,50 @@ if (anErrorConditionExistsApi == false) {
       "===========================" + "\n";
     //
     // Display the weather summary information.
-    theWeatherCurrentDaySummary.innerHTML = "";
+    theWeatherCurrentDaySummary.textContent = "<SUMMARY INFORMATION>";
     // Isolate and display the weather graphics icon of the day weather information.
-    theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
-      data.weather[0].icon + ".png' />";
+    //theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
+    //  data.weather[0].icon + ".png' />";
       // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
       // file name from: (data.weather[0].icon);
+    //window.alert("<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' />");
     //
-    theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
-    theWeatherCurrent;
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
+      theWeatherCurrentDayInformationDisplayTextArea.innerHTML + theWeatherCurrent;
+    //
+    //theWeatherCurrentDaySummaryData.push({theCurrentDateTimeStamp, theWeatherCurrent, location});
+    // a possible future storage feature for re-usage of the data at elsewhere
+    //
+    theCurrentDayTemperature = data.main.temp;
+    theCurrentDayWind = data.wind.speed;
+    theCurrentDayHumidity = data.main.humidity;
+    theCurrentDayGraphicsIcon = "&nbsp&nbsp" + 
+      "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' " + 
+      "style='background-color: blue; padding-left: 10px; padding-right: 10px; margin-bottom: -10px; " + 
+      "border-radius: 5px;' />" + "&nbsp&nbsp";
+    //
+    //theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
+    //    data.weather[0].icon + ".png' />";
+      // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
+      // file name from: (data.weather[0].icon);"
+    //
+    theWeatherCurrentDaySummaryTextCityDate = "<p style='padding: 0; margin: 0; line-height: 45px'>" + 
+      "<span style='font-size: 40px; font-weight: bold'>" + location + " (" + 
+      theCurrentMonth + "/" + theCurrentDay + "/" + theCurrentYear + ")</span>" + theCurrentDayGraphicsIcon + 
+      "<br/>" + "</p>";
+    theWeatherCurrentDaySummaryTextDetails = "<br/>" + "<p>" + 
+      "Temp: " + theCurrentDayTemperature + " °F" + "<br/>" + 
+      "<br/>" + 
+      "Wind: " + theCurrentDayWind + " MPH" + "<br/>" + 
+      "<br/>" + 
+      "Humidity: " + theCurrentDayHumidity + " %" + "<br/>" + "</p>";
+    //
+    theWeatherCurrentDaySummary.innerHTML = theWeatherCurrentDaySummaryTextCityDate +
+      theWeatherCurrentDaySummaryTextDetails;
     //
   }  // END: "passedInformationType == 'CURRENT'" if statement
+  //
+  /////////////////////////////////////////////////////////
   //
   if (passedInformationType == "FORECAST") {
     /*
@@ -651,37 +723,56 @@ if (anErrorConditionExistsApi == false) {
             "\n";
         }
     }  // to the next record in the set of all of the records that were downloaded from the API service
+
     //
+    // Display the weather summary information.
     // Isolate and display the weather graphics icon of the day weather information.
-    theWeatherForecastDay1Icon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
-      basePath[0].weather[0].icon + ".png' />";
-      // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
-      // file name from: (basePath[0].weather[0].icon);
+    // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
+    // file name from: (data[0].weather[0].icon);
+    //////// Day 1
+    theWeatherForecastDay1Summary.textContent = "<SUMMARY INFORMATION>";
+    //theWeatherForecastDay1Icon = "<ICON>";
+    //////// Day 2
+    theWeatherForecastDay2Summary.textContent = "<SUMMARY INFORMATION>";
+    //theWeatherForecastDay2Icon = "<ICON>";
+    ////////
+    theWeatherForecastDay3Summary.textContent = "<SUMMARY INFORMATION>";
+    //theWeatherForecastDay3Icon = "<ICON>";
+    ////////
+    theWeatherForecastDay4Summary.textContent = "<SUMMARY INFORMATION>";
+    //theWeatherForecastDay4Icon = "<ICON>";
+    ////////
+    theWeatherForecastDay5Summary.textContent = "<SUMMARY INFORMATION>";
+    //theWeatherForecastDay5Icon = "<ICON>";
+    ////////
+    //
     // Continue the status display when the API process is processing so the user can see the processing if it is
-      // delayed.
+    // delayed.
     setTimeout(function() {
       // Display the processing status of the resulting weather data.
       theWeatherForecastDay1InformationDisplayTextArea.innerHTML = the5DayForecast;
+      theWeatherForecastDay2InformationDisplayTextArea.innerHTML = the5DayForecast;
+      theWeatherForecastDay3InformationDisplayTextArea.innerHTML = the5DayForecast;
+      theWeatherForecastDay4InformationDisplayTextArea.innerHTML = the5DayForecast;
+      theWeatherForecastDay5InformationDisplayTextArea.innerHTML = the5DayForecast;
       }, 1000);
       //
     // POSSIBLE OPTION FOR A FUTURE ENHANCEMENT/EXPANSION:
     // Save the generated weather forecast information to local storage for possible later access/viewing.  
-    // localStorage.setItem("ProjectCampCampsite5DayForecast", JSON.stringify(the5DayForecast));
-    // <variable>=JSON.parse(localStorage.getItem("ProjectCampCampsite5DayForecast"));  // for possible re-loading
+    // localStorage.setItem("TKWeatherTrackerSummaryInformation", JSON.stringify(the5DayForecast));
+    // <variable>=JSON.parse(localStorage.getItem("TKWeatherTrackerSummaryInformation"));  // for possible re-loading
   }  // END: "passedInformationType == 'FORECAST'" if statement
 }  // END: "anErrorConditionExistsApi == false" if statement
 else  {
   theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
-    "STATUS: WEATHER API QUERY CANCELLED FROM ERROR";
+    "STATUS: WEATHER API QUERY CANCELLED/ABORTED FROM ERROR";
 }  // END: "anErrorConditionExistsApi == false" if-else statement
 });  // END: fetch-response data-then
 }  // END: "getWeatherInformationApi" function
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //
 //
-// END: Todd's Weather process code
+// END: Weather process code
 //
 //////////////////////////////////////////////////////
-
