@@ -21,33 +21,353 @@
     -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
-    <title>Webpage Title</title>
+    <title>City Weather Forecasts</title>
 </head>
 
 <body>
 <!-- -->
-<div class="main_page_container">
-    <header>
-        <h1>Webpage Title</h1>
+<div class="mainPageContainer" style="display: block; padding: 5px; width: cal(100%-10px); 
+    border: 3px solid purple;">
+
+    <header style="background-color: blue; width: cal(100%-10px); padding: 5px">
+        <h1 style="text-align: center; padding-top: 5px;">
+            A Current-Day Weather and 5-Day Forecast Weather Tracker
+        </h1>
+        <p style="font-size: 20px; font-weight: bold; padding-bottom: 5px;">
+            -- For A Searched-For City Or For Some Pre-Set Highlighted Cities --
+        </p>
     </header>
-    <div class="section_container">
-        <div class="section_header">
-            <h2>Section Name</h2>
+
+    <div class="sectionContainer" style="width: 100%;">
+        <div class="sectionBody" style="display: block; width: cal(100%-10px);">
+            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: cal(100%-10px);">
+                <div id="theLeftColumnSection" style="display: flex; flex-direction: column; width: 25%;">
+                    <div class="theLeftColumnNavigationSection" style="
+                        width: cal(100%-10px); padding: 5px; border: 3px double gray;">
+                        <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="
+                            padding-right: 5px; border: 1px solid gray;">
+                            <h3 style="text-align: left; margin: 10px; font-weight: bold">
+                                Search for a City:
+                            </h3>
+                            <p style="padding: 5px;">
+                                <input id="theCitySearchField" style="width: 98%; height: 45px;"></input><br/>
+                                <button id="theCitySearchButton" style="border-radius: 5px; color: white; 
+                                    background-color: blue; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                                    Search
+                                </button><br/>
+                                (Note: Spelling must be correct in order for the search process to be successful. A
+                                ", State" search element can be entered at the end of a city name...such as "Denver"...
+                                that exists in different states...but a record will be retrieved only if the specified 
+                                city has a record in the API "City" search database that is being used by this function.
+                            </p>
+                        </div>
+                        <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: cal(100%-10px); 
+                            padding: 5px; border: 1px solid gray;">
+                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold; 
+                                width: 100%;">
+                                The Primary/Capital Denver...in Colorado
+                            </h3>
+                            <button id="theCityButtonL1" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'CO', 'USA', 'NAME')">
+                                Denver Colorado</button>
+                            <br/>
+                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold;">
+                                Other Denver Cities (USA)
+                            </h3>
+                            <button id="theCityButtonL2" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Alabama', 'USA', 'COORDINATES')">
+                                Denver Alabama</button></br/>
+                            <button id="theCityButtonL3" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Arkansas', 'USA', 'COORDINATES')">
+                                Denver Arkansas</button></br/>
+                            <button id="theCityButtonL4" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Florida', 'USA', 'COORDINATES')">
+                                Denver Florida</button></br/>
+                            <button id="theCityButtonL5" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Georgia', 'USA', 'COORDINATES')">
+                                Denver Georgia</button></br/>
+                            <button id="theCityButtonL6" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Idaho', 'USA', 'COORDINATES')">
+                                Denver Idaho</button></br/>
+                            <button id="theCityButtonL7" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Illinois', 'USA', 'COORDINATES')">
+                                Denver Illinois</button></br/>
+                            <button id="theCityButtonL8" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Indiana', 'USA', 'COORDINATES')">
+                                Denver Indiana</button></br/>
+                            <button id="theCityButtonL9" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'IA', 'USA', 'NAME')">
+                                Denver Iowa</button></br/>
+                            <button id="theCityButtonL10" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Kentucky', 'USA', 'COORDINATES')">
+                                Denver Kentucky</button></br/>
+                            <button id="theCityButtonL11" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Missouri', 'USA', 'COORDINATES')">
+                                Denver Missouri</button></br/>
+                            <button id="theCityButtonL12" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'New York', 'USA', 'COORDINATES')">
+                                Denver New York</button></br/>
+                            <button id="theCityButtonL13" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'NC', 'USA', 'NAME')">
+                                Denver North Carolina</button></br/>
+                            <button id="theCityButtonL14" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Ohio', 'USA', 'COORDINATES')">
+                                Denver Ohio</button></br/>
+                            <button id="theCityButtonL15" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Oklahoma', 'USA', 'COORDINATES')">
+                                Denver Oklahoma</button></br/>
+                            <button id="theCityButtonL16" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'PA', 'USA', 'NAME')">
+                                Denver Pennsylvania</button></br/>
+                            <button id="theCityButtonL17" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'South Carolina', 'USA', 'COORDINATES')">
+                                Denver South Carolina</button></br/>
+                            <button id="theCityButtonL18" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Tennessee', 'USA', 'COORDINATES')">
+                                Denver Tennessee</button></br/>
+                            <button id="theCityButtonL19" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver City', 'TX', 'USA', 'NAME')">
+                                Denver City Texas</button></br/>
+                            <button id="theCityButtonL20" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'West Virginia', 'USA', 'COORDINATES')">
+                                Denver West Virginia</button></br/>
+                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold;">
+                                Other Denver Cities (Non-USA)
+                            </h3>
+                            <button id="theCityButtonL21" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'AU', 'NON-USA', 'NAME')">
+                                Denver Australia</button></br/>
+                            <button id="theCityButtonL22" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'England', 'NON-USA', 'COORDINATES')">
+                                Denver England</button></br/>
+                            <button id="theCityButtonL23" style="margin-bottom: 10px; width: 100%;" 
+                                onclick="getWeatherInformationApiUrl('New Denver', 'CA', 'NON-USA', 'NAME')">
+                                New Denver Canada</button></br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="theRightColumnSection" style="display: flex; flex-direction: column; 
+                    justify-items: center; width: cal(75%-10px); border: 1px solid gray; 
+                    border: 3px double gray;">
+                    <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: 100%; 
+                        height: 350px; padding-bottom: 5px; border: 5px solid green">
+                        <div id="theWeatherCurrentDayIconArea" style="display: flexbox; width: 100px;">
+                            <div id="theWeatherCurrentDayIcon" 
+                                style="display: flexbox; justify-content: center; align-items: center; 
+                                width: 100px; height: 100px; justify-items: center; align-items: center; 
+                                border: 3px solid gray;">
+                            </div>
+                        </div>
+                        <div class="theWeatherCurrentDayInformationDisplayArea" 
+                            id="theWeatherCurrentDayInformationDisplayArea" style="display: flexbox; 
+                            width: 90%; height: 350px; margin-left: 10px; border: 3px solid gray;">
+                            <textarea 
+                                readonly 
+                                id="theWeatherCurrentDayInformationDisplayTextArea" 
+                                style="width: 99%; height: 98%; resize: none;"
+                                aria-label="area for retrieved weather information">
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="theWeatherForecastSection" style="display: flexbox;">
+                        <h3>5-Day Forecast</h3>
+                        <div class="theWeatherForecastInformationDisplayArea" style="display: flex; flex-direction: row;
+                            width: 100%; height: 450px; padding-bottom: 5px;">
+                            <div id="theWeatherForecastDay1Area" style="display: flexbox; width: 20%; 
+                                height: 450px; border: 5px solid orange;">
+                                <div id="theWeatherForecastDay1Icon" style="display:flexbox; 
+                                    justify-content: center; align-items: center; width: 100px; height: 100px; 
+                                    justify-items: center; align-items: center; border: 3px solid gray;">
+                                </div>
+                                <textarea 
+                                    readonly 
+                                    id="theWeatherForecastDay1InformationDisplayTextArea" 
+                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    aria-label="area for retrieved weather forecast information">
+                                </textarea>
+                            </div>
+                            <div id="theWeatherForecastDay2Area" style="display: flexbox; width: 20%; 
+                                height: 450px; border: 5px solid orange;">
+                                <div id="theWeatherForecastDay2Icon" 
+                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
+                                    height: 100px; justify-items: center; align-items: center; 
+                                    border: 3px solid gray;">
+                                </div>
+                                <textarea 
+                                    readonly 
+                                    id="theWeatherForecastDay2InformationDisplayTextArea" 
+                                    style="width: 100%; height: 340px; resize: none;"
+                                    aria-label="area for retrieved weather forecast information">
+                                </textarea>
+                            </div>
+                            <div id="theWeatherForecastDay3Area" style="display: flexbox; width: 20%; 
+                                height: 450px; border: 5px solid orange;">
+                                <div id="theWeatherForecastDay3Icon" 
+                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
+                                    height: 100px; justify-items: center; align-items: center; 
+                                    border: 3px solid gray;">
+                                </div>
+                                <textarea 
+                                    readonly 
+                                    id="theWeatherForecastDay3InformationDisplayTextArea" 
+                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    aria-label="area for retrieved weather forecast information">
+                                </textarea>
+                            </div>
+                            <div id="theWeatherForecastDay4Area" style="display: flexbox; width: 20%; 
+                                height: 450px; border: 5px solid orange;">
+                                <div id="theWeatherForecastDay4Icon" 
+                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
+                                        height: 100px; justify-items: center; align-items: center; 
+                                        border: 3px solid gray;">
+                                </div>
+                                <textarea 
+                                    readonly 
+                                    id="theWeatherForecastDay4InformationDisplayTextArea" 
+                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    aria-label="area for retrieved weather forecast information">
+                                </textarea>
+                            </div>
+                            <div id="theWeatherForecastDay5Area" style="display: flexbox; width: 20%; 
+                                height: 450px; border: 5px solid orange;">
+                                <div id="theWeatherForecastDay5Icon" 
+                                    style="display:flexbox; justify-content: center; align-items: center; width: 100px; 
+                                    height: 100px; justify-items: center; align-items: center; 
+                                    border: 3px solid gray;">
+                                </div>
+                                <textarea 
+                                    readonly 
+                                    id="theWeatherForecastDay5InformationDisplayTextArea" 
+                                    style="width: 100%; height: 340px; resize: none;"                 
+                                    aria-label="area for retrieved weather forecast information">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sectionRightColumnNavigationArea" style="display: block; width: 100%; 
+                        border: 1px solid gray;">
+                        <div class="class=SectionRightColumnButtonArea" style="width: 98%; padding: 10px; 
+                            border: 1px solid gray;">
+                            <h3 style="text-align: center;">
+                                -- Possible Weekend Power-Trips Locations...Depending On Weather --
+                            </h3>
+                            <button id="theCityButtonR1" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('New York', 'New York', 'USA', 'NAME')">
+                                New York City New York</button>
+                            <button id="theCityButtonR2" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Miami', 'Florida', 'USA', 'NAME')">
+                                Miami Florida</button>
+                            <button id="theCityButtonR3" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Chicago', 'Illinois', 'USA', 'NAME')">
+                                Chicago Illinois</button>
+                            <button id="theCityButtonR4" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Saint Louis', 'Missouri', 'USA', 'NAME')">
+                                Saint Louis Missouri</button>
+                            <button id="theCityButtonR5" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Las Vegas', 'Nevada', 'USA', 'NAME')">
+                                Las Vegas Nevada</button>
+                            <button id="theCityButtonR6" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('San Francisco', 'California', 'USA', 'NAME')">
+                                San Francisco California</button>
+                            <button id="theCityButtonR7" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('San Diego', 'California', 'USA', 'NAME')">
+                                San Diego California</button>
+                            <button id="theCityButtonR8" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Portland', 'Oregon', 'USA', 'NAME')">
+                                Portland Oregon</button>
+                            <button id="theCityButtonR9" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Seattle', 'Washington', 'USA', 'NAME')">
+                                Seattle Washington</button>
+                            <button id="theCityButtonR10" style="margin-bottom: 10px" 
+                                onclick="getWeatherInformationApiUrl('Austin', 'Texas', 'USA', 'NAME')">
+                                Austin Texas</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="section_body">
-                <textarea
-                readonly
-                id="text_area"
-                placeholder="Processed text can be displayed at here."
-                aria-label="area for generated text"
-                ></textarea>
+            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: column; 
+                width: 100%;">
+                <h4 style="text-align: center;">Application Status:</h4>
+                <div class="theApplicationStatusDisplayArea" 
+                    style="width: 100%; height: 75px; padding: 0px; margin-top: -10px; border: 1px solid gray;">
+                    <textarea id="theApplicationStatusDisplayTextArea"
+                        readonly
+                        style="width: 99%; height: 70px; resize: none; overflow: auto; color: red;">
+                    </textarea>
+                </div>
             </div>
-            <div class="section_footer">
-                <button id="process_button" class="process_button">Process</button>
             </div>
         </div>
     </div>
+
+    <footer>
+
+    </footer>
+
 <script src="./assets/js/script.js"></script>
+
 </body>
 
 </html>
+
+<!-- NOTE: ABOUT THE "DENVER" BUTTONS:
+
+Cities can be searched for in the OpenWeather database system by using the city name search parameter *IF* the 
+involved city record *IS* on-record in the City database of the OpenWeather database; Otherwise the involved 
+city has to be searched for by using the latitude and longitude coordinates search parameters.
+
+PRIMARY DENVER:
+*Denver, Colorado; Latitude: 39.739151, Longitude: -104.984703
+
+OTHER STATES THAT HAVE A DENVER CITY:
+Denver, Alabama; Latitude: 32.9940119, Longitude:-85.6066216
+Denver, Arkansas; Latitude: 36.3925675, Longitude:-93.3149048
+Denver, Florida; Latitude: 29.4044186, Longitude: -81.5267403
+Denver, Georgia; Latitude: 33.191509, Longitude: -85.1743874
+Denver, Idaho; Latitude: 45.9982143, Longitude: -116.2359789
+Denver, Illinois; Latitude: 40.2906008, Longitude: -91.1070841
+Denver, Indiana; Latitude: 40.8640309, Longitude: -86.0779475
+*Denver, Iowa; Latitude: 42.6713718, Longitude: -92.337402
+Denver, Kentucky; Latitude: 37.7762054, Longitude: -82.8546071
+Denver, Missouri; Latitude: 40.3972163, Longitude: -94.3227345
+Denver, New York; Latitude: 42.2125871, Longitude: -74.5693201
+*Denver, North Carolina; Latitude: 35.53125, Longitude: -81.0298
+Denver, Ohio; Latitude: 39.1931222, Longitude: -83.0557362
+Denver, Oklahoma; Latitude: 35.2325687, Longitude: -97.2822515
+*Denver, Pennsylvania; Latitude: 40.23315, Longitude: -76.137169
+Denver, South Carolina; Latitude: 34.5753839, Longitude: -82.7365261
+Denver, Tennessee; Latitude: 36.0470046, Longitude: -87.9208635
+*Denver City, Texas; Latitude: 32.96455, Longitude: -102.829102
+Denver, West Virginia; Latitude: 39.3823159, Longitude: -79.770341
+
+OTHER COUNTRIES THAT HAVE A DENVER CITY:
+*Denver, Australia: Latitude: -37.26667, Longitude: 144.300003
+Denver, England: Latitude: 52.588340, Longitude: 0.381180
+*New Denver, Canada; Latitude: 49.99155, Longitude: -117.375801,
+
+*DENVER CITIES THAT ARE IN THE OPENWEATHER CITY DATABASE:
+*Denver, Colorado
+*Denver, Iowa
+*Denver, North Carolina
+*Denver, Pennsylvania
+*Denver City, Texas
+*Denver, Australia (AU)
+*New Denver, Canada (CA)
+OTHER DENVER CITIES (non-*) HAVE TO BE SEARCHED FOR BY LATITUDE AND LONGITUDE COORDINATES.
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
