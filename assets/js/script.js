@@ -9,8 +9,13 @@
 //
 
 
+//theWeatherForecastDay1InformationSummaryDisplayArea
+
 // a section that is to be run for page/variable/data initialization upon page load
 var anErrorConditionExists = false;
+var theWeatherCurrentDaySummary = document.getElementById("theWeatherCurrentDaySummary");
+theWeatherCurrentDaySummary.innerHTML = 
+  "Selected city weather current-day information will be displayed at here.";
 var theWeatherCurrentDayInformationDisplayTextArea = 
   document.getElementById("theWeatherCurrentDayInformationDisplayTextArea");
 theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
@@ -21,31 +26,58 @@ theWeatherCurrentDayInformationDisplayTextArea.innerHTML =
   "\n";
 var theWeatherCurrentDayIcon = document.getElementById("theWeatherCurrentDayIcon");
 theWeatherCurrentDayIcon.innerHTML = "";
+//
 var theWeatherForecastDay1InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay1InformationDisplayTextArea");
 theWeatherForecastDay1InformationDisplayTextArea.innerHTML = 
   "Selected city weather current-day information will be displayed at here.";
+var theWeatherForecastDay1Summary = document.getElementById("theWeatherForecastDay1Summary");
+theWeatherForecastDay1Summary.innerHTML = "";
+var theWeatherForecastDay1Icon = document.getElementById("theWeatherForecastDay1Icon");
+theWeatherForecastDay1Icon.innerHTML = "";
+//
 var theWeatherForecastDay2InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay2InformationDisplayTextArea");
 theWeatherForecastDay2InformationDisplayTextArea.innerHTML = 
   "Selected city weather current-day information will be displayed at here.";
+var theWeatherForecastDay2Summary = document.getElementById("theWeatherForecastDay2Summary");
+theWeatherForecastDay2Summary.innerHTML = "";
+var theWeatherForecastDay2Icon = document.getElementById("theWeatherForecastDay2Icon");
+theWeatherForecastDay2Icon.innerHTML = "";
+//
 var theWeatherForecastDay3InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay3InformationDisplayTextArea");
 theWeatherForecastDay3InformationDisplayTextArea.innerHTML = 
   "Selected city weather current-day information will be displayed at here.";
+var theWeatherForecastDay3Summary = document.getElementById("theWeatherForecastDay3Summary");
+theWeatherForecastDay3Summary.innerHTML = "";
+var theWeatherForecastDay3Icon = document.getElementById("theWeatherForecastDay3Icon");
+theWeatherForecastDay3Icon.innerHTML = "";
+//
 var theWeatherForecastDay4InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay4InformationDisplayTextArea");
 theWeatherForecastDay4InformationDisplayTextArea.innerHTML = 
   "Selected city weather current-day information will be displayed at here.";
+var theWeatherForecastDay4Summary = document.getElementById("theWeatherForecastDay4Summary");
+theWeatherForecastDay4Summary.innerHTML = "";
+var theWeatherForecastDay4Icon = document.getElementById("theWeatherForecastDay4Icon");
+theWeatherForecastDay4Icon.innerHTML = "";
+//
 var theWeatherForecastDay5InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay5InformationDisplayTextArea");
 theWeatherForecastDay5InformationDisplayTextArea.innerHTML = 
   "Selected city weather current-day information will be displayed at here.";
+var theWeatherForecastDay5Summary = document.getElementById("theWeatherForecastDay5Summary");
+theWeatherForecastDay5Summary.innerHTML = "";
+var theWeatherForecastDay5Icon = document.getElementById("theWeatherForecastDay5Icon");
+theWeatherForecastDay5Icon.innerHTML = "";
+//
 var theCitySearchField = document.getElementById("theCitySearchField");
 theCitySearchField.value = "Enter a weather-search USA city specification."
 var theCitySearchButton = document.getElementById("theCitySearchButton");
+//
 var theApplicationStatusDisplayTextArea = document.getElementById("theApplicationStatusDisplayTextArea");
-//theApplicationStatusDisplayTextArea.innerHTML = "";
+theApplicationStatusDisplayTextArea.innerHTML = "";
 
 // Load from local storage the previously-saved array variable that holds the involved selected city weather forecasts
 // that were saved by the process of the "Show 5-Day Weather Forecast" button that was clicked by the user.
@@ -89,9 +121,10 @@ else {
     theInputValidationLoopCounter++) {
     if (theValidationCharacterString.indexOf(theUserInputCapitalized[theInputValidationLoopCounter]) == -1) {
       aValidationErrorExists = true;
-      theApplicationStatusDisplayTextArea.innerHTML = "INPUT ERROR: with character '" + 
-        theUserInputCapitalized[theInputValidationLoopCounter] + "at position index '" + 
-        theValidationCharacterString.indexOf(theUserInputCapitalized[theInputValidationLoopCounter]) + "'.";
+      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+        "INPUT ERROR: with character '" + 
+        theUserInputCapitalized[theInputValidationLoopCounter] + "' at position index '" + 
+        theInputValidationLoopCounter + "'. " + "\n";
     }
     if (theUserInputCapitalized[theInputValidationLoopCounter].indexOf(",") != -1) {
       theAmountOfCommas = theAmountOfCommas +1;
@@ -101,7 +134,7 @@ else {
 if (theAmountOfCommas > 1) {
   aValidationErrorExists = true;
   theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
-    "INPUT ERROR: A search parameter can contain only 1 comma. Re-specify and re-submit.";
+    "INPUT ERROR: A search parameter can contain only 1 comma. Re-specify and re-submit." + "\n";
 }
 if (aValidationErrorExists != true) {
   if (theAmountOfCommas == 0) {  // a valid "city (only)" search parameter pre-entry
@@ -116,10 +149,18 @@ if (aValidationErrorExists != true) {
   }
 }
 else {
-  theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
-  "INPUT ERROR: The search city name (and state name ,if included) can contain only letter or alphabetic characters " + 
-  "and additionally (if applicable) a '.' character and a ' ' (space) character; and the submitted Search field " + 
-  "specification cannot be blank. Correct the input and submit a new search.";
+  window.alert(
+    "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
+    "additionally (if applicable) a '.' character and a ' ' (space) character (and a ',' character for a state " + 
+    "specification)...and the submitted Search field specification cannot be blank. Correct the input and submit " + 
+    "a new search." + "\n"
+    );
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
+    "\n" + 
+    "INPUT ERROR: The search city name (and state name if included) can contain only letter characters and " + 
+    "additionally (if applicable) a '.' character and a ' ' (space) character (and a ',' character for a state " + 
+    "specification)...and the submitted Search field specification cannot be blank. Correct the input and submit " + 
+    "a new search." + "\n"
 }
 anErrorConditionExists = false;
 })
@@ -179,25 +220,29 @@ else {
   selectedCity = "";  // a simplification preparation for the switch statement at below
 }
 var selectedState = "";
-if (passedSearchByType != "COORDINATES") {
+if ((passedSearchByType != "COORDINATES") && (passedState != "NO_STATE_INPUT")) {
   selectedState = ", ";
 }
 else {
   selectedState = "";  // a simplification preparation for the switch statement at below
 }
 if ((passedCity == "Denver") && (passedState == "NO_STATE_INPUT")) {
-  window.alert(
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
     "Because the city name Denver was specified without a state specification...then a default weather search of the " + 
-    "primary Denver Colorado record will be provided (which might be a city that is different than the one that was" + 
-    "intended for the search.")
-  theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea + "\n" + 
-    "Because the city name Denver was specified without a state specification...then a default weather search of the " + 
-    "primary Denver Colorado record will be provided (which might be a city that is different than the one that was" + 
-    "intended for the search." + "\n";
+    "primary Denver Colorado record will be provided (which might be a city that is different than the one that was " + 
+    "intended for the search)." + "\n" + 
+    "\n";
   selectedCity = selectedCity + "Denver";
-  selectedState = selectedState + ", Colorado, US";
+  selectedState = selectedState + ", Colorado";
 }
-if (passedState == "NO_STATE_INPUT") {
+else if (passedState == "NO_STATE_INPUT") {
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
+    "Because the city name " + passedCity + " was specified without a state specification...then a default weather " + 
+    "search of the primary city record that has that name in the \"City\" database of the API service will be " + 
+    "provided (which might be a city that is different than the one that was intended for the search)." + "\n" + 
+    "\n";
   selectedCity = selectedCity + passedCity;
   selectedState = "";
 }
@@ -206,7 +251,7 @@ else {
   selectedState = selectedState + passedState;
 }
 theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
-  "WEATHER API FORMATTED QUERY FOR -- " + selectedCity + selectedState + " " + passedLocationType + " " + 
+  "WEATHER API FORMATTED QUERY FOR -- " + selectedCity + " " + selectedState + " " + passedLocationType + " " + 
   passedSearchByType + "\n";
 //window.alert("WEATHER API SUBMITTED REQUEST FOR " + selectedCity + selectedState);
 //
@@ -253,7 +298,15 @@ if (passedSearchByType == "COORDINATES") {
   // *Denver, Australia (AU)
   // *New Denver, Canada (CA)
   //
-  window.alert(passedState);
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML + "\n" + 
+  "The weather information of the selected city is actually having to be searched for in the API data service " + 
+  "based on latitude and longitude location coordinates instead of by city name because currently the \"City\" " + 
+  "database of the service does not yet contain a name record that is for that city. The coordinates-based search " + 
+  "~might~ result with weather information that is for a city/town that is at nearby to the location coordinates " + 
+  "that are being used for the search...if the coordinates cannot be exactly matched to a database record that is " + 
+  "for or related to the specified city." + "\n" + 
+  "\n";
   switch (passedState) {
   //
   // PRIMARY DENVER:
@@ -392,7 +445,7 @@ var anErrorConditionExistsApi = false;
 fetch(requestUrl)
 .then(function (response) {
     if (response.status === 400) {
-      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
         "ERROR: NON-SUCCESSFUL API FETCH-RESPONSE PROCESS. RE-CHECK THE SUBMISSION DATA AND SUBMIT AGAIN AT A LATER " + 
         "TIME." + "\n" +  
         "RELATED INFORMATION (IF ANY): " + response.status + "\n";
@@ -403,7 +456,7 @@ fetch(requestUrl)
     }
     if (response.status === 404) {
       anErrorConditionExistsApi = true;
-      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
         "ERROR 'CODE 404': from the API: CITY NOT FOUND." + "\n";
       //console.log(response);
       // If error...do not do the data parsing process.
@@ -457,14 +510,23 @@ if (anErrorConditionExistsApi == false) {
     */
     //
     theWeatherCurrentDayIcon.innerHTML = "";
+    theWeatherCurrentDaySummary.innerHTML = "";
     var location = "";
     var theWeatherCurrent = "";
     var theCurrentDateTimeStamp = (new Date()).toString();
-    // 2 primary data-set arrays of weather data are in the response weather object array: "city" (for the location
-    // attributes) and "list" (for the details of the 5 forecast days).
+    //var theCurrentDay = theCurrentDateTimeStamp.getDate();
+    //var theCurrentHour = theCurrentDateTimeStamp.getHours();
     //
+    // 2 primary data-set elements/collections of weather data are in the response weather object array: "name" for
+    // city name and "main" for temperature details. For forecast information...those "name" and "main" items are 
+    // organized within "city" and "list.weather" object or/and array data structures because of the larger amount of 
+    // listed data.
+    //
+    // Read the city/location descriptive information.
+    // * "name" element of the source data
     location = data.name;
     //
+    // Read and include/compose all of the other applicable interesting weather data elements/details.
     theWeatherCurrent = 
       location + "\n" + 
       "===========================" + "\n" + 
@@ -486,12 +548,17 @@ if (anErrorConditionExistsApi == false) {
       "Longitude: " + data.coord.lon + "\n" + 
       "===========================" + "\n";
     //
-    theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
-      theWeatherCurrent;
+    // Display the weather summary information.
+    theWeatherCurrentDaySummary.innerHTML = "";
+    // Isolate and display the weather graphics icon of the day weather information.
     theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
       data.weather[0].icon + ".png' />";
       // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
       // file name from: (data.weather[0].icon);
+    //
+    theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
+    theWeatherCurrent;
+    //
   }  // END: "passedInformationType == 'CURRENT'" if statement
   //
   if (passedInformationType == "FORECAST") {
@@ -533,8 +600,11 @@ if (anErrorConditionExistsApi == false) {
     // Use a compilation string variable to assemble the final weather summary information that will be displayed
     // in the application to the user for the selected campsite.
     the5DayForecast = "";
-    // 2 primary data-set arrays of weather data are in the response weather object array: "city" (for the location
-    // attributes) and "list" (for the details of the 5 forecast days).
+    //
+    // 2 primary data-set elements/collections of weather data are in the response weather object array: "name" for
+    // city name and "main" for temperature details. For forecast information...those "name" and "main" items are 
+    // organized within "city" and "list.weather" object or/and array data structures because of the larger amount of 
+    // listed data.
     //
     // Read the city/location descriptive information.
     // * "city" section of the source data
@@ -549,16 +619,20 @@ if (anErrorConditionExistsApi == false) {
     recordDayCounter = 1;
     recordCounterTime = 0;
     //window.alert(basePath[0].dt_txt);
+    // Read and include/compose all of the other applicable interesting weather data elements/details.
     for (recordCounterProcess = 0; recordCounterProcess < basePath.length; recordCounterProcess++) { 
       // include for display only the 6:00am record and the 12:00pm record and the 6:00pm record
+      //if ((((basePath[recordCounterProcess].dt_txt).indexOf("06:00:00")) >= 0) || 
+      //(((basePath[recordCounterProcess].dt_txt).indexOf("12:00:00")) >= 0) || 
+      //(((basePath[recordCounterProcess].dt_txt).indexOf("18:00:00")) >= 0)) {
         if (true) {
           the5DayForecast = the5DayForecast + 
             location + "\n" + 
-            "===========================" + "\n" + 
+            "=====================" + "\n" + 
             "MORNING-MIDDAY-EVENING TIME" + "\n" + 
             "WEATHER FORECAST INFORMATION:" + "\n" + 
             "for Date/Time: " + basePath[recordCounterProcess].dt_txt + "\n" + 
-            "---------------------------" + "\n" + 
+            "---------------------" + "\n" + 
             "Temperature: " + basePath[recordCounterProcess].main.temp + "F" + "\n" + 
             "Temperature-Minimum: " + basePath[recordCounterProcess].main.temp_min + "F" + "\n" + 
             "Temperature-Maximum: " + basePath[recordCounterProcess].main.temp_max + "F" + "\n" + 
@@ -572,11 +646,13 @@ if (anErrorConditionExistsApi == false) {
             "Graphics Icon File: " + basePath[recordCounterProcess].weather[0].icon + "\n" + 
             "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
             "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
-            "===========================" + "\n" + 
+            "=====================" + "\n" + 
             "\n" + 
             "\n";
         }
     }  // to the next record in the set of all of the records that were downloaded from the API service
+    //
+    // Isolate and display the weather graphics icon of the day weather information.
     theWeatherForecastDay1Icon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
       basePath[0].weather[0].icon + ".png' />";
       // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
@@ -586,7 +662,7 @@ if (anErrorConditionExistsApi == false) {
     setTimeout(function() {
       // Display the processing status of the resulting weather data.
       theWeatherForecastDay1InformationDisplayTextArea.innerHTML = the5DayForecast;
-      }, 2000);
+      }, 1000);
       //
     // POSSIBLE OPTION FOR A FUTURE ENHANCEMENT/EXPANSION:
     // Save the generated weather forecast information to local storage for possible later access/viewing.  
