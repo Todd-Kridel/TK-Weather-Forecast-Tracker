@@ -28,8 +28,9 @@
 <!-- -->
 <div class="mainPageContainer" style="display: block; padding: 5px; width: auto; font-weight: bolder;">
 
-    <header style="color: white; background-color: rgb(50, 50, 150); width: auto; height: 100px; 
-        padding-left: 30px; padding-right: 30px; padding-top: 20px; padding-bottom: 20px; text-align: right;">
+    <header style="color: white; background-color: rgb(50, 50, 150); width: auto; height: 100px; margin: 0px;
+        padding-left: 30px; padding-right: 30px; padding-top: 20px; padding-bottom: 20px; text-align: right; 
+        overflow: auto;">
         <h1 style="font-size: 50px; text-align: right; padding: 0px; margin: 0px; line-height: 56px;">
             Weather Dashboard
         </h1>
@@ -40,32 +41,38 @@
         </p>
     </header>
 
-    <div class="sectionContainer" style="width: 100%;">
+    <div class="sectionContainer" style="width: 100%; min-width: 650px;">
         <div class="sectionBody" style="display: block; width: auto;">
             <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: auto;">
                 <div id="theLeftColumnSection" style="display: flex; flex-direction: column; width: 25%;">
-                    <div class="theLeftColumnNavigationSection" style="
-                        width: auto; padding: 5px;">
-                        <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="
-                            padding-right: 5px;">
-                            <h3 style="text-align: left; margin: 10px; font-weight: bold">
+                    <div class="theLeftColumnNavigationSection" style="width: auto; padding: 10px; overflow: auto;">
+                        <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="padding-right: 5px; 
+                            width: auto;">
+                            <h3 style="font-size: 30px; font-weight: bolder; margin-left: 5px; margin-right: 10px; 
+                                margin-top: 10px; margin-bottom: -10px; width: auto; line-height: 33px; 
+                                text-align: left;">
                                 Search for a City:
                             </h3>
-                            <p style="padding: 5px; font-size: 15px; font-weight: normal; color: rgb(100, 100, 100)">
-                                <input id="theCitySearchField" style="width: 93%; height: 45px; padding-left: 10px; 
-                                    padding-right: 10px; border: 2px solid darkgray; border-radius: 5px">
+                            <p style="padding: 5px; font-size: 15px; font-weight: normal; padding-bottom: 10px; 
+                                text-align: center; border-bottom: 3px solid lightgray; color: rgb(100, 100, 100)">
+                                <input id="theCitySearchField" style="width: 90%; height: 45px; padding-left: 10px; 
+                                    padding-right: 10px; margin-left: 0px; margin-right: 20px; margin-top: 10px; 
+                                    margin-bottom: 0px; border: 2px solid darkgray; border-radius: 5px">
                                 </input><br/>
-                                <button id="theCitySearchButton" style="width: 100%; height: 30px; margin-top: 10px; 
-                                    color: white; font-weight: bold; background-color: lightskyblue; 
+                                <button id="theCitySearchButton" style="width: 97%; height: 30px; margin-top: 10px; 
+                                    color: white; font-weight: bold; background-color: rgb(116, 173, 219); 
                                     margin-bottom: 10px; border: none; border-radius: 5px;">
                                     Search
                                 </button><br/>
-                                (Note: Spelling must be correct in order for the search process to be successful. A
-                                ",&nbspState" search element can be entered at the end of a city name...such as "Denver"...
-                                that exists in different states...but a record will be retrieved only if the specified 
-                                city has a record in the API "City" search database that is being used by this program. 
-                                The retrieved city might be a default (closest-match) city that is different than the one 
-                                that was intended for the search.
+                                <button id="theSearchButtonNoteButton" onclick="toggleNoteDisplay()" 
+                                    style="width: 50%; min-width: 100px; color: white; background-color: purple;">
+                                    Important Note
+                                </button>
+                                <div id="theSearchButtonNote" style="display: none; font-size: 15px; 
+                                    font-weight: normal; padding: 5px; color: gray;">
+                                    <p>
+                                    </p>
+                                </div>
                             </p>
                         </div>
                         <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: auto; 
@@ -155,18 +162,18 @@
                 </div>
                 <div class="theRightColumnSection" style="display: flex; flex-direction: column; 
                     justify-items: center; width: 75%;">
-                    <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: auto; 
-                        height: 250px; padding-bottom: 5px; padding-right: 15px; margin-top: 20px; 
-                        background-color: white; border: 2px solid rgb(100, 100, 100);">
-                        <div class="theWeatherCurrentDayInformationSummaryDisplayArea" style="width: 47%; 
-                            height: 250px;">
+                    <div class="theWeatherCurrentDayArea" style="display: flex; flex-direction: row; width: 99%; 
+                        height: 300px; padding-bottom: 5px; padding-right: 5px; margin-top: 20px; 
+                        background-color: white; border: 2px solid rgb(100, 100, 100); overflow: auto;">
+                        <div class="theWeatherCurrentDayInformationSummaryDisplayArea" style="width: auto; 
+                            height: 300px;">
                             <div id="theWeatherCurrentDaySummary" 
-                                style="display: flexbox; justify-content: center; align-items: center; width: 98%; 
-                                    height: 240px; padding: 5px; margin-right: 20px; color: black; 
+                                style="display: flexbox; justify-content: center; align-items: center; width: 100%; 
+                                    height: 300px; padding: 5px; margin-right: 20px; color: black; 
                                     font-weight: bold;">
                             </div>
                         </div>
-                        <div id="theWeatherCurrentDayIconArea" style="display: flex; width: 3%;">
+                        <div id="theWeatherCurrentDayIconArea" style="display: flex; width: 3%; height: 300px;">
                             <!-- an initial idea for displaying the weather icons
                             <div id="theWeatherCurrentDayIcon" style="display: flexbox; justify-content: center; 
                                 align-items: top; width: 95%; height: 50px; background-color: rgb(215, 225, 230); 
@@ -175,9 +182,9 @@
                             <<<< a possible place for a "More Information" show/hide button
                             -->
                         </div>
-                        <div class="theWeatherCurrentDayInformationDisplayArea" style="width: 50%; height: 250px" 
-                            id="theWeatherCurrentDayInformationDisplayArea" style="display: flexbox; 
-                            width: 40%; height: 250px; margin-left: 20px;">
+                        <div class="theWeatherCurrentDayInformationDisplayArea" 
+                            id="theWeatherCurrentDayInformationDisplayArea" style="display: flexbox; width: 30%; 
+                            height: 300px; margin-left: 20px; margin-right: 5px;">
                             <p style="text-align: center; font-size: 15px; line-height: 30px; padding: 0px; 
                                 margin: 0px; font-weight: normal;">
                                 More Information
@@ -185,16 +192,31 @@
                             <textarea 
                                 readonly 
                                 id="theWeatherCurrentDayInformationDisplayTextArea" 
-                                style="width: 98%; height: 200px; resize: none; overflow: auto; padding: 5px; 
-                                    border: 2px solid lightgray;"
+                                style="width: 99%; height: 240px; resize: none; overflow: auto; padding: 5px; 
+                                    margin-right: 0px; border: 2px solid lightgray;"
                                 aria-label="area for retrieved weather information">
                             </textarea>
                         </div>
                     </div>
                     <div class="theWeatherForecastSection" style="display: flexbox;">
-                        <h3 style="margin-left: 15px; margin-bottom: 0px;">
-                            5-Day Forecast
-                        </h3>
+                        <div style="display: flex; flex-direction: row; width: 100%;">
+                            <div style="display: flexbox; width: 30%; justify-content: left;">
+                                <h3 style="font-size: 25px; font-weight: bolder; margin-left: 5px; margin-top: 5px; 
+                                    margin-bottom: 0px; line-height: 30px;">
+                                    5-Day Forecast
+                                </h3>
+                            </div>
+                            <div style="display: flexbox; justify-content: right; width: 70%;">
+                                <p style="width: 100%; text-align: center; padding: 0px; margin: 0px; 
+                                    font-size: 15px; line-height: 20px;">
+                                    <button onclick="window.open('https:\\\\openweathermap.org\\weather-conditions\\')" 
+                                        style="font-weight: bold; padding: 0px; margin-left: 50px; margin-right: 50px; 
+                                        margin-top: 10px; width: 75%; color: white; background-color: purple;">
+                                        More Information About The Weather Status/Type Graphics Icons
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
                         <div class="theWeatherForecastInformationDisplayArea" style="display: flex; flex-direction: row;
                             width: 100%; height: 400px; padding-bottom: 5px; background-color: white;">
                             <div id="theWeatherForecastDay1Area" style="display: flexbox; width: 20%; margin: 10px; 
@@ -203,7 +225,7 @@
                                     color: white">
                                     <div id="theWeatherForecastDay1Summary" style="display: flexbox; 
                                         justify-content: center; align-items: center; width: 100%; height: 250px; 
-                                        color: white; padding: 5px;">
+                                        color: white; padding: 5px; overflow: auto;">
                                     </div>
                                 </div>
                                 <!-- an initial idea for displaying the weather icons
@@ -228,10 +250,10 @@
                             <div id="theWeatherForecastDay2Area" style="display: flexbox; width: 20%; margin: 10px; 
                                 height: 400px; background-color: rgb(35, 35, 70);">
                                 <div class="theWeatherForecastDay2InformationSummaryDisplayArea" style="display: flex; 
-                                    color: white">
+                                    color: white;">
                                     <div id="theWeatherForecastDay2Summary" style="display: flexbox; 
                                         justify-content: center; align-items: center; width: 100%; height: 250px; 
-                                        color: white; padding: 5px;">
+                                        color: white; padding: 5px; overflow: auto;">
                                     </div>
                                 </div>
                                 <!-- an initial idea for displaying the weather icons
@@ -256,10 +278,10 @@
                             <div id="theWeatherForecastDay3Area" style="display: flexbox; width: 20%; margin: 10px; 
                                 height: 400px; background-color: rgb(35, 35, 70);">
                                 <div class="theWeatherForecastDay3InformationSummaryDisplayArea" style="display: flex; 
-                                    color: white">
+                                    color: white;">
                                     <div id="theWeatherForecastDay3Summary" style="display: flexbox; 
                                         justify-content: center; align-items: center; width: 100%; height: 250px; 
-                                        color: white; padding: 5px;">
+                                        color: white; padding: 5px; overflow: auto;">
                                     </div>
                                 </div>
                                 <!-- an initial idea for displaying the weather icons
@@ -284,10 +306,10 @@
                             <div id="theWeatherForecastDay4Area" style="display: flexbox; width: 20%; margin: 10px; 
                                 height: 400px; background-color: rgb(35, 35, 70);">
                                 <div class="theWeatherForecastDay4InformationSummaryDisplayArea" style="display: flex; 
-                                    color: white">
+                                    color: white;">
                                     <div id="theWeatherForecastDay4Summary" style="display: flexbox; 
                                         justify-content: center; align-items: center; width: 100%; height: 250px; 
-                                        color: white; padding: 5px;">
+                                        color: white; padding: 5px; overflow: auto;">
                                     </div>
                                 </div>
                                 <!-- an initial idea for displaying the weather icons
@@ -312,10 +334,10 @@
                             <div id="theWeatherForecastDay5Area" style="display: flexbox; width: 20%; margin: 10px; 
                                 height: 400px; background-color: rgb(35, 35, 70);">
                                 <div class="theWeatherForecastDay5InformationSummaryDisplayArea" style="display: flex; 
-                                    color: white">
+                                    color: white;">
                                     <div id="theWeatherForecastDay5Summary" style="display: flexbox; 
                                         justify-content: center; align-items: center; width: 100%; height: 250px; 
-                                        color: white; padding: 5px;">
+                                        color: white; padding: 5px; overflow: auto;">
                                     </div>
                                 </div>
                                 <!-- an initial idea for displaying the weather icons
@@ -346,42 +368,49 @@
                             <h3 style="text-align: center;">
                                 -- Possible Weekend Power-Trip Locations...Depending On Weather --
                             </h3>
-                            <div style="display: flex; flex-direction: row; width: 98%;">
-                                <div style="width: 30%; height: 100%;">
-                                </div>
-                                <div style="width: 40%;">
-                                    <button id="theCityButtonR1" style="margin-bottom: 10px; width: 100%;" 
+                            <div style="display: flex; flex-direction: column; width: 99%;">
+                                <div style="display: flexbox; width: 99%; margin-top: 0px; line-height: 20px;
+                                    padding-left: 5%;">
+                                    <button id="theCityButtonR1" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('New York', 'NY', 'USA', 'NAME')">
-                                        New York City New York</button><br/>
-                                    <button id="theCityButtonR2" style="margin-bottom: 10px; width: 100%;" 
+                                        New York City New York</button>
+                                    <button id="theCityButtonR2" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Miami', 'FL', 'USA', 'NAME')">
-                                        Miami Florida</button><br/>
-                                    <button id="theCityButtonR3" style="margin-bottom: 10px; width: 100%;" 
+                                        Miami Florida</button>
+                                    <button id="theCityButtonR3" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Chicago', 'IL', 'USA', 'NAME')">
-                                        Chicago Illinois</button><br/>
-                                    <button id="theCityButtonR4" style="margin-bottom: 10px; width: 100%;" 
+                                        Chicago Illinois</button>
+                                    <button id="theCityButtonR4" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Saint Louis', 'MO', 'USA', 'NAME')">
-                                        Saint Louis Missouri</button><br/>
-                                    <button id="theCityButtonR5" style="margin-bottom: 10px; width: 100%;" 
+                                        Saint Louis Missouri</button>
+                                    <button id="theCityButtonR5" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Las Vegas', 'NV', 'USA', 'NAME')">
-                                        Las Vegas Nevada</button><br/>
-                                    <button id="theCityButtonR6" style="margin-bottom: 10px; width: 100%;" 
+                                        Las Vegas Nevada</button>
+                                    <button id="theCityButtonR6" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('San Francisco', 'CA', 'USA', 'NAME')">
-                                        San Francisco California</button><br/>
-                                    <button id="theCityButtonR7" style="margin-bottom: 10px; width: 100%;" 
+                                        San Francisco California</button>
+                                    <button id="theCityButtonR7" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('San Diego', 'CA', 'USA', 'NAME')">
-                                        San Diego California</button><br/>
-                                    <button id="theCityButtonR8" style="margin-bottom: 10px; width: 100%;" 
+                                        San Diego California</button>
+                                    <button id="theCityButtonR8" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Portland', 'OR', 'USA', 'NAME')">
-                                        Portland Oregon</button><br/>
-                                    <button id="theCityButtonR9" style="margin-bottom: 10px; width: 100%;" 
+                                        Portland Oregon</button>
+                                    <button id="theCityButtonR9" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Seattle', 'WA', 'USA', 'NAME')">
-                                        Seattle Washington</button><br/>
-                                    <button id="theCityButtonR10" style="margin-bottom: 10px; width: 100%;" 
+                                        Seattle Washington</button>
+                                    <button id="theCityButtonR10" style="margin-bottom: 10px; width: 35%; 
+                                        margin-left: 35px; margin-right: 35px;" 
                                         onclick="getWeatherInformationApiUrl('Austin', 'TX', 'USA', 'NAME')">
-                                        Austin Texas</button><br/>
-                                </div>
-                                <div style="width: 30%; height: 100%;">
+                                        Austin Texas</button>
                                 </div>
                             </div>
                         </div>
@@ -389,13 +418,14 @@
                             width: 100%; height: 25px">
                             <div style="display: flexbox">
                                 <div class="theApplicationStatusDisplayArea" style="display: flexbox; width: 100%; 
-                                    height: 125px; padding: 0px; margin-top: 0px;">
-                                    <h4 style="text-align: center; padding: 0px; margin: 0px">
+                                    height: 25px; padding: 0px; margin-top: 0px;">
+                                    <h4 style="text-align: center; padding: 0px; margin: 0px; line-height: 25px;">
                                         Application Status:
                                     </h4>
                                     <textarea id="theApplicationStatusDisplayTextArea"
                                         readonly
-                                        style="width: 99%; height: 98px; resize: none; overflow: auto; color: red;">
+                                        style="width: 99%; height: 98px; resize: none; overflow: auto; 
+                                            color: purple;">
                                     </textarea>
                                 </div>
                             </div>
