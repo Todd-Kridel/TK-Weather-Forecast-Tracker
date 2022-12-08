@@ -23,6 +23,13 @@ header, footer {
   text-align: center;
   padding: 10px;
   }
+
+  button {
+    font-weight: bold;
+    background-color: darkgray;
+    border-radius: 5px;
+    width: 100%;
+  }
   
 @media (max-width: 690px) {
   body {
