@@ -20,8 +20,8 @@ theWeatherCurrentDaySummary.textContent = "Selected city weather current-day inf
 var theWeatherCurrentDayInformationDisplayTextArea = 
   document.getElementById("theWeatherCurrentDayInformationDisplayTextArea");
 theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "\n" + 
-  "Search for a USA city by field entry ... or select a pre-set city by button click at below ..." + 
-  "to display current weather information and 5-day forecast weather information that is for that city." + "\n" + 
+  "Search for a city by field entry ... or select a pre-set city by button click at below ...to display current " + 
+  "weather information and 5-day forecast weather information that is for that city." + "\n" + 
   "\n" + 
   "Selected city weather current-day information will be displayed at here." + "\n" + 
   "\n";
@@ -62,7 +62,7 @@ theWeatherForecastDay5Summary.textContent = "Selected city weather forecast info
   + "\n";
 //
 var theCitySearchField = document.getElementById("theCitySearchField");
-theCitySearchField.value = "Enter a weather-search USA city specification."
+theCitySearchField.value = "Enter a weather-search city specification."
 var theCitySearchButton = document.getElementById("theCitySearchButton");
 var theSearchButtonNoteButton = document.getElementById("theSearchButtonNoteButton");
 var theSearchButtonNote = document.getElementById("theSearchButtonNote");
@@ -71,7 +71,8 @@ theSearchButtonNote.innerHTML =
   "element can be entered at the end of a city name ... such as \"Denver\" ... that exists in different states ... " + 
   "but a record will be retrieved only if the specified city has a record in the API \"City\" search database that " + 
   "is being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
-  "the one that was intended for the search.";
+  "the one that was intended for the search. **&nbspNote: a \",&nbspCountry\" search element can also be specified." + 
+  "&nbsp**";
 var theSearchButtonNoteMode = "hidden";
 var SearchByMode = "";
 // 
@@ -185,7 +186,7 @@ doDisplayTheExistingCitySearchHistoryListButtons()
 
 
 theCitySearchField.addEventListener("click", function() {
-if (theCitySearchField.value == "Enter a weather-search USA city specification.") {
+if (theCitySearchField.value == "Enter a weather-search city specification.") {
   theCitySearchField.value = "";
 }
 })
@@ -239,7 +240,7 @@ var theAmountOfCommas = 0;
 // Initialize variable components and their associated display elements.
 theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
 // 
-if ((theUserInput == "") || (theUserInput == "Enter a weather-search USA city specification.")) {
+if ((theUserInput == "") || (theUserInput == "Enter a weather-search city specification.")) {
   aValidationErrorExists = true;
   //window.alert("ERROR: NO ENTRY");
   theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "ERROR: NO ENTRY" + 
