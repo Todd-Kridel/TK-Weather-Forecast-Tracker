@@ -7,9 +7,13 @@
 //
 
 
-//theWeatherForecastDay1InformationSummaryDisplayArea
+//////////////////////////
+//
+// Global Variables and program-start initialization
+//
+//
 
-// a section that is to be run for page/variable/data initialization upon page load
+
 var anErrorConditionExists = false;
 var theWeatherCurrentDaySummary = document.getElementById("theWeatherCurrentDaySummary");
 theWeatherCurrentDaySummary.textContent = "Selected city weather current-day information will be displayed at here.";
@@ -21,8 +25,6 @@ theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "\n" +
   "\n" + 
   "Selected city weather current-day information will be displayed at here." + "\n" + 
   "\n";
-//var theWeatherCurrentDayIcon = document.getElementById("theWeatherCurrentDayIcon");  // a removed other idea
-//theWeatherCurrentDayIcon.innerHTML = "<ICON>"; // an initial idea for displaying the weather icons
 //
 var theWeatherForecastDay1InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay1InformationDisplayTextArea");
@@ -30,8 +32,6 @@ theWeatherForecastDay1InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>
 var theWeatherForecastDay1Summary = document.getElementById("theWeatherForecastDay1Summary");
 theWeatherForecastDay1Summary.textContent = "Selected city weather forecast information will be displayed at here." 
   + "\n";
-//var theWeatherForecastDay1Icon = document.getElementById("theWeatherForecastDay1Icon");
-//theWeatherForecastDay1Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay2InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay2InformationDisplayTextArea");
@@ -39,8 +39,6 @@ theWeatherForecastDay2InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>
 var theWeatherForecastDay2Summary = document.getElementById("theWeatherForecastDay2Summary");
 theWeatherForecastDay2Summary.textContent = "Selected city weather forecast information will be displayed at here." 
   + "\n";
-//var theWeatherForecastDay2Icon = document.getElementById("theWeatherForecastDay2Icon");
-//theWeatherForecastDay2Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay3InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay3InformationDisplayTextArea");
@@ -48,8 +46,6 @@ theWeatherForecastDay3InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>
 var theWeatherForecastDay3Summary = document.getElementById("theWeatherForecastDay3Summary");
 theWeatherForecastDay3Summary.textContent = "Selected city weather forecast information will be displayed at here." 
   + "\n";
-//var theWeatherForecastDay3Icon = document.getElementById("theWeatherForecastDay3Icon");
-//theWeatherForecastDay3Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay4InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay4InformationDisplayTextArea");
@@ -57,8 +53,6 @@ theWeatherForecastDay4InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>
 var theWeatherForecastDay4Summary = document.getElementById("theWeatherForecastDay4Summary");
 theWeatherForecastDay4Summary.textContent = "Selected city weather forecast information will be displayed at here." 
   + "\n";
-//var theWeatherForecastDay4Icon = document.getElementById("theWeatherForecastDay4Icon");
-//theWeatherForecastDay4Icon.textContent = "<ICON>";
 //
 var theWeatherForecastDay5InformationDisplayTextArea = 
   document.getElementById("theWeatherForecastDay5InformationDisplayTextArea");
@@ -66,8 +60,6 @@ theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "<MORE INFORMATION>
 var theWeatherForecastDay5Summary = document.getElementById("theWeatherForecastDay5Summary");
 theWeatherForecastDay5Summary.textContent = "Selected city weather forecast information will be displayed at here." 
   + "\n";
-//var theWeatherForecastDay5Icon = document.getElementById("theWeatherForecastDay5Icon");
-//theWeatherForecastDay5Icon.textContent = "<ICON>";
 //
 var theCitySearchField = document.getElementById("theCitySearchField");
 theCitySearchField.value = "Enter a weather-search USA city specification."
@@ -81,15 +73,108 @@ theSearchButtonNote.innerHTML =
   "is being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
   "the one that was intended for the search.";
 var theSearchButtonNoteMode = "hidden";
+var SearchByMode = "";
+// 
+var theSearchDateStamper = new Date();
+var theSearchDateStamp = "";
+//
+var theCitySearchHistoryButtonArea = document.getElementById("theCitySearchHistoryButtonArea");
+var theCurrentActiveSearchCityForHistory = {"theCityName" : "", "theStateName" : ""};
+var theCurrentActiveHistorySearchListSequenceNumber = 0;
+var aNewCitySearchHistoryRecord = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};
+theCitySearchHistoryButtonArea = document.getElementById("theCitySearchHistoryButtonArea");
+theCitySearchHistoryListNameButton1 = document.getElementById("theCitySearchHistoryListNameButton01");
+theCitySearchHistoryListDeleteButton1 = document.getElementById("theCitySearchHistoryListDeleteButton01");
+theCitySearchHistoryListNameButton2 = document.getElementById("theCitySearchHistoryListNameButton02");
+theCitySearchHistoryListDeleteButton2 = document.getElementById("theCitySearchHistoryListDeleteButton02");
+theCitySearchHistoryListNameButton3 = document.getElementById("theCitySearchHistoryListNameButton03");
+theCitySearchHistoryListDeleteButton3 = document.getElementById("theCitySearchHistoryListDeleteButton03");
+theCitySearchHistoryListNameButton4 = document.getElementById("theCitySearchHistoryListNameButton04");
+theCitySearchHistoryListDeleteButton4 = document.getElementById("theCitySearchHistoryListDeleteButton04");
+theCitySearchHistoryListNameButton5 = document.getElementById("theCitySearchHistoryListNameButton05");
+theCitySearchHistoryListDeleteButton5 = document.getElementById("theCitySearchHistoryListDeleteButton05");
+theCitySearchHistoryListNameButton6 = document.getElementById("theCitySearchHistoryListNameButton06");
+theCitySearchHistoryListDeleteButton6 = document.getElementById("theCitySearchHistoryListDeleteButton06");
+theCitySearchHistoryListNameButton7 = document.getElementById("theCitySearchHistoryListNameButton07");
+theCitySearchHistoryListDeleteButton7 = document.getElementById("theCitySearchHistoryListDeleteButton07");
+theCitySearchHistoryListNameButton8 = document.getElementById("theCitySearchHistoryListNameButton08");
+theCitySearchHistoryListDeleteButton8 = document.getElementById("theCitySearchHistoryListDeleteButton08");
+theCitySearchHistoryListNameButton9 = document.getElementById("theCitySearchHistoryListNameButton09");
+theCitySearchHistoryListDeleteButton9 = document.getElementById("theCitySearchHistoryListDeleteButton09");
+theCitySearchHistoryListNameButton10 = document.getElementById("theCitySearchHistoryListNameButton10");
+theCitySearchHistoryListDeleteButton10 = document.getElementById("theCitySearchHistoryListDeleteButton10");
+theCitySearchHistoryListNameButton11 = document.getElementById("theCitySearchHistoryListNameButton11");
+theCitySearchHistoryListDeleteButton11 = document.getElementById("theCitySearchHistoryListDeleteButton11");
+theCitySearchHistoryListNameButton12 = document.getElementById("theCitySearchHistoryListNameButton12");
+theCitySearchHistoryListDeleteButton12 = document.getElementById("theCitySearchHistoryListDeleteButton12");
+theCitySearchHistoryListNameButton13 = document.getElementById("theCitySearchHistoryListNameButton13");
+theCitySearchHistoryListDeleteButton13 = document.getElementById("theCitySearchHistoryListDeleteButton13");
+var theCitySearchHistoryList = []; // Initialize a starting template city search history list array variable.
+theCitySearchHistoryList[0] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 1
+theCitySearchHistoryList[1] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 2
+theCitySearchHistoryList[2] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 3
+theCitySearchHistoryList[3] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 4
+theCitySearchHistoryList[4] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 5
+theCitySearchHistoryList[5] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 6
+theCitySearchHistoryList[6] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 7
+theCitySearchHistoryList[7] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 8
+theCitySearchHistoryList[8] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 9
+theCitySearchHistoryList[9] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 10
+theCitySearchHistoryList[10] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 11
+theCitySearchHistoryList[11] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 12
+theCitySearchHistoryList[12] = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};  // button 13
+var theCurrentCitySearchHistoryListAmountOfActualRecords = 0;
 //
 var theApplicationStatusDisplayTextArea = document.getElementById("theApplicationStatusDisplayTextArea");
 theApplicationStatusDisplayTextArea.innerHTML = "** NEW SESSION **" + "\n";
-
+//
+// a possible future enhancement
 // Load from local storage the previously-saved array variable that holds the involved selected city weather forecasts
 // that were saved by the process of the "Show 5-Day Weather Forecast" button that was clicked by the user.
 //var thePreviousSelectedCityWeatherRecord = JSON.parse(localStorage.getItem("TKCityWeatherForecastRecord"));
 
-//window.alert("PROGRAM START");
+
+//////////////////////////
+//
+// System-Start processes
+//
+//
+
+
+// Load any existing search history records from the existing previous city search history list record array variable
+// (if any) that is stored in local storage memory and transfer those records to the current/new list record array 
+// variable of the current application session.
+if (localStorage.getItem("TKWeatherForecastTrackerPreviousSearchHistory") != null) {
+  var theCitySearchHistoryListProcessingPrevious = [];
+  theCitySearchHistoryListProcessingPrevious = JSON.parse(localStorage.getItem(
+  "TKWeatherForecastTrackerPreviousSearchHistory"));
+  for (theLoopCounter = 0; theLoopCounter < 13; theLoopCounter++) {
+    if (theCitySearchHistoryListProcessingPrevious[theLoopCounter].theCityName != "") {
+      theCitySearchHistoryList[theLoopCounter] = theCitySearchHistoryListProcessingPrevious[theLoopCounter];
+    }
+    else {  // An empty (non-search) record has been encountered; No more previous search history records exist.
+      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + theLoopCounter + 
+        " previous city search history record[s] has/have been loaded from local storage memory." + "\n"; 
+      break;
+    }
+  }
+}
+else {
+  // A previous city search history list record array currently does not exist in local storage memory. Therefore save
+  // the starting initialization template list array variable to the local storage memory.
+  localStorage.setItem("TKWeatherForecastTrackerPreviousSearchHistory", 
+    JSON.stringify(theCitySearchHistoryList));
+  theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "No previous city " + 
+    "search history records existed in local storage memory and therefore an initialization empty list template " + 
+    "variable has been created." + "\n";
+}
+// Determine the length of the current city search history list (if any).
+doDetermineTheLengthOfCurrentCitySearchHistoryList();
+//window.alert("theCurrentCitySearchHistoryListAmountOfActualRecords at Load: " + 
+//  theCurrentCitySearchHistoryListAmountOfActualRecords);
+//
+// Display the existing (or not) search history records.
+doDisplayTheExistingCitySearchHistoryListButtons()
 
 
 //////////////////////////
@@ -100,34 +185,34 @@ theApplicationStatusDisplayTextArea.innerHTML = "** NEW SESSION **" + "\n";
 
 
 theCitySearchField.addEventListener("click", function() {
-  if (theCitySearchField.value == "Enter a weather-search USA city specification.") {
-    theCitySearchField.value = "";
-  }
+if (theCitySearchField.value == "Enter a weather-search USA city specification.") {
+  theCitySearchField.value = "";
+}
 })
 
 
 theCitySearchField.addEventListener("keypress", function(event) {
-  if (event.key == "Enter") {
-    event.preventDefault();
-    document.getElementById("theCitySearchButton").click();
-  }
+if (event.key == "Enter") {
+  event.preventDefault();
+  document.getElementById("theCitySearchButton").click();
+}
 })
 
 
 function toggleNoteDisplay() { 
-  // for the "theSearchButtonNoteButton" built-in on-click event parameter
-  if (theSearchButtonNoteMode == "hidden") {
-    theSearchButtonNote.style.display = "block";
-    //theSearchButtonNote.style.height = "1px";
-    theSearchButtonNoteMode = "shown";
-    theSearchButtonNoteButton.innerHTML = "Hide the note.";
-  }
-  else if (theSearchButtonNoteMode == "shown") {
-    theSearchButtonNote.style.display = "none";
-    //theSearchButtonNote.style.height = "auto";
-    theSearchButtonNoteMode = "hidden";
-    theSearchButtonNoteButton.innerHTML = "Important Note";
-  }
+// for the "theSearchButtonNoteButton" built-in on-click event parameter
+if (theSearchButtonNoteMode == "hidden") {
+  theSearchButtonNote.style.display = "block";
+  //theSearchButtonNote.style.height = "1px";
+  theSearchButtonNoteMode = "shown";
+  theSearchButtonNoteButton.innerHTML = "Hide the note.";
+}
+else if (theSearchButtonNoteMode == "shown") {
+  theSearchButtonNote.style.display = "none";
+  //theSearchButtonNote.style.height = "auto";
+  theSearchButtonNoteMode = "hidden";
+  theSearchButtonNoteButton.innerHTML = "Important Note";
+}
 }                                         
 
 
@@ -184,13 +269,15 @@ if (aValidationErrorExists != true) {
   if (theAmountOfCommas == 0) {  // a valid "city (only)" search parameter pre-entry
     //window.alert("SEARCH SUBMISSION FOR : " + theUserInput + " NO_STATE_INPUT");
     theCitySearchField.value = "";
+    theCurrentActiveSearchCityForHistory = {"theCityName" : theUserInput, "theStateName" : "NO_STATE_INPUT"};
     getWeatherInformationApiUrl(theUserInput, "NO_STATE_INPUT", "USA", "NAME", "FIELD");
   }
   else {  // a valid "city, state" search parameter pre-entry
     var theUserInputCity = theUserInput.substring(0, theUserInput.indexOf(","));
-    var theUserInputState = theUserInput.substring((theUserInput.indexOf(",")), theUserInput.length);
+    var theUserInputState = theUserInput.substring(((theUserInput.indexOf(",")) + 2), theUserInput.length);
     //window.alert("SEARCH SUBMISSION FOR: " + theUserInputCity + " " + theUserInputState);
     theCitySearchField.value = "";
+    theCurrentActiveSearchCityForHistory = {"theCityName" : theUserInputCity, "theStateName" : theUserInputState};
     getWeatherInformationApiUrl(theUserInputCity, theUserInputState, "USA", "NAME", "FIELD");
   }
 }
@@ -209,7 +296,7 @@ else {
     "a new search." + "\n" + 
     "\n";
   // Highlight the "More Information" field of the Current-Day Information display area.
-  highlightTheMoreInformationTextAreaUponUpdate();
+  doHighlightTheMoreInformationTextAreaUponUpdate();
 }
 anErrorConditionExists = false;
 })
@@ -225,6 +312,165 @@ anErrorConditionExists = false;
 //})
 
 
+// Add an event listener that is for the webpage div/section container that contains the City Search history buttons 
+// and the corresponding Delete buttons of the city search history record button section.
+theCitySearchHistoryButtonArea.addEventListener("click", function(event) {
+var theCitySearchHistoryButtonAreaClickTargetObject = null;
+var theIndexSequenceNumberProcessing = "";
+theCitySearchHistoryButtonAreaClickTargetObject = event.target;
+var theArrayLength = (theCitySearchHistoryButtonAreaClickTargetObject.id).length;
+theCurrentActiveHistorySearchListSequenceNumber = 0;
+theIndexSequenceNumberProcessing = (theCitySearchHistoryButtonAreaClickTargetObject.id).substring(
+  (theArrayLength - 2), theArrayLength);
+// Determine the history record list sequence number of the involved list record button that was clicked...and process 
+// accordingly depending about which button was clicked and about if the involved button has any city details that can 
+// actually be processed. If a city name button was clicked then re-issue the involved previous city search (if any). 
+// If a city search history record Delete button was clicked...then delete/clear the involved corresponding city 
+// search history record (if any).
+if (theIndexSequenceNumberProcessing.indexOf("0") != -1) {  
+  // If the button index number has a leading 0 then remove the 0.
+  theCurrentActiveHistorySearchListSequenceNumber = theIndexSequenceNumberProcessing[1];
+}
+else {
+  theCurrentActiveHistorySearchListSequenceNumber = theIndexSequenceNumberProcessing;
+}
+//
+theCurrentActiveSearchCityForHistory.theCityName = theCitySearchHistoryList[
+  (theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName;
+theCurrentActiveSearchCityForHistory.theStateName = theCitySearchHistoryList[(
+  theCurrentActiveHistorySearchListSequenceNumber - 1)].theStateName;
+//
+if (((theCitySearchHistoryButtonAreaClickTargetObject.id).indexOf("Name") != -1) && 
+  (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName != "")) {
+  // This button is a city name button that actually contains a city search history record that has processable city 
+  // details.
+  //
+  // Clear the "More Information" display area of the current-day weather information section and then submit the 
+  // previous city search information that was selected.
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = "";
+  //
+  //window.alert("theCitySearchHistoryButtonAreaClickTargetObject.id: " + 
+  //theCitySearchHistoryButtonAreaClickTargetObject.id + "\n" + 
+  //"theCurrentActiveHistorySearchListSequenceNumber button: " + 
+  //theCurrentActiveHistorySearchListSequenceNumber + "\n" + 
+  //"for history city Search: " + theCurrentActiveSearchCityForHistory.theCityName);
+  //
+  getWeatherInformationApiUrl(
+    theCurrentActiveSearchCityForHistory.theCityName, theCurrentActiveSearchCityForHistory.theStateName, 
+      "USA", "NAME", "FIELD");
+}
+//
+if (((theCitySearchHistoryButtonAreaClickTargetObject.id).indexOf("Delete") != -1) && 
+(theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName != "")) {
+  // This button is a search record Delete button that is for an actual processable with-details city search history
+  // record; Empty search history record city name buttons have a button label that begins with the text "NO #".
+  //
+  //
+  //window.alert("theCitySearchHistoryButtonAreaClickTargetObject.id: " + 
+  //theCitySearchHistoryButtonAreaClickTargetObject.id + "\n" + 
+  //"theCurrentActiveHistorySearchListSequenceNumber button: " + 
+  //theCurrentActiveHistorySearchListSequenceNumber + "\n" + 
+  //"for history city Delete: " + theCurrentActiveSearchCityForHistory.theCityName);
+  //
+  // Delete/Clear city search records that are selected for deletion by the user by using the Delete button of the
+  // involved search history button section row.
+  doDeleteExistingCitySearchFromSearchHistory();
+}
+if (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName == "") {
+  //window.alert("The clicked city search history button currently does not contain a search history record.");
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
+    "The clicked city search history button currently does not contain a search history record." + "\n" + 
+    "\n";
+  // Highlight the "More Information" field of the Current-Day Information display area.
+  doHighlightTheMoreInformationTextAreaUponUpdate();
+}
+})
+
+
+// Note: This per-button event-listener section was not needed because of the button-div-container event listener
+// function that is at above.
+// Add event listeners for each of the City Search history buttons and the corresponding Delete buttons of the city 
+// search history record button section.
+// theCitySearchHistoryListNameButton1.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton1.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton2.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton2.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton3.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton3.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton4.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton4.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton5.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton5.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton6.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton6.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton7.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton7.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton8.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton8.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton9.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton9.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton10.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton10.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton11.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton11.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton12.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton12.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListNameButton13.addEventListener("click", function () {
+//   //
+// });
+// theCitySearchHistoryListDeleteButton13.addEventListener("click", function () {
+//   //
+// });
+
+
 //////////////////////////
 //
 // General Functions
@@ -232,12 +478,364 @@ anErrorConditionExists = false;
 //
 
 
-function highlightTheMoreInformationTextAreaUponUpdate() {
+function doHighlightTheMoreInformationTextAreaUponUpdate() {
 // Highlight the "More Information" field of the Current-Day Information display area.
+window.scrollTo(0, 0);
 theWeatherCurrentDayInformationDisplayTextArea.style.border = "5px solid rgb(255, 255, 100)";
 setTimeout(function () {
   theWeatherCurrentDayInformationDisplayTextArea.style.border = "2px solid lightgray";
 }, 3000);
+}
+
+
+function doDetermineTheLengthOfCurrentCitySearchHistoryList() {
+// Determine the length of the current city search history list; i.e., the amount of records that actually have city 
+// search details; The array list structure is always initialized to and kept at 13 record/button positions.
+theCurrentCitySearchHistoryListAmountOfActualRecords = 0;
+for (var theLoopCounter = 12; theLoopCounter >= 0; theLoopCounter--) {
+  if ((theCitySearchHistoryList[theLoopCounter].theCityName) != "") {
+    theCurrentCitySearchHistoryListAmountOfActualRecords = theCurrentCitySearchHistoryListAmountOfActualRecords + 1;
+    //window.alert("search history city detected during list record amount count process: " + 
+    //  (theCitySearchHistoryList[theLoopCounter].theCityName));
+  }
+}
+theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+  "A new city search history list length of actual records was calculated after a process for record loading: " + 
+  theCurrentCitySearchHistoryListAmountOfActualRecords + " records." + "\n";
+// Display/Re-Display the calculated/re-calculated details of the current city search history list to the console.log 
+// system for possible diagnostic inspection viewing.
+console.log(theCitySearchHistoryList);
+}
+
+
+function doDisplayTheExistingCitySearchHistoryListButtons() {
+// Display the buttons of the existing city search history records...i.e. the actual records that contain city search 
+// details. The search list (button) numbers are offset by 1 from their corresponding array element position because 
+// the array starts at index position 0. At after when the new arrangement of the history record buttons is displayed...
+// then display the new arrangement of the empty non-record list positions (if any)...if the list of records currently 
+// is not full at 13 total button positions that start at sequence number 1.
+var theLastProcessedListIndexOfNonFullList = -1;
+//window.alert("theCurrentCitySearchHistoryListAmountOfActualRecords for Display: " + 
+//  theCurrentCitySearchHistoryListAmountOfActualRecords);
+//
+if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
+  for (var theLoopCounter = 0; theLoopCounter < theCurrentCitySearchHistoryListAmountOfActualRecords; theLoopCounter++) {
+    var theButtonNameProcessing = "";
+    theButtonNameProcessing = ((theCitySearchHistoryList[theLoopCounter]).theCityName);
+    if ((theCitySearchHistoryList[theLoopCounter].theStateName != "NO_STATE_INPUT") && 
+      (theCitySearchHistoryList[theLoopCounter].theStateName != "")) {  // A state was specified.
+      theButtonNameProcessing = theButtonNameProcessing + ",";
+    }
+    theButtonNameProcessing = theButtonNameProcessing + " " + (theCitySearchHistoryList[theLoopCounter].theStateName) + 
+      "<br/>" + "(from " + (theCitySearchHistoryList[theLoopCounter].theSearchDate) + ")";
+    // Add the dynamic processed button label text.
+    switch (theLoopCounter) {
+      case 0:
+        theCitySearchHistoryListNameButton1.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton1.innerHTML = "Delete";
+        break;
+      case 1:
+        theCitySearchHistoryListNameButton2.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton2.innerHTML = "Delete";
+        break;
+      case 2:
+        theCitySearchHistoryListNameButton3.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton3.innerHTML = "Delete";
+        break;
+      case 3:
+        theCitySearchHistoryListNameButton4.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton4.innerHTML = "Delete";
+        break;
+      case 4:
+        theCitySearchHistoryListNameButton5.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton5.innerHTML = "Delete";
+        break;
+      case 5:
+        theCitySearchHistoryListNameButton6.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton6.innerHTML = "Delete";
+        break;
+      case 6:
+        theCitySearchHistoryListNameButton7.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton7.innerHTML = "Delete";
+        break;
+      case 7:
+        theCitySearchHistoryListNameButton8.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton8.innerHTML = "Delete";
+        break;
+      case 8:
+        theCitySearchHistoryListNameButton9.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton9.innerHTML = "Delete";
+        break;
+      case 9:
+        theCitySearchHistoryListNameButton10.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton10.innerHTML = "Delete";
+        break;
+      case 10:
+        theCitySearchHistoryListNameButton11.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton11.innerHTML = "Delete";
+        break;
+      case 11:
+        theCitySearchHistoryListNameButton12.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton12.innerHTML = "Delete";
+        break;
+      case 12:
+        theCitySearchHistoryListNameButton13.innerHTML = theButtonNameProcessing;
+        theCitySearchHistoryListDeleteButton13.innerHTML = "Delete";
+        break;
+      case -1:
+      case 13:
+        theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "ERROR: " + 
+        "A non-valid search history button index reference occurred during a record Display process." + "\n";
+        break;
+    }
+    // Increment the counter of the search history record indexes that are processed for display.
+    theLastProcessedListIndexOfNonFullList = theLastProcessedListIndexOfNonFullList + 1;
+  }
+  // Display the buttons of any existing city search history record positions that currently are empty/deleted. The
+  // search list (button) numbers are offset by 1 from their corresponding array element position because the array 
+  // starts at index position 0. The list/arrangement of history list buttons always has a total of 13 buttons and 
+  // starts at sequence number 1.
+  //
+  //window.alert("city search history non-records for button display: " + (13 - (
+  //  theLastProcessedListIndexOfNonFullList + 1)));
+  //
+  for (var theLoopCounter = (theLastProcessedListIndexOfNonFullList + 1); theLoopCounter < 13; 
+    theLoopCounter++) {
+      // Note: A button label of "NO #<position> SEARCH HISTORY RECORD YET" has an empty "" value in the city search 
+      // history list array variable that is referenced/tested for several current-amount full/empty tests in the 
+      // program of the application.
+      //
+      switch (theLoopCounter) {
+        case 0:
+          theCitySearchHistoryListNameButton1.innerHTML = "NO #1 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton1.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 1:
+          theCitySearchHistoryListNameButton2.innerHTML = "NO #2 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton2.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 2:
+          theCitySearchHistoryListNameButton3.innerHTML = "NO #3 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton3.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 3:
+          theCitySearchHistoryListNameButton4.innerHTML = "NO #4 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton4.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 4:
+          theCitySearchHistoryListNameButton5.innerHTML = "NO #5 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton5.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 5:
+          theCitySearchHistoryListNameButton6.innerHTML = "NO #6 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton6.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 6:
+          theCitySearchHistoryListNameButton7.innerHTML = "NO #7 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton7.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 7:
+          theCitySearchHistoryListNameButton8.innerHTML = "NO #8 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton8.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 8:
+          theCitySearchHistoryListNameButton9.innerHTML = "NO #9 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton9.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 9:
+          theCitySearchHistoryListNameButton10.innerHTML = "NO #10 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton10.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 10:
+          theCitySearchHistoryListNameButton11.innerHTML = "NO #11 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton11.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 11:
+          theCitySearchHistoryListNameButton12.innerHTML = "NO #12 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton12.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case 12:
+          theCitySearchHistoryListNameButton13.innerHTML = "NO #13 SEARCH HISTORY<br/>RECORD YET";
+          theCitySearchHistoryListDeleteButton13.innerHTML = "&nbsp<br/>&nbsp";
+          break;
+        case -1:
+        case 13:
+          theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "ERROR: " + 
+          "A non-valid search history button index reference occurred during a record Display process." + "\n";
+          break;
+      };
+    }
+  }
+  if (theCurrentCitySearchHistoryListAmountOfActualRecords == 0) { 
+    theCitySearchHistoryListNameButton1.innerHTML = "NO #1 SEARCH HISTORY<br/>RECORD YET";
+    theCitySearchHistoryListDeleteButton1.innerHTML = "&nbsp<br/>&nbsp";
+  }
+  // Display/Re-Display the re-organized search history list details of the current city search history list to the 
+  // console.log system for possible diagnostic inspection viewing.
+  console.log(theCitySearchHistoryList);
+}
+
+
+function doAddNewCitySearchRecordToSearchHistoryList() {
+var aNewCitySearchHistoryRecordShouldBeAdded = true;
+// If a new validated search has occurred...record the search in the history if the search is not already part of the 
+// current history records.
+theSearchDateStamp = (((theSearchDateStamper.getMonth() + 1)).toString()) + "/" + 
+  ((theSearchDateStamper.getDate()).toString()) + "/" + ((theSearchDateStamper.getFullYear()).toString());
+aNewCitySearchHistoryRecord = {"theCityName" : theCurrentActiveSearchCityForHistory.theCityName, "theStateName" : 
+theCurrentActiveSearchCityForHistory.theStateName, "theSearchDate" : theSearchDateStamp};
+var theCityProcessing = aNewCitySearchHistoryRecord.theCityName;
+var theStateProcessing = aNewCitySearchHistoryRecord.theStateName;
+var theDuplicateIndex = "";
+//
+// Search through the existing history list/array (if any) and check about if any current history records exist for 
+// the same city and state combination that the current for-addition search record is for. If an existing record is 
+// not found then add the new search record to the list; otherwise skip the record-add processing.
+if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
+  // Do a for-loop to check for an existing record.
+  // If found, skip the add record; Otherwise add the record at the end of the array.
+  //
+  //window.alert("a test for a duplicate city search history list record for " + theCityProcessing + " " + 
+  //theStateProcessing);
+  //
+  for (var theLoopCounter = 0; theLoopCounter < theCurrentCitySearchHistoryListAmountOfActualRecords; 
+    theLoopCounter++) {
+    if ((theCitySearchHistoryList[theLoopCounter].theCityName == theCityProcessing) && (
+      (theCitySearchHistoryList[theLoopCounter].theStateName == theStateProcessing))) {
+      aNewCitySearchHistoryRecordShouldBeAdded = false;
+      theDuplicateIndex = theLoopCounter;
+      break;
+    }
+  }
+  if (aNewCitySearchHistoryRecordShouldBeAdded == false) {
+    //window.alert("A duplicate city search history list record was detected: " + 
+    //  (theCitySearchHistoryList[theDuplicateIndex].theCityName) + " " + 
+    //  (theCitySearchHistoryList[theDuplicateIndex].theStateName));
+    theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+      "A new city search history record was NOT added for this search because a history record already exists for " + 
+      "the city." + "\n";
+  }
+  else {
+    //window.alert("A duplicate city search history list record was not detected.");
+    // aNewCitySearchHistoryRecordShouldBeAdded = true;
+  }
+  if (aNewCitySearchHistoryRecordShouldBeAdded == true) {
+    // Add the new city search record at the top (most-recent) record position of the list.
+    theCitySearchHistoryList.unshift(aNewCitySearchHistoryRecord);
+    // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
+    theCitySearchHistoryList.pop();
+  }
+}
+else {  // The search history record list length is 0.
+  // Add the new search history record to the beginning record position of the history list.
+  theCitySearchHistoryList[0] = aNewCitySearchHistoryRecord;
+}
+if (aNewCitySearchHistoryRecordShouldBeAdded == true) {
+  // Store the current city search history list to local storage memory.
+  localStorage.setItem("TKWeatherForecastTrackerPreviousSearchHistory", 
+    JSON.stringify(theCitySearchHistoryList));
+  // Increment the length of the history list.
+  theCurrentCitySearchHistoryListAmountOfActualRecords = theCurrentCitySearchHistoryListAmountOfActualRecords + 1;
+  //window.alert("theCurrentCitySearchHistoryListAmountOfActualRecords: " + 
+  //  theCurrentCitySearchHistoryListAmountOfActualRecords);
+  //
+  // Display the new search history list.
+  doDisplayTheExistingCitySearchHistoryListButtons();
+}
+}
+
+
+function doDeleteExistingCitySearchFromSearchHistory() {
+// Delete/Clear city search records that are selected for deletion by the user by using the Delete button of the
+// involved search history button section row. Then Display the new arrangement of the search history list. The
+// search list (button) numbers are offset by 1 from their corresponding array element position because the array 
+// starts at index position 0.
+//
+//window.alert("theCurrentActiveHistorySearchListSequenceNumber for Delete: " + 
+//  theCurrentActiveHistorySearchListSequenceNumber + "\n" + 
+//  "theCitySearchHistoryList[deleted index/button]: " + 
+//  theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName + "\n" + 
+//  "theCitySearchHistoryList.length: " + theCitySearchHistoryList.length);
+//
+switch (theCurrentActiveHistorySearchListSequenceNumber) {
+  case "1":
+    theCitySearchHistoryList.splice(0, 1);
+    break;
+  case "2":
+    theCitySearchHistoryList.splice(1, 1);
+    break;
+  case "3":
+    theCitySearchHistoryList.splice(2, 1);
+    break;
+  case "4":
+    theCitySearchHistoryList.splice(3, 1);
+    break;
+  case "5":
+    theCitySearchHistoryList.splice(4, 1);
+    break;
+  case "6":
+    theCitySearchHistoryList.splice(5, 1);
+    break;
+  case "7":
+    theCitySearchHistoryList.splice(6, 1);
+    break;
+  case "8":
+    theCitySearchHistoryList.splice(7, 1);
+    break;
+  case "9":
+    theCitySearchHistoryList.splice(8, 1);
+    break;
+  case "10":
+    theCitySearchHistoryList.splice(9, 1);
+    break;
+  case "11":
+    theCitySearchHistoryList.splice(10, 1);
+    break;
+  case "12":
+    theCitySearchHistoryList.splice(11, 1);
+    break;
+  case "13":
+    theCitySearchHistoryList.splice(12, 1);
+    break;
+  case "0":
+  case "14":
+    theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "ERROR: " + 
+      "A non-valid search history button index reference occurred during a record Delete process." + "\n";
+    break;
+}
+// Decrement the length of the history list.
+theCurrentCitySearchHistoryListAmountOfActualRecords = theCurrentCitySearchHistoryListAmountOfActualRecords - 1;
+theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+  "An existing city search history record was deleted/cleared upon request by clicking the corresponding Delete " + 
+  "button (#" + theCurrentActiveHistorySearchListSequenceNumber + ")...resulting with a new history list record " + 
+  "total of " + theCurrentCitySearchHistoryListAmountOfActualRecords + " record[s]." + "\n";
+//window.alert("theCurrentCitySearchHistoryListAmountOfActualRecords after Delete: " + 
+//  theCurrentCitySearchHistoryListAmountOfActualRecords);
+//
+if (theCurrentActiveHistorySearchListSequenceNumber >= 1) {
+//  window.alert("theCitySearchHistoryList: new content of deleted index: " + theCitySearchHistoryList[
+//    (theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName + "\n" + 
+//    "theCitySearchHistoryList.length: " + theCitySearchHistoryList.length);
+}
+else {
+//  window.alert("theCitySearchHistoryList: new content of deleted index: NOTHING (NON-EXISTENT)" + "\n" + 
+//    "theCitySearchHistoryList.length: " + theCitySearchHistoryList.length);
+}
+// Add a new insertion/replacement blank search history list record in place of the record that was deleted. Add the 
+// new blank city search record at the bottom (oldest) record position of the list. For that end-of-list processing...
+// do not use the regular "doAddNewCitySearchRecordToSearchHistoryList" function that adds actual search records to 
+// the top/beginning of the array and button list.
+aNewCitySearchHistoryRecord = {"theCityName" : "", "theStateName" : "", "theSearchDate" : "AFTER_DELETE"};
+// Add the blank record but do not increment the count amount of the actual records.
+theCitySearchHistoryList.push(aNewCitySearchHistoryRecord); 
+// Store the new current city search history list to local storage memory.
+localStorage.setItem("TKWeatherForecastTrackerPreviousSearchHistory", 
+  JSON.stringify(theCitySearchHistoryList));
+// Display the new arrangement of search history records/buttons.
+doDisplayTheExistingCitySearchHistoryListButtons();
+if (theCurrentCitySearchHistoryListAmountOfActualRecords == 0) {
+  doDisplayTheExistingCitySearchHistoryListButtons();
+}
 }
 
 
@@ -275,6 +873,8 @@ function getWeatherInformationApiUrl(passedCity, passedState, passedLocationType
 //
 //window.alert("WEATHER API VALIDATED REQUEST FOR " + passedCity + " " + passedState);
 //window.alert(passedCity + " " + passedState + " " + passedLocationType + " " + passedSearchByType);
+//
+SearchByMode = passedSearchByMode;
 var selectedCity = "";
 //
 if (passedSearchByMode == "BUTTON") {
@@ -305,7 +905,7 @@ if ((passedCity == "Denver") && (passedState == "NO_STATE_INPUT")) {
   selectedCity = selectedCity + "Denver";
   selectedState = selectedState + ", Colorado";
   // Highlight the "More Information" field of the Current-Day Information display area.
-  highlightTheMoreInformationTextAreaUponUpdate();
+  doHighlightTheMoreInformationTextAreaUponUpdate();
 }
 else if (passedState == "NO_STATE_INPUT") {
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
@@ -317,7 +917,7 @@ else if (passedState == "NO_STATE_INPUT") {
   selectedCity = selectedCity + passedCity;
   selectedState = "";
   // Highlight the "More Information" field of the Current-Day Information display area.
-  highlightTheMoreInformationTextAreaUponUpdate();
+  doHighlightTheMoreInformationTextAreaUponUpdate();
 }
 else {
   selectedCity = selectedCity + passedCity;
@@ -387,7 +987,7 @@ if (passedSearchByType == "COORDINATES") {
   "for or related to the specified city." + "\n" + 
   "\n";
   // Highlight the "More Information" field of the Current-Day Information display area.
-  highlightTheMoreInformationTextAreaUponUpdate();
+  doHighlightTheMoreInformationTextAreaUponUpdate();
   //
   switch (passedState) {
   //
@@ -506,7 +1106,9 @@ theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextA
 theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
   "Weather Query Submission for Current-Day Information URL: " + requestWeatherCurrentDayUrl + "\n";
 //window.alert(requestWeatherCurrentDayUrl);
+//
 getWeatherInformationApi(requestWeatherCurrentDayUrl, "CURRENT");  // 
+//
 var requestWeatherForecastUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
 var forecastDaySpan = "48";
 var requestWeatherForecastUrl = requestWeatherForecastUrlBase + "?" + selectedCity + selectedState + "&cnt=" + 
@@ -517,7 +1119,9 @@ theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextA
 theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
   "Weather Query Submission for Forecast Information URL: " + requestWeatherForecastUrl + "\n";
 //window.alert(requestWeatherForecastUrl);
+//
 getWeatherInformationApi(requestWeatherForecastUrl, "FORECAST");
+//
 }  // END: "getWeatherInformationApiUrl" function
 
 
@@ -546,7 +1150,7 @@ fetch(requestUrl)
       return;
     }
     return response.json();
-}) .then(function(data){
+}) .then(function(data) {
 if (anErrorConditionExistsApi == false) {
   console.log(data);
   //
@@ -600,7 +1204,7 @@ if (anErrorConditionExistsApi == false) {
     var theCurrentDayTemperature = "";
     var theCurrentDayWind = "";
     var theCurrentDayHumidity = "";
-    //var theCurrentDayGraphicsIcon = "";
+    var theCurrentDayGraphicsIcon = "";
     theWeatherCurrentDaySummaryTextCityDate = "\n" + 
     "City name (MM/DD/YYYY Date)" + "\n";
     theWeatherCurrentDaySummaryTextDetails = "\n" + 
@@ -614,7 +1218,7 @@ if (anErrorConditionExistsApi == false) {
     var location = "";
     var theWeatherCurrent = "";
     var colorCodeDaytimeLightBlue = "rgb(209, 240, 255)";
-    var colorCodeEveningDarkBlue = "rgb(5, 88, 172)";
+    var colorCodeEveningDarkBlue = "rgb(69, 97, 126)";
     // other colors: button blue: 116, 173, 219; highlight yellow: 255, 255, 100; header blue: 50, 50, 150
     //
     // Establish a date-time-stamp variable.
@@ -678,20 +1282,27 @@ if (anErrorConditionExistsApi == false) {
     theCurrentDayWind = data.wind.speed;
     theCurrentDayHumidity = data.main.humidity;
     theCurrentDayGraphicsIcon = "&nbsp&nbsp" + 
-      "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' " + 
-      "style='background-color: rgb(209, 240, 255); padding-left: 10px; padding-right: 10px; " + 
-      "margin-bottom: -10px; border-radius: 5px;' />" + "&nbsp&nbsp";
-    //
-    //theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
-    //    data.weather[0].icon + ".png' />";
-      // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
-      // file name from: (data.weather[0].icon);"
-    //
+    "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' " + 
+    "style='background-color: ";
+    if ((data.weather[0].icon).indexOf("d") != -1) {  // daytime icon indicator
+    theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
+    }
+    else if ((data.weather[0].icon).indexOf("n") != -1) {  // nighttime icon indicator
+    theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "rgb(69, 97, 126)";  // nighttime sky color
+    }
+    // if ((theCurrentHour > 5) && (theCurrentHour < 18)) {  // daytime times
+    //   theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
+    // }
+    // else if ((theCurrentHour < 6) || (theCurrentHour > 17)) {  // nighttime times
+    //   theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "rgb(69, 97, 126)";  // nighttime sky color
+    // }
+    theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "; padding-left: 10px; padding-right: 10px; " + 
+    "margin-bottom: -10px; border-radius: 5px;' />" + "&nbsp&nbsp";
     theWeatherCurrentDaySummaryTextCityDate = "<p style='padding: 0; margin: 0; line-height: 50px'>" + 
       "<span style='font-size: 40px; font-weight: bolder'>" + location + " (" + 
       theCurrentMonth + "/" + theCurrentDay + "/" + theCurrentYear + ")</span>" + theCurrentDayGraphicsIcon + 
-      "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(&nbspCurrent&nbspTime&nbsp)</span>" + "<br/>" + 
-      "</p>";
+      "&nbsp&nbsp" + "<span style='color: gray; font-weight: normal'>(&nbspAt&nbspSearch&nbspTime&nbsp)</span>" + 
+      "<br/>" + "</p>";
     theWeatherCurrentDaySummaryTextDetails = "<br/>" + "<p>" + "<span style='font-size: 20px; font-weight: bolder; " + 
       "line-height: 22px; padding: 0px; margin: 0px'>" + 
       "Temp: " + theCurrentDayTemperature + " °F" + "<br/>" + 
@@ -702,8 +1313,17 @@ if (anErrorConditionExistsApi == false) {
     //
     theWeatherCurrentDaySummary.innerHTML = theWeatherCurrentDaySummaryTextCityDate +
       theWeatherCurrentDaySummaryTextDetails;
+    // Add the city search to the search history list information and the corresponding button area if the search is a 
+    // new search that is submitted from the "Search For A City" field and that is not yet in the history information 
+    // and button area. Do not add search history for any city searches that are submitted by using any of the pre-set 
+    // city buttons of the application that are located at the bottom section of the application screen (those buttons 
+    // that use the "BUTTON" submission mode)...or any of the city search history buttons that are located at the left 
+    // side of the application window.
+    if (SearchByMode != "BUTTON") {
+      doAddNewCitySearchRecordToSearchHistoryList();
+    }
     // Highlight the "More Information" field of the Current-Day Information display area.
-    highlightTheMoreInformationTextAreaUponUpdate();
+    doHighlightTheMoreInformationTextAreaUponUpdate();
     //
   }  // END: "passedInformationType == 'CURRENT'" if statement
   //
@@ -770,6 +1390,8 @@ if (anErrorConditionExistsApi == false) {
     if (theCurrentDay.length == 1) {
       theCurrentDayWithLeading0IfNecessary = "0" + theCurrentDay;
     }
+    var colorCodeDaytimeLightBlue = "rgb(209, 240, 255)";
+    var colorCodeEveningDarkBlue = "rgb(69, 97, 126)";
     //window.alert(theCurrentDay.length);
     //window.alert(theCurrentMonthWithLeading0IfNecessary + "/" + theCurrentDayWithLeading0IfNecessary + "/" + 
     //  theCurrentYear);
@@ -807,6 +1429,7 @@ if (anErrorConditionExistsApi == false) {
     var theCurrentDayInformationHasBeenProcessed = false;
     var another12pmDataElementExists = false;
     var nextTimeRecordForForecastSummary = "12:00:00";
+    var theDay5ForecastSummaryIsCompleted = false;
     var theCurrentGroupForecastSummaryIsDone = false;
     var theLastGroupForecastSummaryTimeIsDetermined = false;
     var theForecastSummaryDisplayThatIsBeingProcessed = "";
@@ -897,11 +1520,11 @@ if (anErrorConditionExistsApi == false) {
         // Separate and store any time records that are for the current day; non-forecast information. Add the 
         // additional remaining current-day information (if any) to the end of the "More Information" display 
         // of the current-day section of the application.
+        recordDayCounter = 0;  // for non-forecast record display/process position; not 1 through 5
         theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
           theWeatherCurrentDayInformationDisplayTextArea.innerHTML + theWeatherForecastProcessing;
         // Highlight the "More Information" field of the Current-Day Information display area.
-        recordDayCounter = 0;  // for non-forecast record display/process position; not 1 through 5
-        highlightTheMoreInformationTextAreaUponUpdate();
+        doHighlightTheMoreInformationTextAreaUponUpdate();
         //
         if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "21:00:00") || 
         (data[recordCounterProcess].dt_txt).indexOf("21:00:00") != -1) {  // the last record of the day
@@ -958,21 +1581,70 @@ if (anErrorConditionExistsApi == false) {
               theWeatherForecastProcessing;
             break;
         }
-        //
-        if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
-          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary)) {
+        // Preferably obtain forecast records that are for the 12:00 noon time of time for all of the 5 forecast days...
+        // but at many times the 5th day and occasionally the 1st day do/can have partial record sets depending on the 
+        // time at which the forecast information is generated and because the free 5-day weather API service provides 
+        // only 40 sets of 3-hour-span weather data. If the 12:00 pm weather data is not available for the 5th day 
+        // forecast...then attempt to find a data-set time-span that is at close to 12:00pm; otherwise...if that desired 
+        // data is not obtained by the last set/day of data...then the parse process will accept any of the time-span 
+        // weather data that is available (a good-enough forecast).
+        if (((((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
+          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary))) && (
+          theDay5ForecastSummaryIsCompleted == false))           
+          || // (or day 5 (last day) and there is not a 12:00pm data-set or a preferred next-best alternative)
+          ((recordDayCounter == 5) && (theDay5ForecastSummaryIsCompleted == false))) {
+          //
+          if (recordDayCounter == 5) {
+            theDay5ForecastSummaryIsCompleted = true;
+          }
+          var theForecastSummaryIconBackgroundColor = "daytime";
           // ( or if (((data[recordCounterProcess].dt_txt).indexOf("nextTimeRecordForForecastSummary")) >= 0) )
           // Include for display only the 12:00pm time (if any) record of each forecast; or otherwise the record that is
           // closest to 12:00pm if that record is not available. Possible time data: 00:00, 03:00, 06:00, 09:00, 12:00, 
           // 15:00, 18:00, 21:00.
-          theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 16)));
+          if (((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") {
+            theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 16))) + "pm";
+            theForecastSummaryIconBackgroundColor = "daytime";
+            }
+          else if (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary) {
+            theForecastTime = nextTimeRecordForForecastSummary;
+            if ((theForecastTime == "12:00:00") || (theForecastTime == "15:00:00")) {
+              theForecastTime = theForecastTime + "pm";
+              theForecastSummaryIconBackgroundColor = "daytime";
+            } 
+            else if ((theForecastTime == "18:00:00") || (theForecastTime == "21:00:00")) {
+              theForecastTime = theForecastTime + "pm";
+              theForecastSummaryIconBackgroundColor = "nighttime";
+            }
+            else if ((theForecastTime == "06:00:00") || (theForecastTime == "09:00:00")) {
+              theForecastTime = theForecastTime + "am";
+              theForecastSummaryIconBackgroundColor = "daytime";
+            }
+            else {  // if ((theForecastTime == "00:00:00") || (theForecastTime == "03:00:00")) {
+              theForecastTime = theForecastTime + "am";
+              theForecastSummaryIconBackgroundColor = "nighttime";
+            }
+          }
           theForecastDayTemperature = data[recordCounterProcess].main.temp;
           theForecastDayWind = data[recordCounterProcess].wind.speed;
           theForecastDayHumidity = data[recordCounterProcess].main.humidity;
           theForecastDayGraphicsIcon = "&nbsp&nbsp&nbsp&nbsp" + 
-            "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
-            "style='background-color: rgb(209, 240, 255); padding-left: 10px; padding-right: 10px; margin-bottom: -10px; " + 
-            "border-radius: 5px;' />";
+          "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
+          "style='background-color: ";
+          if (theForecastSummaryIconBackgroundColor == "daytime") {  // daytime indicator
+            theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
+          }
+          else if (theForecastSummaryIconBackgroundColor == "nighttime") {  // nighttime indicator
+            theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "rgb(69, 97, 126)";  // nighttime sky color
+          }
+          // if ((theCurrentHour > 5) && (theCurrentHour < 18)) {  // daytime times
+          //   theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
+          // }
+          // else if ((theCurrentHour < 6) || (theCurrentHour > 17)) {  // nighttime times
+          //   theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "rgb(69, 97, 126)";  // nighttime sky color
+          // }
+          theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "; padding-left: 10px; padding-right: 10px; margin-bottom: " + 
+            "-10px; border-radius: 5px;' />";
           // Format the API date (dt_txt) date in MM/DD/YYYY format.
           theForecastDateProcessingYear = (data[recordCounterProcess].dt_txt).substring(0, 4);
           theForecastDateProcessingMonth = (data[recordCounterProcess].dt_txt).substring(5, 7);
@@ -1124,7 +1796,7 @@ if (anErrorConditionExistsApi == false) {
 }  // END: "anErrorConditionExistsApi == false" if statement
 else  {
   theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + "\n" + 
-    "STATUS: WEATHER API QUERY CANCELLED/ABORTED FROM ERROR";
+    "STATUS: WEATHER API QUERY CANCELLED/ABORTED FROM ERROR" + "\n";
 }  // END: "anErrorConditionExistsApi == false" if-else statement
 });  // END: fetch-response data-then
 }  // END: "getWeatherInformationApi" function

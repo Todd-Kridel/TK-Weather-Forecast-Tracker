@@ -67,19 +67,20 @@ button {
   height: 30px; 
   color: white;
   font-weight: bold; 
-  background-color: rgb(116, 173, 219);
   margin-top: 10px;
-  margin-bottom: 10px; border: none; 
+  margin-bottom: 10px;
+  background-color: rgb(116, 173, 219);
+  border: 3px solid white; 
   border-radius: 5px;
 }
 
 .theCitySearchButton:hover {
-  width: 100%;
-  height: 34px;
+  /*background-color: green;*/
+  border: 3px solid rgb(116, 173, 219);
 }
 
 .theCitySearchButton:active {
-  border: 5px solid yellow;
+  border: 3px solid yellow;
 }
 
 #theSearchButtonNoteButton {
@@ -87,48 +88,72 @@ button {
   min-width: 100px;
   color: white;
   background-color: purple;
+  border: 3px solid white;
   border-radius: 5px;
 }
 
 #theSearchButtonNoteButton:hover {
-  border: 5px solid purple;
+  border: 3px solid purple;
 }
 
 #theSearchButtonNoteButton:active {
-  border: 5px solid yellow;
+  border: 3px solid yellow;
 }
 
-.aCityButtonLeftColumn {
+.aCityButtonLeftColumnName, 
+.aCityButtonLeftColumnDelete {  /* the city Search history buttons */
+  font-size: 13px;
+  line-height: 15px;
   font-weight: bold;
+  height: 40px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
   background-color: rgb(200, 200, 200);
+  border: 3px solid rgb(200, 200, 200);
   border-radius: 5px;
-  width: 100%;
-  margin-bottom: 10px;
+  align-content: center;
 }
 
-.aCityButtonRightColumn {
-  font-weight: bold;
-  background-color: rgb(200, 225, 200);
-  border-radius: 5px;
-  width: 35%;
-  margin-left: 35px;
-  margin-right: 35px;
-  margin-bottom: 10px;
+.aCityButtonLeftColumnName {  /* the city Search history buttons */
+  width: 70%;
+}
+ 
+.aCityButtonLeftColumnDelete {  /* the city Search history buttons */
+  width: 20%;
 }
 
-.aCityButtonLeftColumn:hover, 
-.aCityButtonRightColumn:hover {
+.aCityButtonLeftColumnName:hover, 
+.aCityButtonLeftColumnDelete:hover {
   color: white;
   background-color: blue;
 }
 
-.aCityButtonLeftColumn:active, 
+.aCityButtonRightColumn {  /* the pre-set power-trip city buttons */
+  font-weight: bold;
+  width: 35%;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 10px;
+  background-color: rgb(200, 225, 200);
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+.aCityButtonRightColumn:hover {
+  border: 3px solid rgb(200, 225, 200);
+  }
+
+.aCityButtonLeftColumnName:active, 
+.aCityButtonLeftColumnDelete:active, 
 .aCityButtonRightColumn:active {
-  border: 5px solid yellow;
+  border: 3px solid yellow;
 }
 
 #theWeatherIconInformationButton {
-  font-weight: bold;
+  font-weight: normal;
   padding: 0px;
   margin-left: 50px;
   margin-right: 50px;
@@ -136,15 +161,40 @@ button {
   width: 75%;
   color: white;
   background-color: purple;
+  border: 3px solid white;
   border-radius: 5px;
 }
 
 #theWeatherIconInformationButton:hover {
-  border: 5px solid purple;
+  border: 3px solid purple;
 }
 
 #theWeatherIconInformationButton:active {
-  border: 5px solid yellow;
+  border: 3px solid yellow;
+}
+
+.aCityButtonCombinedColumn {  /* the "Denver" buttons */
+  font-weight: bold;
+  width: 20%;
+  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: white;
+  background-color: rgb(146, 110, 43);
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+#theDenverColoradoMainButtonC1 {
+  width: 80%;
+}
+
+.aCityButtonCombinedColumn:hover {
+  border: 3px solid rgb(146, 110, 43);
+}
+
+.aCityButtonCombinedColumn:active {
+  border: 3px solid yellow;
 }
 
 /*  MEDIA QUERIES  (for beyond the responsiveness that is established through inline HTML CSS) */

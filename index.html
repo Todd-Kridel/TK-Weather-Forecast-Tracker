@@ -40,134 +40,211 @@
 
     <div class="sectionContainer" style="width: 100%; min-width: 650px;">
         <div class="sectionBody" style="display: block; width: auto;">
-            <div id="theLeftColumnAndRightColumnArea" style="display: flex; flex-direction: row; width: auto;">
-                <div id="theLeftColumnSection" style="display: flex; flex-direction: column; width: 25%;">
-                    <div class="theLeftColumnNavigationSection" style="width: auto; padding: 10px; overflow: auto;">
-                        <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="padding-right: 5px; 
-                            width: auto;">
-                            <h3 style="font-size: 30px; font-weight: bolder; margin-left: 5px; margin-right: 10px; 
-                                margin-top: 10px; margin-bottom: -10px; width: auto; line-height: 33px; 
-                                text-align: left;">
-                                Search for a City:
-                            </h3>
-                            <p style="padding: 5px; font-size: 15px; font-weight: normal; padding-bottom: 10px; 
-                                text-align: center; border-bottom: 3px solid lightgray; color: rgb(100, 100, 100)">
-                                <input id="theCitySearchField" style="width: 90%; height: 45px; padding-left: 10px; 
-                                    padding-right: 10px; margin-left: 0px; margin-right: 0px; margin-top: 10px; 
-                                    margin-bottom: 0px; border: 2px solid darkgray; border-radius: 5px">
-                                </input><br/>
-                                <button class="theCitySearchButton" id="theCitySearchButton">
-                                    Search
-                                </button><br/>
-                                <button class="theSearchButtonNoteButton" id="theSearchButtonNoteButton" 
-                                    onclick="toggleNoteDisplay()">
-                                    Important Note
-                                </button>
-                                <div id="theSearchButtonNote" style="display: none; font-size: 15px; 
-                                    font-weight: normal; padding: 5px; color: gray;">
-                                    <p>
-                                    </p>
-                                </div>
-                            </p>
+            <div id="theLeftColumnAndRightColumnSection" style="display: flex; flex-direction: row; width: auto;">
+                <div id="theLeftColumnSection" style="display: flexbox; width: 25%; padding-right: 0px; 
+                    max-height: 1000px; overflow: auto;">
+                    <div class="theLeftColumnNavigationSection" style="width: auto; min-height: 950px; height: auto; 
+                        padding: 10px;">
+                        <div id="theLeftColumnNavigationSectionUpperContainer" style="min-height: 150px; height: auto;">
+                            <div class="theLeftColumnFieldArea" id="theCitySearchSection" style="padding-right: 0px; 
+                                width: auto; height: auto; min-height: 200px; overflow: auto;">
+                                <h3 style="font-size: 27px; font-weight: bolder; margin-left: 5px; margin-right: 10px; 
+                                    margin-top: 10px; margin-bottom: -10px; width: auto; line-height: 33px; 
+                                    text-align: left;">
+                                    Search for a City:
+                                </h3>
+                                <p style="padding: 5px; font-size: 15px; font-weight: normal; padding-bottom: 10px; 
+                                    text-align: center; border-bottom: 3px solid lightgray; color: rgb(100, 100, 100)">
+                                    <input id="theCitySearchField" style="width: 90%; height: 45px; padding-left: 10px; 
+                                        padding-right: 10px; margin-left: 0px; margin-right: 0px; margin-top: 10px; 
+                                        margin-bottom: 0px; border: 2px solid darkgray; border-radius: 5px">
+                                    </input><br/>
+                                    <button class="theCitySearchButton" id="theCitySearchButton">
+                                        Search
+                                    </button><br/>
+                                    <button class="theSearchButtonNoteButton" id="theSearchButtonNoteButton" 
+                                        onclick="toggleNoteDisplay()">
+                                        Important Note
+                                    </button>
+                                    <div id="theSearchButtonNote" style="display: none; font-size: 15px; 
+                                        font-weight: normal; padding: 5px; color: gray;">
+                                        <p>
+                                            <!-- a space for a dynamically-displayed note -->
+                                        </p>
+                                    </div>
+                                </p>
+                            </div>
                         </div>
-                        <div class="theLeftColumnButtonArea" id="theDenverButtons" style="width: auto; 
-                            padding: 5px;">
-                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold; 
-                                width: 100%;">
-                                The Primary/Capital Denver ... in Colorado
+                        <div class="theLeftColumnNavigationSectionLowerContainer" id="theCitySearchHistorySection" 
+                            style="display: flexbox; height: auto; min-height: 500px; overflow: auto;">
+                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; 
+                                font-weight: bold;">
+                                The Most-Recent 13 Searches
                             </h3>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL1" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'CO', 'USA', 'NAME', 'BUTTON')">
-                                Denver Colorado</button>
-                            <br/>
-                            <h3 style="text-align: center; margin-top: 10px;">
-                                Other Denver Cities (USA)
-                            </h3>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL2" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Alabama', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Alabama</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL3" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Arkansas', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Arkansas</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL4" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Florida', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Florida</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL5" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Georgia', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Georgia</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL6" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Idaho', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Idaho</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL7" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Illinois', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Illinois</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL8" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Indiana', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Indiana</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL9" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'IA', 'USA', 'NAME', 'BUTTON')">
-                                Denver Iowa</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL10" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Kentucky', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Kentucky</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL11" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Missouri', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Missouri</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL12" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'New York', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver New York</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL13" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'NC', 'USA', 'NAME', 'BUTTON')">
-                                Denver North Carolina</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL14" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Ohio', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Ohio</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL15" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Oklahoma', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Oklahoma</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL16" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'PA', 'USA', 'NAME', 'BUTTON')">
-                                Denver Pennsylvania</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL17" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'South Carolina', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver South Carolina</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL18" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'Tennessee', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver Tennessee</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL19" 
-                                onclick="getWeatherInformationApiUrl('Denver City', 'TX', 'USA', 'NAME', 'BUTTON')">
-                                Denver City Texas</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL20" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'West Virginia', 'USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver West Virginia</button></br/>
-                            <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold;">
-                                Other Denver Cities (Non-USA)
-                            </h3>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL21" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'AU', 'NON-USA', 'NAME', 'BUTTON')">
-                                Denver Australia</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL22" 
-                                onclick="getWeatherInformationApiUrl('Denver', 'England', 'NON-USA', 'COORDINATES', 
-                                    'BUTTON')">
-                                Denver England</button></br/>
-                            <button class="aCityButtonLeftColumn" id="theCityButtonL23" 
-                                onclick="getWeatherInformationApiUrl('New Denver', 'CA', 'NON-USA', 'NAME', 'BUTTON')">
-                                New Denver Canada</button></br/>
+                            <div id="theCitySearchHistoryButtonArea" style="display: flex; flex-direction: column; 
+                                overflow: auto;">
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton01" 
+                                        name="theCitySearchHistoryListNameButton01">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #1 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton01">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton02">
+                                    <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                    NO #2 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton02">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton03">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #3 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton03">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton04">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #4 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton04">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton05">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #5 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton05">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton06">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #6 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton06">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton07">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #7 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton07">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton08">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #8 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton08">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton09">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #9 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton09">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton10">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #10 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton10">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton11">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #11 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton11">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton12">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #12 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton12">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                                <div style="display: flex; flex-direction: row; vertical-align: middle; padding: 0px; 
+                                    margin: 5px;">
+                                    <button class="aCityButtonLeftColumnName" id="theCitySearchHistoryListNameButton13">
+                                        <!-- a space for a dynamically added/deleted name of a search city (history) -->
+                                        NO #13 SEARCH HISTORY<br/>RECORD YET
+                                    </button>
+                                    <button class="aCityButtonLeftColumnDelete" id="theCitySearchHistoryListDeleteButton13">
+                                        <!-- the clear/delete button of the corresponding city search history name -->
+                                        &nbsp<br/>&nbsp
+                                    </button><br/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theApplicationStatusSectionSection" id="theApplicationStatusSection" 
+                            style="display: flexbox; width: 100%; height: 100px;">
+                            <div style="display: block;">
+                                <h4 style="text-align: center; padding: 0px; margin: 0px; margin-top: 10px; 
+                                    line-height: 25px;">
+                                    Application Status:
+                                </h4>
+                                <div class="theApplicationStatusDisplayArea" style="display: block; width: 100%; 
+                                    height: 100px; padding: 0px; margin-top: 0px;">
+                                    <textarea id="theApplicationStatusDisplayTextArea"
+                                        readonly
+                                        style="width: 96%; height: 100px; resize: none; overflow: auto; 
+                                            color: purple;">
+                                    </textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -380,22 +457,116 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="theApplicationStatusSection" style="display: flex; flex-direction: column; 
-                            width: 100%; height: 25px">
-                            <div style="display: flexbox">
-                                <div class="theApplicationStatusDisplayArea" style="display: flexbox; width: 100%; 
-                                    height: 25px; padding: 0px; margin-top: 0px;">
-                                    <h4 style="text-align: center; padding: 0px; margin: 0px; line-height: 25px;">
-                                        Application Status:
-                                    </h4>
-                                    <textarea id="theApplicationStatusDisplayTextArea"
-                                        readonly
-                                        style="width: 99%; height: 98px; resize: none; overflow: auto; 
-                                            color: purple;">
-                                    </textarea>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="theLeftColumnAndRightColumnSection" style="display: block; flex-direction: column; width: 100%; 
+                border-top: 3px solid gray;">
+                <div id="theLeftColmnAndRightColumnAreaNaviationArea" style="display: flex; 
+                    flex-direction: column; width: auto;">
+                    <div class="theLeftColumnAndRightColumnAreaButtonArea" id="theDenverButtons" style="width: auto; 
+                        padding: 5px; justify-content: center;">
+                        <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold; 
+                            width: 100%;">
+                            The Primary/Capital Denver ... in Colorado
+                        </h3>
+                        <p style="text-align: center;">
+                            <button class="aCityButtonCombinedColumn" id="theDenverColoradoMainButtonC1"
+                                onclick="getWeatherInformationApiUrl('Denver', 'CO', 'USA', 'NAME', 'BUTTON')">
+                                Denver Colorado</button><br/>
+                        </p>
+                        <h3 style="text-align: center; margin-top: 10px;">
+                            Other Denver Cities (USA)
+                        </h3>
+                        <p style="text-align: center;">
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC2" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Alabama', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Alabama</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC3" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Arkansas', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Arkansas</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC4" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Florida', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Florida</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC5" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Georgia', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Georgia</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC6" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Idaho', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Idaho</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC7" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Illinois', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Illinois</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC8" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Indiana', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Indiana</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC9" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'IA', 'USA', 'NAME', 'BUTTON')">
+                                Denver Iowa</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC10" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Kentucky', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Kentucky</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC11" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Missouri', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Missouri</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC12" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'New York', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver New York</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC13" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'NC', 'USA', 'NAME', 'BUTTON')">
+                                Denver North Carolina</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC14" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Ohio', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Ohio</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC15" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Oklahoma', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Oklahoma</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC16" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'PA', 'USA', 'NAME', 'BUTTON')">
+                                Denver Pennsylvania</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC17" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'South Carolina', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver South Carolina</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC18" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'Tennessee', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver Tennessee</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC19" 
+                                onclick="getWeatherInformationApiUrl('Denver City', 'TX', 'USA', 'NAME', 'BUTTON')">
+                                Denver City Texas</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC20" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'West Virginia', 'USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver West Virginia</button>
+                        </p>
+                        <h3 style="text-align: center; margin-top: 10px; margin-bottom: 10px; font-weight: bold;">
+                            Other Denver Cities (Non-USA)
+                        </h3>
+                        <p style="text-align: center;">
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC21" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'AU', 'NON-USA', 'NAME', 'BUTTON')">
+                                Denver Australia</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC22" 
+                                onclick="getWeatherInformationApiUrl('Denver', 'England', 'NON-USA', 'COORDINATES', 
+                                    'BUTTON')">
+                                Denver England</button>
+                            <button class="aCityButtonCombinedColumn" id="theCityButtonC23" 
+                                onclick="getWeatherInformationApiUrl('New Denver', 'CA', 'NON-USA', 'NAME', 'BUTTON')">
+                                New Denver Canada</button>
+                        </p>
                     </div>
                 </div>
             </div>
