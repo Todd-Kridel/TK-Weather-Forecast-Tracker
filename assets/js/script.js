@@ -1369,6 +1369,7 @@ if (anErrorConditionExistsApi == false) {
     theWeatherForecastDay4Summary.innerHTML = "";
     theWeatherForecastDay5InformationDisplayTextArea.innerHTML = "";
     theWeatherForecastDay5Summary.innerHTML = "";
+    var theWeatherForecastDay5Summaries = ["", "", "", "", "", "", "", ""];
     var theForecastArrayThatIsBeingProcessed = "";
     //
     // Establish a date-time-stamp variable.
@@ -1581,10 +1582,10 @@ if (anErrorConditionExistsApi == false) {
               theWeatherForecastProcessing;
             break;
         }
-        // Preferably obtain forecast summary records that are for the 12:00 noon time of time for all of the 5 
+        // Preferably obtain forecast summary records that are for the 12:00 noon time of weather data for all of the 5 
         // forecast days...but at many times the 5th day and occasionally the 1st day do/can have partial record sets 
         // depending on the time at which the forecast information is generated and because the free 5-day weather API 
-        // service provides only 40 sets of 3-hour-span weather data. If the 12:00 pm weather data is not available for 
+        // service provides only 40 sets of 3-hour-span weather data. If the 12:00pm weather data is not available for 
         // the 5th day forecast...then attempt to find a data-set time-span that is at close to 12:00pm; otherwise...if 
         // that desired data is not obtained by the last set/day of data...then the parse process will accept any of the 
         // time-span weather data that is available (a good-enough forecast).
@@ -1593,55 +1594,34 @@ if (anErrorConditionExistsApi == false) {
         if (  // START: complex "data[recordCounterProcess].dt_txt" if-clause
           //
           (
-          (((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
-          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary))) 
-          && (theDay5ForecastSummaryIsCompleted == false)
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
+          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary))
           ) 
           //          
-          || // or day 5 (last day) and there is not a 12:00pm data-set or a preferred next-best alternative
+          || // or day 5 (last forecast day) and there might not be a 12:00pm data-set or a preferred next-best 
+          // alternative
           (
-          ((recordDayCounter == 5) && (theDay5ForecastSummaryIsCompleted == false)) && 
-          //
-          (
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "00:00:00") && 
-          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "03:00:00") && 
-          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "06:00:00") && 
-          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "09:00:00") && 
-          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "15:00:00") && 
-          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "18:00:00") && 
-          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
-          || 
-          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "21:00:00") && 
-          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
-          )
-          //
+          (recordDayCounter == 5)  // Accept and process every 3-hour time-span weather data record that is available.
+            // Add each processed Day 5 summary to a separate array temporary storage location for eventual assessment.
           )
           ) {  // END: "data[recordCounterProcess].dt_txt" if-clause for passage to the set of next sections
           ////////
-          if (recordDayCounter == 5) {
-            theDay5ForecastSummaryIsCompleted = true;
-          }
+          var theForecastTime = "";
           var theForecastSummaryIconBackgroundColor = "daytime";
           // ( or if (((data[recordCounterProcess].dt_txt).indexOf("nextTimeRecordForForecastSummary")) >= 0) )
           // Include for display only the 12:00pm time (if any) record of each forecast; or otherwise the record that is
           // closest to 12:00pm if that record is not available. Possible time data: 00:00, 03:00, 06:00, 09:00, 12:00, 
           // 15:00, 18:00, 21:00.
           if (((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") {
-            theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 16))) + "pm";
+            theForecastTime = (((data[recordCounterProcess].dt_txt).substring(11, 19))) + "pm";
             theForecastSummaryIconBackgroundColor = "daytime";
             }
-          else if (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary) {
+          else if ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary) || 
+            (recordDayCounter == 5)) {
             theForecastTime = nextTimeRecordForForecastSummary;
+            if (recordDayCounter == 5) {
+              theForecastTime = (data[recordCounterProcess].dt_txt).substring(11, 19);
+            }
             if ((theForecastTime == "12:00:00") || (theForecastTime == "15:00:00")) {
               theForecastTime = theForecastTime + "pm";
               theForecastSummaryIconBackgroundColor = "daytime";
@@ -1707,26 +1687,59 @@ if (anErrorConditionExistsApi == false) {
           //
           switch (recordDayCounter) {
             case 1:
-              theWeatherForecastDay1Summary.innerHTML = theWeatherForecastDay1Summary.innerHTML + 
-                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              theWeatherForecastDay1Summary.innerHTML = theWeatherForecastDaySummaryTextDate + 
+                theWeatherForecastDaySummaryTextDetails;
               break;
             case 2:
-              theWeatherForecastDay2Summary.innerHTML = theWeatherForecastDay2Summary.innerHTML + 
-                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              theWeatherForecastDay2Summary.innerHTML = theWeatherForecastDaySummaryTextDate + 
+                theWeatherForecastDaySummaryTextDetails;
               break;
             case 3:
-              theWeatherForecastDay3Summary.innerHTML = theWeatherForecastDay3Summary.innerHTML + 
-                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              theWeatherForecastDay3Summary.innerHTML = theWeatherForecastDaySummaryTextDate + 
+                theWeatherForecastDaySummaryTextDetails;
               break;
             case 4:
-              theWeatherForecastDay4Summary.innerHTML = theWeatherForecastDay4Summary.innerHTML + 
-                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
+              theWeatherForecastDay4Summary.innerHTML = theWeatherForecastDaySummaryTextDate + 
+                theWeatherForecastDaySummaryTextDetails;
               break;
             case 5:
-              theWeatherForecastDay5Summary.innerHTML = theWeatherForecastDay5Summary.innerHTML + 
-                theWeatherForecastDaySummaryTextDate + theWeatherForecastDaySummaryTextDetails;
-              break;
+              switch ((data[recordCounterProcess].dt_txt).substring(11, 19)) {
+                case "00:00:00":
+                  theWeatherForecastDay5Summaries[0] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "03:00:00":
+                  theWeatherForecastDay5Summaries[1] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "06:00:00":
+                  theWeatherForecastDay5Summaries[2] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "09:00:00":
+                  theWeatherForecastDay5Summaries[3] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "12:00:00":
+                  theWeatherForecastDay5Summaries[4] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "15:00:00":
+                  theWeatherForecastDay5Summaries[5] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "18:00:00":
+                  theWeatherForecastDay5Summaries[6] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+                case "21:00:00":
+                  theWeatherForecastDay5Summaries[7] = theWeatherForecastDaySummaryTextDate + 
+                    theWeatherForecastDaySummaryTextDetails;
+                break;
+              }
+            break;
           }
+          //
           // for an alternative dynamic data-access idea
           //(theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML =   // or perhaps use '.valueOf()'
           //  (theForecastSummaryDisplayThatIsBeingProcessed.toString()).innerHTML + theWeatherForecastDaySummaryTextDate + 
@@ -1797,7 +1810,40 @@ if (anErrorConditionExistsApi == false) {
       }  // END: else statement that is for the check about residual current-date records that are in the forecast 
          // data-set
     }  // END: "recordCounterProcess" for-loop for record parsing; to move to the next record in the set of all of 
-    //  the records that were downloaded from the API service
+      // the records that were downloaded from the API service
+    //
+    // Evaluate and further process all of the processed Day 5 Summaries to determine about the one that is the best 
+    // one for the overall summary of the weather of the day...among the possible choices (which is most likely a 
+    // data-set that does not include a complete set of time-span options...including a desired 12:00pm span). 
+    // Include for display the 12:00pm time (if any) record of the forecast; or otherwise the record that is
+    // closest to 12:00pm if that record is not available. Possible time data: 00:00, 03:00, 06:00, 09:00, 12:00, 
+    // 15:00, 18:00, 21:00.
+    var theWeatherForecastDay5SummaryProcessing = "";
+    if (theWeatherForecastDay5Summaries[0] != "") {  // Start by accepting 00:00 (12:00am) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[0];
+    }
+    if (theWeatherForecastDay5Summaries[7] != "") {  // Then accept 21:00 (9:00pm) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[7];
+    }
+    if (theWeatherForecastDay5Summaries[1] != "") {  // Then accept 03:00 (3:00am) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[1];
+    }
+    if (theWeatherForecastDay5Summaries[6] != "") {  // Then accept 18:00 (6:00pm) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[6];
+    }
+    if (theWeatherForecastDay5Summaries[2] != "") {  // Then accept 06:00 (6:00am) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[2];
+    }
+    if (theWeatherForecastDay5Summaries[5] != "") {  // Then accept 15:00 (3:00pm) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[5];
+    }
+    if (theWeatherForecastDay5Summaries[3] != "") {  // Then accept 09:00 (9:00am) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[3];
+    }
+    if (theWeatherForecastDay5Summaries[4] != "") {  // Then accept 12:00 (12:00pm) if it is available.
+      theWeatherForecastDay5SummaryProcessing = theWeatherForecastDay5Summaries[4];
+    }          
+    theWeatherForecastDay5Summary.innerHTML = theWeatherForecastDay5SummaryProcessing;
     //
     // Add to the current-day "more" information section the forecast compilation information for possible future
     // review and copying.
