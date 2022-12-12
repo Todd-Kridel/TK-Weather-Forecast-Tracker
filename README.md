@@ -4,12 +4,7 @@
 
 This current Module 6 Challenge assignment -- a weather dashboard/tracker application -- provided a very-good mechanism for continued learning with accessing/using external API data systems and processing the received data for an application purpose; and for expanded learning about JavaScript programming in enhanced/advanced ways; and for dealing with webpage layout and related styling and linking/tracking/eventing webpage elements with the related functional processes. A large portion and effort of my personal assignment was for a significant attempt to consider about and address concerns of data validation/flexibility and screen responsiveness/flexibility for various functions and processes and data/data conditions; as well as for varied usages/implementations of global-scope variables and local-scope variables. The assignment was also a good mechanism for examining and analyzing and understanding and then designing the styling of the appearance of the application webpage. That styling was initially done in an inline way in the main webpage-definition (HTML) file for reasons of initial-timing circumstances...but then eventually much of the styling components were moved to an external Cascading Style Sheets (CSS) file for reasons of ongoing over-time system maintenance...and during that move-to-CSS time a re-appreciation about the CSS concept and system occurred. The assignment and the bonus-added "Application Status" text area also provided good continued consideration and programming about application error/bug testing and QA testing processes and concerns.
 
-Many extra features and functionality were added to the application by the programmer...just for fun and curiosity and extra practice/education...and especially because the assignment submission was delayed because of schedule conditions/conflicts -- a need to fully-focus on a more-important class project assignment -- that occurred when this challenge assignment was initially assigned. The "Usage" section at below details about the features that were implemented for this challenge assignment application. The programming of this assignment was MUCH assisted and enhanced because the programmer decided to implement a weather forecast information component to the programmer's class project assignment that occurred. The API-usage knowledge that occurred from the pre-learning that occurred for the project assignment was definitely helpful for expanding the features of this challenge assignment. The following picture shows the appearance of the weather feature of the project assignment sub-webpage:
-
-![an example view of the appearance of the programmer's related weather-search webpage](./assets/images/Campsite-Finder%20Project%20Application%20--%20Weather%20Forecast%20Feature.jpg)
-
-The following URL is for the GitHub Pages published public view of Todd Kridel's Team Project assignment webpage: "https://alester77.github.io/Project-Camp/index.html" (specifically "https://alester77.github.io/Project-Camp/weather.html#campingTripNotesDisplayArea" for the weather forecast sub-webpage...but a desired campsite must first be selected from the main application webpage).
-
+Many extra features and functionality were added to the application by the programmer...just for fun and curiosity and extra practice/education...and especially because the assignment submission was delayed because of schedule conditions/conflicts -- a need to fully-focus on a more-important class project assignment -- that occurred when this challenge assignment was initially assigned. The "Usage" section at below details about the features that were implemented for this challenge assignment application. The programming of this assignment was MUCH assisted and enhanced because the programmer decided to implement a weather forecast information component to the programmer's class project assignment that occurred. The API-usage knowledge that occurred from the pre-learning that occurred for the project assignment was definitely helpful for expanding the features of this challenge assignment. Refer to below for a picture that shows the appearance of the weather feature of the project assignment sub-webpage.
 
 ----
 
@@ -59,11 +54,19 @@ To use this password generator webpage...
 * Use the "Application Status" field (at the bottom of the search history button area/panel) to view much helpful/interesting additional information about the ongoing functioning of the current usage session of the application.
 * Re-size the application window to view about how the window adapts to changing size conditions.
 
+[ Challenge Assignment Appearance 
+]
 The following picture shows the appearance of the completed (for-now) challenge assignment application webpage:
 
 ![an example view of the appearance of the weather-search webpage](./assets/images/TK-Weather-Forecast-Tracker.jpg)
 
 The following URL is for the GitHub Pages published public view of Todd Kridel's Coding Bootcamp Module 6 Challenge assignment webpage: "https://todd-kridel.github.io/TK-Weather-Forecast-Tracker".
+
+[ Related Project Assignment Appearance ]
+
+![an example view of the appearance of the programmer's related weather-search webpage](./assets/images/Campsite-Finder%20Project%20Application%20--%20Weather%20Forecast%20Feature.jpg)
+
+The following URL is for the GitHub Pages published public view of Todd Kridel's Team Project assignment webpage: "https://alester77.github.io/Project-Camp/index.html" (specifically "https://alester77.github.io/Project-Camp/weather.html#campingTripNotesDisplayArea" for the weather forecast sub-webpage...but a desired campsite must first be selected from the main application webpage).
 
 ## Credits
 
