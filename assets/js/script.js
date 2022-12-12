@@ -327,7 +327,7 @@ theIndexSequenceNumberProcessing = (theCitySearchHistoryButtonAreaClickTargetObj
 // actually be processed. If a city name button was clicked then re-issue the involved previous city search (if any). 
 // If a city search history record Delete button was clicked...then delete/clear the involved corresponding city 
 // search history record (if any).
-if (theIndexSequenceNumberProcessing.indexOf("0") != -1) {  
+if (theIndexSequenceNumberProcessing.indexOf("0") == 0) {  
   // If the button index number has a leading 0 then remove the 0.
   theCurrentActiveHistorySearchListSequenceNumber = theIndexSequenceNumberProcessing[1];
 }
@@ -1581,19 +1581,53 @@ if (anErrorConditionExistsApi == false) {
               theWeatherForecastProcessing;
             break;
         }
-        // Preferably obtain forecast records that are for the 12:00 noon time of time for all of the 5 forecast days...
-        // but at many times the 5th day and occasionally the 1st day do/can have partial record sets depending on the 
-        // time at which the forecast information is generated and because the free 5-day weather API service provides 
-        // only 40 sets of 3-hour-span weather data. If the 12:00 pm weather data is not available for the 5th day 
-        // forecast...then attempt to find a data-set time-span that is at close to 12:00pm; otherwise...if that desired 
-        // data is not obtained by the last set/day of data...then the parse process will accept any of the time-span 
-        // weather data that is available (a good-enough forecast).
-        if (((((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
-          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary))) && (
-          theDay5ForecastSummaryIsCompleted == false))           
-          || // (or day 5 (last day) and there is not a 12:00pm data-set or a preferred next-best alternative)
-          ((recordDayCounter == 5) && (theDay5ForecastSummaryIsCompleted == false))) {
+        // Preferably obtain forecast summary records that are for the 12:00 noon time of time for all of the 5 
+        // forecast days...but at many times the 5th day and occasionally the 1st day do/can have partial record sets 
+        // depending on the time at which the forecast information is generated and because the free 5-day weather API 
+        // service provides only 40 sets of 3-hour-span weather data. If the 12:00 pm weather data is not available for 
+        // the 5th day forecast...then attempt to find a data-set time-span that is at close to 12:00pm; otherwise...if 
+        // that desired data is not obtained by the last set/day of data...then the parse process will accept any of the 
+        // time-span weather data that is available (a good-enough forecast).
+        //
+        ////////
+        if (  // START: complex "data[recordCounterProcess].dt_txt" if-clause
           //
+          (
+          (((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "12:00:00") || 
+          (((data[recordCounterProcess].dt_txt).substring(11, 19)) == nextTimeRecordForForecastSummary))) 
+          && (theDay5ForecastSummaryIsCompleted == false)
+          ) 
+          //          
+          || // or day 5 (last day) and there is not a 12:00pm data-set or a preferred next-best alternative
+          (
+          ((recordDayCounter == 5) && (theDay5ForecastSummaryIsCompleted == false)) && 
+          //
+          (
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "00:00:00") && 
+          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "03:00:00") && 
+          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "06:00:00") && 
+          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "09:00:00") && 
+          (recordCounterProcessRemaining == 0))  // accept if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "15:00:00") && 
+          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "18:00:00") && 
+          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
+          || 
+          ((((data[recordCounterProcess].dt_txt).substring(11, 19)) == "21:00:00") && 
+          (recordCounterProcessRemaining >= 0))  // accept regardless of if the last data item of the day
+          )
+          //
+          )
+          ) {  // END: "data[recordCounterProcess].dt_txt" if-clause for passage to the set of next sections
+          ////////
           if (recordDayCounter == 5) {
             theDay5ForecastSummaryIsCompleted = true;
           }
