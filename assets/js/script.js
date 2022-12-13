@@ -705,7 +705,8 @@ if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
   // search record can be added.
   if (theCurrentCitySearchHistoryListAmountOfActualRecords == 13) {
     // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
-    theCitySearchHistoryList.pop();
+    theCurrentActiveHistorySearchListSequenceNumber = 13;
+    doDeleteExistingCitySearchFromSearchHistory();
     theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
       "The city search history list currently is full and a new search record has to be added. Therefore the " + 
       "last/oldest search record will be removed from the list." + "\n";
