@@ -828,7 +828,7 @@ else {
 // new blank city search record at the bottom (oldest) record position of the list. For that end-of-list processing...
 // do not use the regular "doAddNewCitySearchRecordToSearchHistoryList" function that adds actual search records to 
 // the top/beginning of the array and button list.
-aNewCitySearchHistoryRecord = {"theCityName" : "", "theStateName" : "", "theSearchDate" : "AFTER_DELETE"};
+aNewCitySearchHistoryRecord = {"theCityName" : "", "theStateName" : "", "theSearchDate" : ""};
 // Add the blank record but do not increment the count amount of the actual records.
 theCitySearchHistoryList.push(aNewCitySearchHistoryRecord); 
 // Store the new current city search history list to local storage memory.
