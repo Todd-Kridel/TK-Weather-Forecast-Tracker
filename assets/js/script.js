@@ -1276,11 +1276,11 @@ if (anErrorConditionExistsApi == false) {
     // Display the weather summary information.
     theWeatherCurrentDaySummary.innerHTML = "** PROCESSING SUMMARY INFORMATION **";
     // Isolate and display the weather graphics icon of the day weather information.
-    //theWeatherCurrentDayIcon.innerHTML = "<img src='http:\\\\openweathermap.org\\img\\wn\\" + 
+    //theWeatherCurrentDayIcon.innerHTML = "<img src='https:\\\\openweathermap.org\\img\\wn\\" + 
     //  data.weather[0].icon + ".png' />";
-      // <img src='http:\\openweathermap.org\img\wn\<icon file name>' />
+      // <img src='https:\\openweathermap.org\img\wn\<icon file name>' />
       // file name from: (data.weather[0].icon);
-    //window.alert("<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' />");
+    //window.alert("<img src='https:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' />");
     //
     theWeatherCurrentDayInformationDisplayTextArea.innerHTML = 
       theWeatherCurrentDayInformationDisplayTextArea.innerHTML + theWeatherCurrent;
@@ -1292,7 +1292,7 @@ if (anErrorConditionExistsApi == false) {
     theCurrentDayWind = data.wind.speed;
     theCurrentDayHumidity = data.main.humidity;
     theCurrentDayGraphicsIcon = "&nbsp&nbsp" + 
-    "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' " + 
+    "<img src='https:\\\\openweathermap.org\\img\\wn\\" + data.weather[0].icon + ".png' " + 
     "style='background-color: ";
     if ((data.weather[0].icon).indexOf("d") != -1) {  // daytime icon indicator
     theCurrentDayGraphicsIcon = theCurrentDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
@@ -1653,7 +1653,7 @@ if (anErrorConditionExistsApi == false) {
           theForecastDayWind = data[recordCounterProcess].wind.speed;
           theForecastDayHumidity = data[recordCounterProcess].main.humidity;
           theForecastDayGraphicsIcon = "&nbsp&nbsp&nbsp&nbsp" + 
-          "<img src='http:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
+          "<img src='https:\\\\openweathermap.org\\img\\wn\\" + data[recordCounterProcess].weather[0].icon + ".png' " + 
           "style='background-color: ";
           if (theForecastSummaryIconBackgroundColor == "daytime") {  // daytime indicator
             theForecastDayGraphicsIcon = theForecastDayGraphicsIcon + "rgb(209, 240, 255)";  // daytime sky color
