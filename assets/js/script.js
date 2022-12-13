@@ -71,10 +71,10 @@ theSearchButtonNote.innerHTML =
   "element can be entered at the end of a city name ... such as \"Denver\" ... that exists in different states ... " + 
   "but a record will be retrieved only if the specified city has a record in the API \"City\" search database that " + 
   "is being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
-  "the one that was intended for the search. Also/Instead...a \",&nbspCountry\" search element can also be specified " + 
-  "instead of a state specification to search for non-USA cities. For state/country specifications...at some times " + 
+  "the one that was intended for the search. Also/Instead ... a \",&nbspCountry\" search element can also be specified " + 
+  "instead of a state specification to search for non-USA cities. For state/country specifications ... at some times " + 
   "a state/country abbreviation or code has to be used instead of a spelled-out state/country name. If a search does " + 
-  "not work...then you can try a new search with the other type of state/country specification.";
+  "not work ... then you can try a new search with the other type of state/country specification.";
 var theSearchButtonNoteMode = "hidden";
 var SearchByMode = "";
 // 
