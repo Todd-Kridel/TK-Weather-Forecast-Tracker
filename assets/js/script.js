@@ -675,7 +675,7 @@ if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
   }
   // Display/Re-Display the re-organized search history list details of the current city search history list to the 
   // console.log system for possible diagnostic inspection viewing.
-  console.log(theCitySearchHistoryList);
+  //console.log(theCitySearchHistoryList);
 }
 
 
@@ -723,16 +723,15 @@ if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
     // aNewCitySearchHistoryRecordShouldBeAdded = true;
   }
   if (aNewCitySearchHistoryRecordShouldBeAdded == true) {
-    // Check about if the current city search history list is full. If so...then remove the last/oldest record so a new 
-    // search record can be added.
+    // Check about if the current city search history list is full at 13 records. If so...then remove the last/oldest 
+    // record so a new search record can be added at the top/beginning of the list (array and button list).
     if (theCurrentCitySearchHistoryListAmountOfActualRecords == 13) {
-      // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
-      // the top/beginning of the array and button list.
-      theCitySearchHistoryList.pop();
+      // Delete the last/oldest history record that is now at position 13...soon to be 14...in the list that has 
+      // maximum of 13 records.
       theCurrentCitySearchHistoryListAmountOfActualRecords = theCurrentCitySearchHistoryListAmountOfActualRecords - 1;
       theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
         "The city search history list currently is full and a new search record has to be added. Therefore the " + 
-        "last/oldest search record will be removed from the list." + "\n";
+        "last/oldest search record has been removed from the list." + "\n";
     }
     // Add the new city search record at the top (most-recent) record position of the list.
     theCitySearchHistoryList.unshift(aNewCitySearchHistoryRecord);
@@ -847,9 +846,6 @@ localStorage.setItem("TKWeatherForecastTrackerPreviousSearchHistory",
   JSON.stringify(theCitySearchHistoryList));
 // Display the new arrangement of search history records/buttons.
 doDisplayTheExistingCitySearchHistoryListButtons();
-if (theCurrentCitySearchHistoryListAmountOfActualRecords == 0) {
-  doDisplayTheExistingCitySearchHistoryListButtons();
-}
 }
 
 
