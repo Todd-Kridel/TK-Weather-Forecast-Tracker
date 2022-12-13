@@ -701,17 +701,6 @@ if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
   //window.alert("a test for a duplicate city search history list record for " + theCityProcessing + " " + 
   //theStateProcessing);
   //
-  // Check about if the current city search history list is full. If so...then remove the last/oldest record so a new 
-  // search record can be added.
-  if (theCurrentCitySearchHistoryListAmountOfActualRecords == 13) {
-    // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
-    theCurrentActiveHistorySearchListSequenceNumber = 13;
-    doDeleteExistingCitySearchFromSearchHistory();
-    theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
-      "The city search history list currently is full and a new search record has to be added. Therefore the " + 
-      "last/oldest search record will be removed from the list." + "\n";
-  }
-  //
   for (var theLoopCounter = 0; theLoopCounter < theCurrentCitySearchHistoryListAmountOfActualRecords; 
     theLoopCounter++) {
     if ((theCitySearchHistoryList[theLoopCounter].theCityName == theCityProcessing) && (
@@ -734,6 +723,17 @@ if (theCurrentCitySearchHistoryListAmountOfActualRecords > 0) {
     // aNewCitySearchHistoryRecordShouldBeAdded = true;
   }
   if (aNewCitySearchHistoryRecordShouldBeAdded == true) {
+    // Check about if the current city search history list is full. If so...then remove the last/oldest record so a new 
+    // search record can be added.
+    if (theCurrentCitySearchHistoryListAmountOfActualRecords == 13) {
+      // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
+      // the top/beginning of the array and button list.
+      theCitySearchHistoryList.pop();
+      //
+      theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextArea.innerHTML + 
+        "The city search history list currently is full and a new search record has to be added. Therefore the " + 
+        "last/oldest search record will be removed from the list." + "\n";
+    }
     // Add the new city search record at the top (most-recent) record position of the list.
     theCitySearchHistoryList.unshift(aNewCitySearchHistoryRecord);
     // Delete the last/oldest history record that is now at position 14 in the list that has maximum of 13 records.
