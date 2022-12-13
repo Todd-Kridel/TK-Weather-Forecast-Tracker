@@ -67,13 +67,13 @@ var theCitySearchButton = document.getElementById("theCitySearchButton");
 var theSearchButtonNoteButton = document.getElementById("theSearchButtonNoteButton");
 var theSearchButtonNote = document.getElementById("theSearchButtonNote");
 theSearchButtonNote.innerHTML = 
-  "(Note: Spelling must be correct in order for the search process to be successful. A \",&nbspState\" search " + 
+  "Note: Spelling must be correct in order for the search process to be successful. A \",&nbspState\" search " + 
   "element can be entered at the end of a city name ... such as \"Denver\" ... that exists in different states ... " + 
   "but a record will be retrieved only if the specified city has a record in the API \"City\" search database that " + 
   "is being used by this program. The retrieved city might be a default (closest-match) city that is different than " + 
-  "the one that was intended for the search. **&nbspNote: a \",&nbspCountry\" search element can also be specified. " + 
-  "Also...for state/country specifications...at some some times a state/country abbreviation or code has to be used " + 
-  "instead of a spelled-out state/country name.&nbsp**";
+  "the one that was intended for the search. Also...a \",&nbspCountry\" search element can also be specified. For " + 
+  "state/country specifications...at some some times a state/country abbreviation or code has to be used instead of " + 
+  "a spelled-out state/country name.";
 var theSearchButtonNoteMode = "hidden";
 var SearchByMode = "";
 // 
