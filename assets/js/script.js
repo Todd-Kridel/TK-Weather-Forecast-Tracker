@@ -507,7 +507,7 @@ theApplicationStatusDisplayTextArea.innerHTML = theApplicationStatusDisplayTextA
   theCurrentCitySearchHistoryListAmountOfActualRecords + " records." + "\n";
 // Display/Re-Display the calculated/re-calculated details of the current city search history list to the console.log 
 // system for possible diagnostic inspection viewing.
-console.log(theCitySearchHistoryList);
+//console.log(theCitySearchHistoryList);
 }
 
 
