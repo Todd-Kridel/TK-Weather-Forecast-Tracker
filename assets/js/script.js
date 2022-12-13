@@ -362,6 +362,14 @@ if (((theCitySearchHistoryButtonAreaClickTargetObject.id).indexOf("Name") != -1)
     theCurrentActiveSearchCityForHistory.theCityName, theCurrentActiveSearchCityForHistory.theStateName, 
       "USA", "NAME", "FIELD");
 }
+else if (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName == "") {
+  //window.alert("The clicked city search history button currently does not contain a search history record.");
+  theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
+    "The clicked city search history button currently does not contain a search history record." + "\n" + 
+    "\n";
+  // Highlight the "More Information" field of the Current-Day Information display area.
+  doHighlightTheMoreInformationTextAreaUponUpdate();
+}
 //
 if (((theCitySearchHistoryButtonAreaClickTargetObject.id).indexOf("Delete") != -1) && 
 (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName != "")) {
@@ -379,7 +387,7 @@ if (((theCitySearchHistoryButtonAreaClickTargetObject.id).indexOf("Delete") != -
   // involved search history button section row.
   doDeleteExistingCitySearchFromSearchHistory();
 }
-if (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName == "") {
+else if (theCitySearchHistoryList[(theCurrentActiveHistorySearchListSequenceNumber - 1)].theCityName == "") {
   //window.alert("The clicked city search history button currently does not contain a search history record.");
   theWeatherCurrentDayInformationDisplayTextArea.innerHTML = theWeatherCurrentDayInformationDisplayTextArea.innerHTML + 
     "The clicked city search history button currently does not contain a search history record." + "\n" + 
