@@ -589,9 +589,11 @@
             </h2>
             <br />  <!-- intentional space -->
             <p id="weather-note" style="font-weight: bolder; color: black; text-align: center;">
-                Latitude:&nbsp<input id="theCityLocationLatitudeField" style="width: 15ch"/>
+                Latitude:&nbsp<input id="theCityLocationLatitudeField" style="width: 15ch" 
+                onclick="doDisplayAdditionalHelpfulInformationNote()"/>
                 &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
-                Longitude:&nbsp<input id="theCityLocationLongitudeField" style="width: 15ch"/>
+                Longitude:&nbsp<input id="theCityLocationLongitudeField" style="width: 15ch" 
+                onclick="doDisplayAdditionalHelpfulInformationNote()"/>
             </p>
             <p id="weather-note" style="font-size: 15px; font-weight: normal; color: black; text-align: center;">
                 The forecast information search of this section is based on latitude and longitude coordinates that 
@@ -669,7 +671,11 @@
 // Colorado will be used.
 
 
+////////////////////////////////
 // a section that is to be run for page initialization upon page load.
+//
+
+
 var theCityLatitudeField = document.getElementById("theCityLocationLatitudeField");
 var theCityLongitudeField = document.getElementById("theCityLocationLongitudeField");
 var anEntryErrorOccurred = false;
@@ -688,6 +694,32 @@ theCityWeatherForecastDisplayArea.innerHTML = "\n" +
     "\n" + 
     "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
     "Denver Colorado will be used.&nbsp****";
+
+
+////////////////////////////////
+// event listener functions
+//
+
+
+// for the inline "onclick" events of the "theCityLocationLatitudeField" HTML field element and the 
+// "theCityLocationLongitudeField" HTML field element
+function doDisplayAdditionalHelpfulInformationNote() {
+theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **";
+theCityWeatherForecastDisplayArea.innerHTML = "\n" + 
+    "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
+    "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
+    "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
+    "that are within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 " + 
+    "longitude (the Prime Meridian). That city location information is documented at the website " + "\n" + 
+    "'https://blog.batchgeo.com/cities-by-latitude-and-longitude/'." + "\n" + 
+    "\n" + 
+    "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
+    "Denver Colorado will be used.&nbsp****";
+}
+
+////////////////////////////////
+// general functions
+//
 
 
 function doPreProcessForGettingCityLatitudeAndLongitudeCoordinateBasedWeatherForecastInformation() {
