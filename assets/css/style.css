@@ -165,11 +165,13 @@ button {
   border-radius: 5px;
 }
 
-#theWeatherIconInformationButton:hover {
+#theWeatherIconInformationButton:hover, 
+#searchForCityLatitudeLongitudeCoordinates:hover {
   border: 3px solid purple;
 }
 
-#theWeatherIconInformationButton:active {
+#theWeatherIconInformationButton:active, 
+#searchForCityLatitudeLongitudeCoordinates:active {
   border: 3px solid yellow;
 }
 
@@ -195,6 +197,32 @@ button {
 
 .aCityButtonCombinedColumn:active {
   border: 3px solid yellow;
+}
+
+#searchForCityLatitudeLongitudeCoordinates {
+  color: white;
+  background-color: purple;
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+#submitCoordinateBasedWeatherApiInformation {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  color: black;
+  background-color: gray;
+  border: 5px double orange;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+#submitCoordinateBasedWeatherApiInformation:hover {
+  background-color: blue;
+}
+
+#submitCoordinateBasedWeatherApiInformation:active {
+  border: 5px double yellow;
 }
 
 /*  MEDIA QUERIES  (for beyond the responsiveness that is established through inline HTML CSS) */

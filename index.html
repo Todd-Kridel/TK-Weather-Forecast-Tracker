@@ -290,7 +290,7 @@
                                 <p style="width: 100%; text-align: center; padding: 0px; margin: 0px; 
                                     font-size: 15px; line-height: 20px;">
                                     <button id="theWeatherIconInformationButton" 
-                                        onclick="window.open('https:\\\\openweathermap.org\\weather-conditions\\')">
+                                        onclick="window.open('https:\/\/openweathermap.org\/weather-conditions')">
                                         More Information About The Weather Status/Type Graphics Icons
                                     </button>
                                 </p>
@@ -462,7 +462,7 @@
                 </div>
             </div>
             <div id="theLeftColumnAndRightColumnSection" style="display: block; flex-direction: column; width: 100%; 
-                border-top: 3px solid gray;">
+                border-top: 3px solid gray; border-bottom: 3px solid gray;">
                 <div id="theLeftColmnAndRightColumnAreaNaviationArea" style="display: flex; 
                     flex-direction: column; width: auto;">
                     <div class="theLeftColumnAndRightColumnAreaButtonArea" id="theDenverButtons" style="width: auto; 
@@ -574,11 +574,357 @@
         </div>
     </div>
 
+        <!-- START: Todd's Latitude-and-Longitude Weather section //////////////////////////////////////// -->
+        <!-- (based on code that I programmed for my Project assignment)-->
+        <!-- -->
+        <!-- -->
+        <div class="sectionContainer">
+        <div class="sectionHeader">
+            <br />  <!-- intentional space -->   
+            <h2 style="text-align: center; font-size: 25px; margin-top: 15px;">
+                Weather Forecast Information Based On Latitude And Longitude Coordinates<br/>
+                <span style="font-size: 15px; font-weight: normal;">
+                    -- For Desired Cities Names That Are Not In the Upper-Section API City Name Database --
+                </span>
+            </h2>
+            <br />  <!-- intentional space -->
+            <p id="weather-note" style="font-weight: bolder; color: black; text-align: center;">
+                Latitude:&nbsp<input id="theCityLocationLatitude" style="width: 15ch"/>
+                &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
+                Longitude:&nbsp<input id="theCityLocationLongitude" style="width: 15ch"/>
+            </p>
+            <p id="weather-note" style="font-size: 15px; font-weight: normal; color: black; text-align: center;">
+                The forecast information search of this section is based on latitude and longitude coordinates that 
+                either are pre-known or are obtained (searched for and copied) from the LatLong website that is accessed 
+                by the using the go-to-website button that is at below...and then entered by using the entry fields 
+                that are at above.
+            </p>
+        </div>
+        <br />  <!-- intentional space -->
+        <div id="displaySectionForCityWeatherInformation" style="display: flex; justify-content: center; 
+            margin: -15px;">
+            <div>
+                <textarea id="displayAreaForCityWeatherInformation" readonly style="width: 300px; height: 350px; 
+                    padding: 30px; margin-top: 20px; margin-bottom: 20px; background-color: white; color: black; 
+                    border: 10px double darkblue; resize: none; overflow: auto;">
+                </textarea>
+            </div>
+        </div>
+        <div id="buttonArea" 
+            style="align-items: center">
+            <br />  <!-- intentional space -->
+            <div>
+            <p style=
+                "text-align: center;">
+                <button class="aLatitudeAndLongitudeCoordinateCitySearchSectionButton" 
+                    id="searchForCityLatitudeLongitudeCoordinates" 
+                    onclick="window.open('https:\/\/www.latlong.net')">
+                    Get Latitude and Longitude Coordinates of Desired Cities
+                </button>
+                <br/>  <!-- intentional space -->
+                <button class="aLatitudeAndLongitudeCoordinateCitySearchSectionButton" 
+                    id="submitCoordinateBasedWeatherApiInformation" 
+                    onclick="doPreProcessForGettingCityLatitudeAndLongitudeCoordinateBasedWeatherForecastInformation()">
+                    Get 5-Day Weather Forecast For The User-Specified Coordinates (if any) At Above
+                </button>
+            </p>
+            <br />  <!-- intentional space -->
+            <br />  <!-- intentional space -->
+            </div>
+        </div>
+        </div>
+        <br />  <!-- intentional space -->
+        <br />  <!-- intentional space -->
+        <!-- -->
+        <!-- -->
+        <!-- END: Todd's Latitude-and-Longitude Weather section ////////////////////////////////////////// -->
+    
+    </div>
+
     <footer>
 
     </footer>
 
 <script src="./assets/js/script.js"></script>
+
+<script>
+
+//////////////////////////////////////////////////////
+//
+// Todd's Latitude-and-Longitude Weather Section Process Code
+//
+//
+
+
+// based on city location information that is documented at the website 
+// "https://blog.batchgeo.com/cities-by-latitude-and-longitude/":
+//
+// The "City Latitude Coordinate" and "City Longitude Coordinate" entry fields do not accept a value of 0 because there 
+// currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude or 
+// longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities that are 
+// within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 longitude (the 
+// Prime Meridian). If non-valid coordinate information is entered...then a default coordinate-set that is for Denver 
+// Colorado will be used.
+
+
+// a section that is to be run for page initialization upon page load.
+var theCityLatitude = "";
+var theCityLongitude = "";
+var aNoCoordinateCityRecord = false;
+var theCityLatitude = document.getElementById("theCityLocationLatitude");
+var theCityLongitude = document.getElementById("theCityLocationLongitude");
+var theCityWeatherForecastDisplayArea = document.getElementById("displayAreaForCityWeatherInformation");
+theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **";
+theCityWeatherForecastDisplayArea.innerHTML = "\n" + 
+    "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
+    "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
+    "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
+    "that are within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 " + 
+    "longitude (the Prime Meridian). That city location information is documented at the website " + "\n" + 
+    "'https://blog.batchgeo.com/cities-by-latitude-and-longitude/'." + "\n" + 
+    "\n" + 
+    "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
+    "Denver Colorado will be used.&nbsp****";
+
+
+function doPreProcessForGettingCityLatitudeAndLongitudeCoordinateBasedWeatherForecastInformation() {
+// a section that is to be run for process validation upon button click for coordinate-based weather information
+if ((document.getElementById("theCityLocationLatitude").value != "") && 
+  (document.getElementById("theCityLocationLatitude").value != NaN)) {
+  //
+  theCityLatitude = document.getElementById("theCityLocationLatitude").value;
+  if ((theCityLatitude != null) && (theCityLatitude != undefined)) {
+    if (theCityLatitude == "0") {  // a 0-coordinate city search attempt
+      aNoCoordinateCitySearch = true;
+      theCityLatitude = "39.742043";  // default for Denver
+    }
+    else {
+      // Use the valid user input as-is.
+    }
+  }
+  else {
+    theCityLatitude = "39.742043";  // default for Denver
+  }
+}
+else {
+  theCityLatitude = "39.742043";  // default for Denver
+}
+//
+if ((document.getElementById("theCityLocationLongitude").value != "") && 
+  (document.getElementById("theCityLocationLongitude").value != NaN)) {
+  theCityLongitude = document.getElementById("theCityLocationLongitude").value;
+  if ((theCityLongitude != null) && (theCityLongitude != undefined)) {
+    if (theCityLongitude == "0") {  // a 0-coordinate city search attempt
+      aNoCoordinateCitySearch = true;
+      theCityLongitude = "-104.991531";  // default for Denver
+    }
+    else {
+      // Use the valid user input as-is.
+    }
+  }
+  else { 
+    theCityLongitude = "-104.991531";  // default for Denver
+  }
+}
+else {
+  theCityLongitude = "-104.991531";  // default for Denver
+}
+// If a coordinate entry error condition exists...then do not display an error message because default Denver 
+// Colorado coordinates are used instead of any user-entered error information.
+//
+// Generate/Obtain from the API service the weather forecast information for the specified city.
+doGetCoordinateBasedCityWeatherForecastAPI();
+}
+
+
+function doGetCoordinateBasedCityWeatherForecastAPI() {
+// Use the "OpenWeatherMap" API system to obtain a weather forecast for a specified city location for a selected 
+// forecast time-span starting from the current date. The location is specified in the form of latitude and longitude 
+// coordinates...and the time-span is between 1 and 5 days (with a default of 5). Those items of information are 
+// specified by query parameters in the URL string. The necessary parameters are "&lat" for latitude; and "&lon" for 
+// longitude; and "&cnt" a "count" for the amounts of days for the forecasting; and "&units=imperial" to 
+// indicate/use USA units of temperature measurement (Fahrenheit); and "&appid=<API KEY PER ACCOUNT REGISTRATION>". 
+// The OpenWeatherMap *free* "3-hour Forecast 5 days" service option...which is accessed through the "Current Weather 
+// Data" option/plan is used for this data connection.
+//
+// https://openweathermap.org/api
+//
+// Available API field names and JSON format and syntax examples are documented about at the URL 
+// "https://openweathermap.org/forecast5#data".
+//
+// Available weather symbol icon graphics that could be used for CSS styling and that are indicated in "icon" 
+// data attributes of the API data are listed and described at the URL 
+// "https://openweathermap.org/weather-conditions".
+// 
+// EXAMPLE (for Denver; Latitude/&lat: 39.742043, Longitude/&lon: -104.991531): 
+// https://api.openweathermap.org/data/2.5/forecast?lat=39.742043&lon=-104.991531&cnt=5&units=imperial&appid=993d2f12ebc448e7d897eca3a201a7c2
+//
+// <-- FUTURE ENHANCEMENT: Add a search option that is based on city name (a parameter that the API allows for)
+//
+// Build the URL--including the necessary query parameters--that is required for obtaining the desired data
+// from the API system.
+var requestWeatherUrlBase = "https://api.openweathermap.org/data/2.5/forecast";
+var weatherApiKey = "993d2f12ebc448e7d897eca3a201a7c2";
+var forecastDaySpan = "40";
+var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + theCityLatitude + "&lon=" + theCityLongitude + 
+  "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
+//window.alert(requestWeatherUrl);
+// Get the weather data from the API service.
+theCityWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
+getApi(requestWeatherUrl);
+}
+
+
+// the basic API fetch-transmit function and data response-return process function
+function getApi(requestUrl) {
+var data = null;
+fetch(requestUrl)
+.then(function (response) {
+    if (response.status === 400) {
+        //page_element.textContent = "FETCH ERROR: " + response.status;
+        console.log(response);
+    }
+    return response.json();
+}) .then(function(data){
+theCityWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
+console.log(data);
+//
+// ** NOTE/IMPORTANT: **
+// All of the code/process that is in this fetch-process-response section is in this section specifically because
+// the running of the code is time-dependent in that is MUST be run ONLY AFTER when the fetch response data
+// has been successfully and fully received by this program. 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Save to memory for later retrieval and accessing the array variable that holds the entire list of city weather
+// data records that were retrieved during the current city weather search.
+var theCityWeatherFetchResponseDataRawObject = data; 
+// Possibly at later save also to local storage.
+// localStorage.setItem("theCityWeatherFetchResponseDataRawObject", 
+//   JSON.stringify(theCityWeatherFetchResponseDataRawObject));
+// read: JSON.parse(localStorage.getItem("theCityWeatherFetchResponseDataRawObject"));
+// 
+// pseudo-function doGetCityWeatherForecastText() {  
+  //for processing the display text at ONLY AFTER when the data is available
+// Parse-Process the raw bulk data array that was returned from the fetch query to the weather API system.
+// Load from local storage for processing the array variable that holds the entire list of city  weather
+// data records that were retrieved during the current city weather search. Then return/send that array
+// variable to the main part of the program for additional processing.   
+// Use an object variable to receive the raw data-set that is from the API system.
+//
+// windows.alert(
+//  "The weather data is now being gathered. The process might be delayed " + 
+//  "depending on internet/network conditions and computer processor status " + 
+//  "conditions. When the weather information is displayed at below...click "+ 
+//  "the \"Get 5-Day Weather Forecast\" button at a 2nd time to check about " + 
+//  "if the displayed weather information changes to a different location.");
+//
+var theForecastProcessing = theCityWeatherFetchResponseDataRawObject;
+// Use a set of individual data-component string variables to hold the various weather sub-array data that
+// each will be converted to a string representation by using the object internal toString functions.
+//window.alert("theForecastingProcessing: " + theForecastProcessing);
+if (anErrorConditionExists == false) {
+  //window.alert("anErrorConditionExists == false");
+  var location = "";
+  var the5DayForecast = "";
+  //
+  // Use a compilation string variable to assemble the final weather summary information that will be displayed
+  // in the application to the user for the selected city.
+  the5DayForecast = "";
+  // 2 primary data-set arrays of weather data are in the response weather object array: "city" (for the location
+  // attributes) and "list" (for the details of the 5 forecast days).
+  //
+  // Read the city/location descriptive information.
+  // * "city" section of the source data
+  location = theForecastProcessing.city.name; 
+  //
+  basePath = theForecastProcessing.list;
+    // a section of API data path text that can be abbreviated in each reference
+  //window.alert(basePath);
+  //
+  // * "list" section of the source data: forecast data-set objects/indexes 0, 1, 2, 3, 4 for the days
+  //
+  // Loop through the 5 days and within each day of data loop through the 3-hour sets of data
+  recordDayCounter = 1;
+  recordCounterTime = 0;
+  for (recordCounterProcess = 0; recordCounterProcess < 39; recordCounterProcess++) { 
+    // include for display only the 6:00am record and the 12:00pm record and the 6:00pm record
+    //window.alert(recordDayCounter);
+      //if ((recordCounterTime == 0) || (recordCounterTime == 2) || (recordCounterTime ==  4)) {
+        // alternate: ((recordCounterTime == 1) || (recordCounterTime == 3) || (recordCounterTime ==  5))
+        // an experimented-with search-reduction method that would exclude certain time/weather data that
+        // was not applicable to the trip (such as very early and very late in the day) but the API data
+        // seems to be based on the exact current time of information download and therefore the API 40
+        // data-sets shuffle as time passes and therefore the isolation data-set numbers also change and 
+        // cannot easily be isolated without tediously evaluating the time component of each time data
+        // element
+      if ((((basePath[recordCounterProcess].dt_txt).indexOf("06:00:00")) >= 0) || 
+        (((basePath[recordCounterProcess].dt_txt).indexOf("12:00:00")) >= 0) || 
+        (((basePath[recordCounterProcess].dt_txt).indexOf("18:00:00")) >= 0)) {
+        //window.alert(basePath[recordCounterProcess].dt_txt);
+        the5DayForecast = the5DayForecast + 
+        location + "\n" + 
+        "=================================" + "\n" + 
+        //"DAY " + recordDayCounter + " FORECAST FOR" + "\n" + 
+        "MORNING-MIDDAY-EVENING TIME" + "\n" + 
+        "WEATHER FORECAST INFORMATION:" + "\n" + 
+        "for Date/Time: " + basePath[recordCounterProcess].dt_txt + "\n" + 
+        "---------------------------------" + "\n" + 
+        "Temperature: " + basePath[recordCounterProcess].main.temp + "F" + "\n" + 
+        "Temperature-Minimum: " + basePath[recordCounterProcess].main.temp_min + "F" + "\n" + 
+        "Temperature-Maximum: " + basePath[recordCounterProcess].main.temp_max + "F" + "\n" + 
+        "Description1: " + basePath[recordCounterProcess].weather[0].main + "\n" + 
+        "Description2: " + basePath[recordCounterProcess].weather[0].description + "\n" + 
+        "Clouds: " + basePath[recordCounterProcess].clouds.all + "%" + "\n" + 
+        "Wind: " + basePath[recordCounterProcess].wind.speed + " MPH" + "\n" + 
+        "Visibility: " + basePath[recordCounterProcess].visibility + " Yards" + "\n" + 
+        "Humidity: " + basePath[recordCounterProcess].main.humidity + "%" + "\n" +
+        "Pressure: " + basePath[recordCounterProcess].main.pressure + " hPa" + "\n" + 
+        "Graphics Icon File: " + basePath[recordCounterProcess].weather[0].icon + "\n" + 
+        "Latitude: " + theForecastProcessing.city.coord.lat + "\n" + 
+        "Longitude: " + theForecastProcessing.city.coord.lon + "\n" + 
+        "=================================" + "\n" + 
+        "\n" + 
+        "\n";
+      }  // the end-brace that is for the activate string-search data-reduction/isolation "for" loop that is at above
+    //}  // the end-brace that is for the commented-out data-reduction/isolation "for" loop that is at above
+    if (recordCounterTime == 7) {
+      // to the next day group record of 8 3-hour-span weather records for the involved day
+      // other fun related math: Math.ceil((recordDayCounter + 1) / 8); (recordCounterProcess % 8 == 0) {  /
+      recordCounterTime = 0;
+      recordDayCounter++;
+    }
+    else {
+      recordCounterTime++;  // to the next 3-hour-span weather record in the group of 8 records for each day
+    } 
+  }  // to the next record in the set of all of the 40 records that were downloaded from the API service
+  //
+  // Format the processed API data information summary compilation string value for display.
+  //
+  // Continue the status display when the API process is processing so the user can see the processing if it is
+  // delayed.
+  var countdownTimer = 1;
+  initializationInterval = setInterval(function() {
+    countdownTimer--;
+    if (countdownTimer <= 0 ) {
+      clearInterval(initializationInterval);
+      // Display the resulting weather data.
+      displayAreaForCityWeatherInformation.innerHTML = the5DayForecast;
+    }
+  }, 1000);
+  //
+  // POSSIBLE OPTION FOR A FUTURE ENHANCEMENT/EXPANSION:
+  // Save the generated weather forecast information to local storage for possible later access/viewing.  
+  // localStorage.setItem("ProjectWeatherCoordinateBasedCity5DayForecast", JSON.stringify(the5DayForecast));
+  // <variable>=JSON.parse(localStorage.getItem("ProjectWeatherCoordinateBasedCity5DayForecast"));  // for possible re-loading
+} // END: "anErrorConditionExists" if
+else {
+  displayAreaForCityWeatherInformation.innerHTML = "ERROR: " + requestWeatherUrl
+}  // END: "anErrorConditionExists" if-else
+});  // END: fetch-response data-then
+}  // END: "getCoordinateBasedCityWeatherForecastAPI" function
+// END: fetch-process-response section
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+</script>
 
 </body>
 
