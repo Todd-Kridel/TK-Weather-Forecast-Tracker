@@ -589,9 +589,9 @@
             </h2>
             <br />  <!-- intentional space -->
             <p id="weather-note" style="font-weight: bolder; color: black; text-align: center;">
-                Latitude:&nbsp<input id="theCityLocationLatitude" style="width: 15ch"/>
+                Latitude:&nbsp<input id="theCityLocationLatitudeField" style="width: 15ch"/>
                 &nbsp&nbsp&nbsp&nbsp&nbsp <!-- non-breaking space separator -->
-                Longitude:&nbsp<input id="theCityLocationLongitude" style="width: 15ch"/>
+                Longitude:&nbsp<input id="theCityLocationLongitudeField" style="width: 15ch"/>
             </p>
             <p id="weather-note" style="font-size: 15px; font-weight: normal; color: black; text-align: center;">
                 The forecast information search of this section is based on latitude and longitude coordinates that 
@@ -670,11 +670,12 @@
 
 
 // a section that is to be run for page initialization upon page load.
+var theCityLatitudeField = document.getElementById("theCityLocationLatitudeField");
+var theCityLongitudeField = document.getElementById("theCityLocationLongitudeField");
+var anEntryErrorOccurred = false;
 var theCityLatitude = "";
+var a0LatitudeCoordinateWasEntered = false;
 var theCityLongitude = "";
-var aNoCoordinateCityRecord = false;
-var theCityLatitude = document.getElementById("theCityLocationLatitude");
-var theCityLongitude = document.getElementById("theCityLocationLongitude");
 var theCityWeatherForecastDisplayArea = document.getElementById("displayAreaForCityWeatherInformation");
 theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **";
 theCityWeatherForecastDisplayArea.innerHTML = "\n" + 
@@ -690,46 +691,61 @@ theCityWeatherForecastDisplayArea.innerHTML = "\n" +
 
 
 function doPreProcessForGettingCityLatitudeAndLongitudeCoordinateBasedWeatherForecastInformation() {
+// initialization upon each usage of the function/button
+anEntryErrorOccurred = false;
+theCityLatitude = "";
+a0LatitudeCoordinateWasEntered = false;
+theCityLongitude = "";
 // a section that is to be run for process validation upon button click for coordinate-based weather information
-if ((document.getElementById("theCityLocationLatitude").value != "") && 
-  (document.getElementById("theCityLocationLatitude").value != NaN)) {
+if ((theCityLatitudeField.value != "") && (isNaN(theCityLatitudeField.value) == false)) {  // not blank and is a number
   //
-  theCityLatitude = document.getElementById("theCityLocationLatitude").value;
+  theCityLatitude = (theCityLatitudeField.value).trim();
   if ((theCityLatitude != null) && (theCityLatitude != undefined)) {
     if (theCityLatitude == "0") {  // a 0-coordinate city search attempt
-      aNoCoordinateCitySearch = true;
+      anEntryErrorOccurred = true;
+      a0LatitudeCoordinateWasEntered = true;
       theCityLatitude = "39.742043";  // default for Denver
-    }
-    else {
-      // Use the valid user input as-is.
-    }
-  }
-  else {
-    theCityLatitude = "39.742043";  // default for Denver
-  }
-}
-else {
-  theCityLatitude = "39.742043";  // default for Denver
-}
-//
-if ((document.getElementById("theCityLocationLongitude").value != "") && 
-  (document.getElementById("theCityLocationLongitude").value != NaN)) {
-  theCityLongitude = document.getElementById("theCityLocationLongitude").value;
-  if ((theCityLongitude != null) && (theCityLongitude != undefined)) {
-    if (theCityLongitude == "0") {  // a 0-coordinate city search attempt
-      aNoCoordinateCitySearch = true;
       theCityLongitude = "-104.991531";  // default for Denver
     }
     else {
       // Use the valid user input as-is.
     }
   }
-  else { 
+  else {
+    anEntryErrorOccurred = true;
+    theCityLatitude = "39.742043";  // default for Denver
     theCityLongitude = "-104.991531";  // default for Denver
   }
 }
 else {
+  anEntryErrorOccurred = true;
+  theCityLatitude = "39.742043";  // default for Denver
   theCityLongitude = "-104.991531";  // default for Denver
+}
+//
+if ((anEntryErrorOccurred == false) && (theCityLongitudeField.value != "") && 
+  (isNaN(theCityLongitudeField.value) == false)) {  // no latitude error and longitude is not blank and is a number
+  theCityLongitude = (theCityLongitudeField.value).trim();
+  if ((theCityLongitude != null) && (theCityLongitude != undefined)) {
+    if ((theCityLongitude == "0") || (a0LatitudeCoordinateWasEntered == true)) {  // a 0-coordinate city search attempt
+      anEntryErrorOccurred = true;
+      theCityLongitude = "-104.991531";  // default for Denver
+      theCityLatitude = "39.742043";  // default for Denver
+    }
+    else {
+      // Use the valid user input as-is.
+    }
+  }
+  else { 
+    anEntryErrorOccurred = true;
+    theCityLongitude = "-104.991531";  // default for Denver
+    theCityLatitude = "39.742043";  // default for Denver
+  }
+}
+else {
+  anEntryErrorOccurred = true;
+  theCityLongitude = "-104.991531";  // default for Denver
+  theCityLatitude = "39.742043";  // default for Denver
 }
 // If a coordinate entry error condition exists...then do not display an error message because default Denver 
 // Colorado coordinates are used instead of any user-entered error information.
