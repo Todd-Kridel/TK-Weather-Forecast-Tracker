@@ -608,9 +608,10 @@
         <div id="displaySectionForCityWeatherInformation" style="display: flex; justify-content: center; 
             margin: -15px;">
             <div>
-                <textarea id="displayAreaForCityWeatherInformation" readonly style="width: 300px; height: 350px; 
-                    padding: 30px; margin-top: 20px; margin-bottom: 20px; background-color: white; color: black; 
-                    border: 10px double darkblue; resize: none; overflow: auto;">
+                <textarea id="displayAreaForLatitudeAndLongitudeCoordinateCityWeatherSearchInformation" readonly 
+                    style="width: 300px; height: 400px; padding: 30px; margin-top: 20px; margin-bottom: 20px; 
+                    background-color: white; color: black; border: 10px double darkblue; resize: none; 
+                    overflow: auto;">
                 </textarea>
             </div>
         </div>
@@ -660,17 +661,6 @@
 //
 
 
-// based on city location information that is documented at the website 
-// "https://blog.batchgeo.com/cities-by-latitude-and-longitude/":
-//
-// The "City Latitude Coordinate" and "City Longitude Coordinate" entry fields do not accept a value of 0 because there 
-// currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude or 
-// longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities that are 
-// within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 longitude (the 
-// Prime Meridian). If non-valid coordinate information is entered...then a default coordinate-set that is for Denver 
-// Colorado will be used.
-
-
 ////////////////////////////////
 // a section that is to be run for page initialization upon page load.
 //
@@ -682,7 +672,8 @@ var anEntryErrorOccurred = false;
 var theCityLatitude = "";
 var a0LatitudeCoordinateWasEntered = false;
 var theCityLongitude = "";
-var theCityWeatherForecastDisplayArea = document.getElementById("displayAreaForCityWeatherInformation");
+var theCityCoordinateBasedWeatherForecastDisplayArea = document.getElementById(
+  "displayAreaForLatitudeAndLongitudeCoordinateCityWeatherSearchInformation");
 doDisplayAdditionalHelpfulInformationNote();
 
 
@@ -694,18 +685,20 @@ doDisplayAdditionalHelpfulInformationNote();
 // for the inline "onclick" events of the "theCityLocationLatitudeField" HTML field element and the 
 // "theCityLocationLongitudeField" HTML field element
 function doDisplayAdditionalHelpfulInformationNote() {
-theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **" + "\n";
-theCityWeatherForecastDisplayArea.innerHTML = theCityWeatherForecastDisplayArea.innerHTML + "\n" + 
-    "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
-    "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
-    "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
-    "that are within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 " + 
-    "longitude (the Prime Meridian). That city location information is documented at the website " + "\n" + 
-    "'https://blog.batchgeo.com/cities-by-latitude-and-longitude/'." + "\n" + 
-    "\n" + 
-    "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
-    "Denver Colorado will be used.&nbsp****";
+theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **" + "\n";
+theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = 
+  theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML + "\n" + 
+  "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
+  "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
+  "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
+  "that are within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 " + 
+  "longitude (the Prime Meridian). That city location information is documented at the website " + "\n" + 
+  "'https://blog.batchgeo.com/cities-by-latitude-and-longitude/'." + "\n" + 
+  "\n" + 
+  "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
+  "Denver Colorado will be used.&nbsp****";
 }
+
 
 ////////////////////////////////
 // general functions
@@ -810,7 +803,7 @@ var requestWeatherUrl = requestWeatherUrlBase + "?" + "lat=" + theCityLatitude +
   "&cnt=" + forecastDaySpan + "&units=imperial" + "&appid=" + weatherApiKey;
 //window.alert(requestWeatherUrl);
 // Get the weather data from the API service.
-theCityWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
+theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 getApi(requestWeatherUrl);
 }
 
@@ -825,8 +818,8 @@ fetch(requestUrl)
         console.log(response);
     }
     return response.json();
-}) .then(function(data){
-theCityWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
+}) .then(function(data) {
+theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = "** PROCESSING IN-PROGRESS **";
 console.log(data);
 //
 // ** NOTE/IMPORTANT: **
@@ -947,7 +940,11 @@ if (anErrorConditionExists == false) {
     if (countdownTimer <= 0 ) {
       clearInterval(initializationInterval);
       // Display the resulting weather data.
-      displayAreaForCityWeatherInformation.innerHTML = the5DayForecast;
+      theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = the5DayForecast;
+      theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = 
+        theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML + 
+        "** DATA API URL PROCESSING COMPLETED **: " + "\n" + 
+        requestWeatherUrl + "\n";
     }
   }, 1000);
   //
@@ -957,7 +954,7 @@ if (anErrorConditionExists == false) {
   // <variable>=JSON.parse(localStorage.getItem("ProjectWeatherCoordinateBasedCity5DayForecast"));  // for possible re-loading
 } // END: "anErrorConditionExists" if
 else {
-  displayAreaForCityWeatherInformation.innerHTML = "ERROR: " + requestWeatherUrl
+  theCityCoordinateBasedWeatherForecastDisplayArea.innerHTML = "ERROR: " + requestWeatherUrl + "\n";
 }  // END: "anErrorConditionExists" if-else
 });  // END: fetch-response data-then
 }  // END: "getCoordinateBasedCityWeatherForecastAPI" function
