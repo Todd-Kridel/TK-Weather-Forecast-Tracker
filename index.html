@@ -683,21 +683,11 @@ var theCityLatitude = "";
 var a0LatitudeCoordinateWasEntered = false;
 var theCityLongitude = "";
 var theCityWeatherForecastDisplayArea = document.getElementById("displayAreaForCityWeatherInformation");
-theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **";
-theCityWeatherForecastDisplayArea.innerHTML = "\n" + 
-    "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
-    "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
-    "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
-    "that are within less than 1 degree from 0 latitude. There are only 12 cities that are within 1 degree of 0 " + 
-    "longitude (the Prime Meridian). That city location information is documented at the website " + "\n" + 
-    "'https://blog.batchgeo.com/cities-by-latitude-and-longitude/'." + "\n" + 
-    "\n" + 
-    "****&nbspIf non-valid coordinate information is entered/submitted...then a default coordinate-set that is for " + 
-    "Denver Colorado will be used.&nbsp****";
+doDisplayAdditionalHelpfulInformationNote();
 
 
 ////////////////////////////////
-// event listener functions
+// event listener functions (and page-initialization functions)
 //
 
 
