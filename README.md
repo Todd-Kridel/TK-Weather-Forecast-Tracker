@@ -57,7 +57,7 @@ To use this password generator webpage...
 
 [ Challenge Assignment Appearance ]
 
-The following picture shows the appearance of the completed (for-now) challenge assignment application webpage:
+The following pictures show the appearance of the completed (for-now) challenge assignment application webpage:
 
 ![an example view of the appearance of the weather-search upper webpage](./assets/images/TK-Weather-Forecast-Tracker-upper.jpg)
 
@@ -66,6 +66,7 @@ The following picture shows the appearance of the completed (for-now) challenge 
 The following URL is for the GitHub Pages published public view of Todd Kridel's Coding Bootcamp Module 6 Challenge assignment webpage: "https://todd-kridel.github.io/TK-Weather-Forecast-Tracker".
 
 [ Related Project Assignment Appearance ]
+
 (the origin of the code that was used for the coordinate-based search feature of this weather dashboard/tracker application)
 
 ![an example view of the appearance of the programmer's related weather-search webpage](./assets/images/Campsite-Finder%20Project%20Application%20--%20Weather%20Forecast%20Feature.jpg)
