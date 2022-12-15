@@ -48,14 +48,15 @@ To use this password generator webpage...
 * Use the upper-position weather information summary display areas to quickly view some essential weather information about the current searched-for city. Notice about how the time of the displayed information is indicated and also about how the timing is illustrated with a corresponding time-specific icon image. Notice about how the current-day-conditions icon has a background color that changes based on the time of the search...and about how the background color of the forecast-day-conditions icons stay at a desired midday time color unless a midday forecast summary is not available because of certain reasons.
 * Use the many "More Information" scrollable text areas to view much helpful additional information about the involved weather information search summaries that are displayed for the current search. Notice that the text areas display bonus extra-data information at various times...such as when residual remaining current-day forecast information is available for searches that are done at the beginning of the day...and such as when extra-day forecast information is available and displayed for Day 5 for searches that are done at the end of the day.
 * Use the "The Most-Recent 13 Searches" -- City Search History -- area buttons to view the new current image/data of the current-day and forecast-days weather information of cities that recently previously were custom-searched for by using the "Search" button (not by using any of the pre-set city buttons). ** Note: An enhancement feature that was desired for the history section was to add a persistent storage memory area and an application data display field that were for the actual previous-search summary data so the difference between the previous conditions and the new/current conditions could be viewed. Unfortunately that feature could not be added because the programmer ran-out of programming time. **
+* Use the Latitude/Longitude coordinate-based search feature section (at the bottom of the webpage) to search for any desired city name locations that could not be located/retrieved in the city search feature (at the top of the webpage) because the involved city name is apparently not yet on-record in the City Name database of the external API weather data system.
 * Use the "Delete" buttons of the "City Search History" area to delete/clear any no-longer-desired search history buttons.
 * Try to click any of the empty "Previous Search" buttons and "Delete" buttons of the "City Search History" area to see about how the application responds.
 * Use the highlighted border of the main current-day-conditions text area to know when there is helpful application usage status/guidance information -- Online Help -- that currently is displayed at the bottom (most-recent-addition area) of the text area.
 * Use the "Application Status" field (at the bottom of the search history button area/panel) to view much helpful/interesting additional information about the ongoing functioning of the current usage session of the application.
 * Re-size the application window to view about how the window adapts to changing size conditions.
 
-[ Challenge Assignment Appearance 
-]
+[ Challenge Assignment Appearance ]
+
 The following picture shows the appearance of the completed (for-now) challenge assignment application webpage:
 
 ![an example view of the appearance of the weather-search webpage](./assets/images/TK-Weather-Forecast-Tracker.jpg)
@@ -63,6 +64,7 @@ The following picture shows the appearance of the completed (for-now) challenge 
 The following URL is for the GitHub Pages published public view of Todd Kridel's Coding Bootcamp Module 6 Challenge assignment webpage: "https://todd-kridel.github.io/TK-Weather-Forecast-Tracker".
 
 [ Related Project Assignment Appearance ]
+(the origin of the code that was used for the coordinate-based search feature of this weather dashboard/tracker application)
 
 ![an example view of the appearance of the programmer's related weather-search webpage](./assets/images/Campsite-Finder%20Project%20Application%20--%20Weather%20Forecast%20Feature.jpg)
 
