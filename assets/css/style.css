@@ -218,6 +218,7 @@ button {
 }
 
 #submitCoordinateBasedWeatherApiInformation:hover {
+  color: black;
   background-color: blue;
   border: 5px double gray;
 }
