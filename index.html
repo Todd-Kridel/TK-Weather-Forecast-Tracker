@@ -695,7 +695,7 @@ doDisplayAdditionalHelpfulInformationNote();
 // "theCityLocationLongitudeField" HTML field element
 function doDisplayAdditionalHelpfulInformationNote() {
 theCityWeatherForecastDisplayArea.innerHTML = "** IDLE: NO CURRENT SEARCH PROCESS HAS BEEN SUBMITTED. **";
-theCityWeatherForecastDisplayArea.innerHTML = "\n" + 
+theCityWeatherForecastDisplayArea.innerHTML = theCityWeatherForecastDisplayArea.innerHTML + "\n" + 
     "The city 'Latitude' coordinate and city 'Longitude' coordinate entry fields do not accept a value of 0 because " + 
     "there currently are not any significant-size cities that are located at an exact 0 coordinate (either latitude " + 
     "or longitude). There are 22 cities that are within 2.5 degrees of 0 latitude (the Equator); and only 11 cities " + 
