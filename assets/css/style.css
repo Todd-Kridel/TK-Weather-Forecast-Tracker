@@ -212,13 +212,14 @@ button {
   padding: 10px;
   color: black;
   background-color: gray;
-  border: 5px double orange;
+  border: 5px double white;
   border-radius: 15px;
   margin: 10px;
 }
 
 #submitCoordinateBasedWeatherApiInformation:hover {
   background-color: blue;
+  border: 5px double gray;
 }
 
 #submitCoordinateBasedWeatherApiInformation:active {
