@@ -59,9 +59,9 @@ To use this password generator webpage...
 
 The following picture shows the appearance of the completed (for-now) challenge assignment application webpage:
 
-![an example view of the appearance of the weather-search upper webpage](./assets/images/TK-Weather-Forecast-Tracker-Upper.jpg)
+![an example view of the appearance of the weather-search upper webpage](./assets/images/TK-Weather-Forecast-Tracker-upper.jpg)
 
-![an example view of the appearance of the weather-search lower webpage](./assets/images/TK-Weather-Forecast-Tracker-Lower.jpg)
+![an example view of the appearance of the weather-search lower webpage](./assets/images/TK-Weather-Forecast-Tracker-lower.jpg)
 
 The following URL is for the GitHub Pages published public view of Todd Kridel's Coding Bootcamp Module 6 Challenge assignment webpage: "https://todd-kridel.github.io/TK-Weather-Forecast-Tracker".
 
